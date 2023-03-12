@@ -1,5 +1,6 @@
 import SearchBar from "./components/BookSearch/SearchBar";
 import LoginPage from "./components/LoginPage/LoginPage";
+import AdminPanel from "./components/AdminPanel";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './components/styles/global-styles.css';
 
