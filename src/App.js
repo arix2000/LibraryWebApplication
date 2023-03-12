@@ -1,6 +1,10 @@
+import SearchBar from "./components/BookSearch/SearchBar";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-    return <h1>TEST</h1>
+    return (
+        <SearchBar/>
+        )
 }
 
 export default App;
