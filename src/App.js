@@ -1,6 +1,10 @@
+import "bootstrap/dist/css/bootstrap.min.css"
+import LoginPage from "./components/LoginPage";
 
 function App() {
-    return <h1>TEST</h1>
-}
+    return (
+        <LoginPage/>
+        )
+};
 
 export default App;
