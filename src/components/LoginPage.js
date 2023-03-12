@@ -1,5 +1,5 @@
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
-import "../components/styles/login-styles.css"
+import "../components/styles/global-styles.css"
 
 export default function LoginPage() {
   return (
