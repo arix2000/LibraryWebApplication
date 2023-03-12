@@ -1,9 +1,10 @@
 import { Card, Container } from "react-bootstrap";
 import "../components/styles/AdminPanelStyle.css"
 import UserListItem from "./UserListItem";
+import usersJson from '../models/users.json';
 
 export default function AdminPanel() {
-    const texts = ["user1", "user2","user3"];
+    const users = usersJson;
 
     return (
       <>
@@ -11,8 +12,8 @@ export default function AdminPanel() {
           <h3 className="text-center bannerText">Admin Panel</h3>
         </Container>
         <Container className='adminPanelBody'>
-            {texts.map((text) => 
-              <UserListItem key={text} user={text}/>
+            {users.map((user) => 
+              <UserListItem key={user.id.toString()} user={user}/>
             )}
         </Container>
       </>

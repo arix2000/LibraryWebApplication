@@ -5,8 +5,8 @@ function UserListItem(props) {
     var user = props.user;
     return (
       <>
-        <Card className='listItemBody text-light'>
-            <p>{user}</p>
+        <Card className='listItemBody text-light label-color'>
+            <p>{user.name} {user.surname}</p>
         </Card>
       </>
     )
