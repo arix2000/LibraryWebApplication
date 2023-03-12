@@ -1,5 +1,4 @@
 import { Card, Container } from "react-bootstrap";
-import "../components/styles/AdminPanelStyle.css"
 import UserListItem from "./UserListItem";
 import usersJson from '../models/users.json';
 
