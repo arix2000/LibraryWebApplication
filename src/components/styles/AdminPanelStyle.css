@@ -1,0 +1,17 @@
+.adminPanelHeader {
+    padding: 10px;
+    background-color: #4169E1;
+    color: aliceblue;
+}
+
+.adminPanelBody {
+    padding: 10px;
+}
+
+.listItemBody {
+    background-color: black;
+}
+
+body {
+    background-color: #252525;
+}
