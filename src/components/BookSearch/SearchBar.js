@@ -31,9 +31,9 @@ function SearchBar({ onSubmit }) {
                 style={{ maxHeight: '100px' }}
                 navbarScroll
             >
-                <Nav.Link className="text-light" href="#action1">Borrow</Nav.Link>
+                <Nav.Link className="text-light" href="#">Borrow</Nav.Link>
                 <Nav.Link className="text-light" href="#action2">Your History</Nav.Link>
-                <Nav.Link className="text-light" href="#">Contact</Nav.Link>
+                <Nav.Link className="text-light" href="#action2">Contact</Nav.Link>
             </Nav>
             <Form className="d-flex" onSubmit={handleFormSubmit}>
                 <Form.Control
