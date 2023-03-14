@@ -1,0 +1,52 @@
+.adminPanelHeader {
+    padding: 6px;
+    padding-left: 20px;
+    background-color: #4169E1;
+    color: aliceblue;
+    max-width: 100%;
+    text-align: left;
+}
+
+.listItemBody {
+    margin-bottom: 20px;
+    margin-left: -5px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.fab {
+    display: flex;
+    flex-direction: column-reverse;
+    list-style: none;
+    margin: 0;
+    padding: 0.8em;
+  
+    border-radius: 100px;
+    position: fixed;
+    right: 2em;
+    bottom: 1.5em;
+}
+
+.passwordVisibilityButton {
+    margin-left: 10px;
+    color: aliceblue;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.passwordVisibilityButton:hover {
+    cursor: pointer;
+}
+
+.passwordVisibilityButton {
+    margin-left: 10px;
+    color: aliceblue;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    background-color: #252525;
+}
