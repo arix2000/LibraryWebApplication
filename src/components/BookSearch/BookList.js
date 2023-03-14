@@ -1,31 +1,41 @@
-import {Table} from "react-bootstrap";
-import books from '../../models/books.json';
+import { Container } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
-export default function BookList() {
+export default function BookList({ books }) {
+
+    const renderedBooks = books.map((book) => {
+        return(
+            <a href="#">
+                <Card
+                bg="dark"
+                key="dark"
+                text="light">
+                    <Card.Img
+                    className=""
+                    variant="top" 
+                    src={book.thumbnail} 
+                    alt={book.title + " Cover"}
+                    />
+                        <Card.Body>
+                            <Card.Title>{book.title}</Card.Title>
+                            <Card.Title>{book.authors}</Card.Title>
+                            <Button variant="primary">Borrow</Button>
+                        </Card.Body>
+                        <Card.Footer>
+                            <small className="text-muted">{book.average_rating}</small>
+                        </Card.Footer>
+                </Card>
+            </a>
+
+    )})
+
     
-    return(
-        <Table responsive striped bordered hover variant="dark">
-            <thead>
-                <tr>
-                    <th>Cover</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Published</th>
-                    <th>Average rating</th>
-                </tr>
-            </thead>
-            <tbody>
-                {books.map((item) => (
-                <tr key={item.isbn13}>
-                    <td><img src={item.thumbnail} alt={item.title+" Cover"}/></td>
-                    <td>{item.title}</td>
-                    <td>{item.authors}</td>
-                    <td>{item.published_year}</td>
-                    <td>{item.average_rating}</td>
-                </tr>
-            ))}
-            </tbody>
-        </Table>
-   
 
-)};
+    return(
+        <Container flex>
+            <div className="card-columns">
+                {renderedBooks}
+            </div>
+        </Container>
+    )};
