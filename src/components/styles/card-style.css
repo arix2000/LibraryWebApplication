@@ -1,8 +1,9 @@
 .card {
-    width: 18rem !important;
-    min-width: 10rem !important;
+    width: 30rem !important;
+    min-width: 2rem !important;
     box-shadow: 2px 4px 8px 0px rgb(0, 0, 0);
-    border-radius: 10% !important;
+    border-radius: 1% !important;
+    padding-top: 1rem;
 }
 
 .card:hover {
@@ -15,14 +16,10 @@
 }
 
 .book-thumbnail {
-    border-radius: 8%;
-    max-width: 10rem;
-    max-height: auto;
-    min-height: 19rem;
-    min-width: auto;
+    height: auto;
+    width: 100%;
 }
 
 .img-margin {
-    margin-left: 4rem;
-    margin-top: 1rem;
+    margin-left: 1rem;
 }
