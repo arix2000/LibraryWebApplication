@@ -1,4 +1,5 @@
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function LoginPage() {
   return (
@@ -37,9 +38,11 @@ export default function LoginPage() {
                         </p>
                       </Form.Group>
                       <div className="d-grid button-color">
-                        <Button type="submit">
-                          Login
-                        </Button>
+                        <Link to="search">
+                          <Button type="submit">
+                            Login
+                          </Button>
+                        </Link>
                       </div>
                     </Form>
                   </div>

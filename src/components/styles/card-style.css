@@ -1,0 +1,28 @@
+.card {
+    width: 18rem !important;
+    min-width: 10rem !important;
+    box-shadow: 2px 4px 8px 0px rgb(0, 0, 0);
+    border-radius: 10% !important;
+}
+
+.card:hover {
+    box-shadow: 4px 10px 20px 1px rgb(0, 0, 0);
+    transform: scale(1.05);
+}
+
+.author {
+    font-size: 1rem !important;
+}
+
+.book-thumbnail {
+    border-radius: 8%;
+    max-width: 10rem;
+    max-height: auto;
+    min-height: 19rem;
+    min-width: auto;
+}
+
+.img-margin {
+    margin-left: 4rem;
+    margin-top: 1rem;
+}

@@ -11,20 +11,20 @@ function App() {
 
     const [books, setBooks] = useState([]);
 
-    const handleSearchSubmit = (term) => {
+    const handleSearchSubmit = (query) => {
             const result = data.filter((item) => {
-                            return term.toLowerCase() === '' ? item :
-                            item.title.toString().toLowerCase().includes(term)
+                            return query.toLowerCase() === '' ? item :
+                            item.title.toString().toLowerCase().includes(query)
                             })
             setBooks(result);
     }
 
 
     return (
-        <div className="background-color">
+        <>
             <SearchBar onSubmit={handleSearchSubmit}/>
             <BookList books={books}/>
-        </div>
+            </>
         )
 };
 

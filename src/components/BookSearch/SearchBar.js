@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useState } from 'react';
+import "../styles/search-bar.css";
 
 function SearchBar({ onSubmit }) {
 
@@ -19,8 +20,7 @@ function SearchBar({ onSubmit }) {
     };
 
     return (
-        <div className="background-color">
-            <Navbar className="label-color" expand="lg" sticky="top">
+            <Navbar className="navbar-body label-color fixed-top" expand="lg" sticky="top">
             <Container fluid>
                 <Navbar.Brand className="text-light ml-3" href="#">Fish Library</Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
@@ -31,7 +31,7 @@ function SearchBar({ onSubmit }) {
                     style={{ maxHeight: '100px' }}
                     navbarScroll
                 >
-                    <Nav.Link className="text-light" href="#">Borrow</Nav.Link>
+                    <Nav.Link className="text-light" href="#">Borrowed</Nav.Link>
                     <Nav.Link className="text-light" href="#action2">Your History</Nav.Link>
                     <Nav.Link className="text-light" href="#action2">Contact</Nav.Link>
                 </Nav>
@@ -48,7 +48,6 @@ function SearchBar({ onSubmit }) {
                 </Navbar.Collapse>
             </Container>
             </Navbar>
-        </div>
     );
     }
 export default SearchBar;

@@ -9,3 +9,13 @@
 .button-color {
     color: #4169E1;
 }
+
+.custom-border {
+    border: solid 2px #4169E1;
+}
+
+.full-height {
+    min-height: 94vh;
+    height: 100%;
+}
+
