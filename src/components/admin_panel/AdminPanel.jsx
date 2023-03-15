@@ -6,9 +6,15 @@ import React, { useState } from "react";
 import GridSystem from "./ui_utils/GridSystem";
 import { IoMdAdd } from "react-icons/io";
 import DeleteUserDialog from "./DeleteUserDialog";
+import useWindowDimensions from "./ui_utils/Dimensions";
+
+function isInTwoColumnsRange(width) {
+  return width >= 768 && width <= 1200;
+}
 
 function AdminPanel() {
   const [modalShow, setModalShow] = useState(false);
+  const { width } = useWindowDimensions();
   const users = usersJson;
   return (
     <>
@@ -16,7 +22,7 @@ function AdminPanel() {
         <h4>Panel administratora</h4>
       </Container>
         <br/>
-      <GridSystem colCount={2} md={6}>
+      <GridSystem colCount={ isInTwoColumnsRange(width) ? 2 : 3 } md={isInTwoColumnsRange(width) ? 6 : 4 }>
         {users.map((user) => 
           <UserListItem key={user.id.toString()} user={user} onDeleteClicked={() => setModalShow(true)}/>
         )}

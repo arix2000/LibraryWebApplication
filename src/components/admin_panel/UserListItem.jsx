@@ -6,7 +6,7 @@ import useWindowDimensions from "./ui_utils/Dimensions";
 import PasswordText from "./PasswordText";
 
 const UserListItem = ({user, onDeleteClicked}) => {
-    const { height, width } = useWindowDimensions();
+    const { width } = useWindowDimensions();
     return (
       <>
         <Card border="primary" className='listItemBody text-light label-color'>
