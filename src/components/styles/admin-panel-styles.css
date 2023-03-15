@@ -47,6 +47,22 @@
     justify-content: center;
 }
 
+.modal-content {
+    border-radius: 24px;
+    background-color: #252525;
+    color: aliceblue;
+}
+
+.modal-header {
+    border-bottom: 0 none;
+    padding-bottom: 0px;
+}
+
+.modal-footer {
+    border-top: 0 none;
+    padding: 0px 10px 10px 0px;
+}
+
 body {
     background-color: #252525;
 }

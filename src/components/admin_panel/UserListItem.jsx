@@ -2,11 +2,10 @@ import { BsTrashFill } from "react-icons/bs";
 import { RiEditFill } from "react-icons/ri";
 import { Button, Card, Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import "../styles/admin-panel-styles.css"
-import useWindowDimensions from "./dimensions";
+import useWindowDimensions from "./ui_utils/Dimensions";
 import PasswordText from "./PasswordText";
 
-const UserListItem = (props) => {
-    var user = props.user;
+const UserListItem = ({user, onDeleteClicked}) => {
     const { height, width } = useWindowDimensions();
     return (
       <>
@@ -28,7 +27,7 @@ const UserListItem = (props) => {
           <Card.Footer>
             <Row>
               <Col sm={width > 575 ? 7 : 0}>
-                <Button style={{borderRadius: 12}}>Edit  <RiEditFill style={{marginLeft: 4, marginBottom: 4}}/></Button>
+                <Button className="defaultButtonRadius">Edit  <RiEditFill style={{marginLeft: 4, marginBottom: 4}}/></Button>
               </Col>
               {user.role == "admin" 
               ? <Col className="text-right">
@@ -41,7 +40,7 @@ const UserListItem = (props) => {
                   </OverlayTrigger>
                 </Col>
               : <Col className="text-right">
-                  <Button style={{borderRadius: 12}} variant="danger"><BsTrashFill/></Button>
+                  <Button className="defaultButtonRadius" variant="danger" onClick={() => onDeleteClicked(user)}><BsTrashFill/></Button>
                 </Col>}
             </Row>
           </Card.Footer>

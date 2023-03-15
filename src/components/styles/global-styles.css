@@ -9,3 +9,7 @@
 .button-color {
     color: #4169E1;
 }
+
+.defaultButtonRadius {
+    border-radius: 12px;
+}
