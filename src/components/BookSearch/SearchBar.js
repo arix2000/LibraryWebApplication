@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,15 +9,28 @@ import "../styles/search-bar.css";
 
 function SearchBar({ onSubmit }) {
 
-    const [term, setTerm] = useState('');
+    const [query, setQuery] = useState('');
+
+    const shortQueryAlert = () => {
+        return (
+            <Alert variant="danger" dismissible>
+              <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+              <p>
+                Change this and that and try again. Duis mollis, est non commodo
+                luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+                Cras mattis consectetur purus sit amet fermentum.
+              </p>
+            </Alert>
+          );
+    } 
 
     const handleFormSubmit = (event) => {
-        event.preventDefault();
-        onSubmit(term);
+            event.preventDefault();
+            onSubmit(query);
     };
    
     const handleChange = (event) => {
-        setTerm(event.target.value);
+        setQuery(event.target.value);
     };
 
     return (
@@ -37,7 +51,7 @@ function SearchBar({ onSubmit }) {
                     </Nav>
                     <Form className="d-flex" onSubmit={handleFormSubmit}>
                         <Form.Control
-                        value={term}
+                        value={query}
                         onChange={handleChange}
                         type="search"
                         placeholder="Search for books"
