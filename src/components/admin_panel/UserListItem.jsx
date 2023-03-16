@@ -2,20 +2,17 @@ import { BsTrashFill } from "react-icons/bs";
 import { RiEditFill } from "react-icons/ri";
 import { Button, Card, Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import "../styles/admin-panel-styles.css"
-import useWindowDimensions from "./ui_utils/Dimensions";
 import PasswordText from "./PasswordText";
 
 const UserListItem = ({user, onDeleteClicked}) => {
-    const { width } = useWindowDimensions();
     return (
       <>
+      <div>
         <Card border="primary" className='listItemBody text-light label-color'>
             <Row>
-              <Col sm={7}><Card.Title>{user.name} {user.surname}</Card.Title></Col>
+              <Col sm={7} xs={9}><Card.Title>{user.name} {user.surname}</Card.Title></Col>
               <Col> 
-              {width > 575 
-              ? <Card.Subtitle className="text-right" style={{margin: 5}}>Rola: <b>{user.role}</b></Card.Subtitle> 
-              : <Card.Subtitle className="text-left">Rola: <b>{user.role}</b></Card.Subtitle>}
+              <Card.Subtitle className="text-right" style={{margin: 5}}><b>{user.role}</b></Card.Subtitle>
               </Col>
             </Row>
           
@@ -26,8 +23,8 @@ const UserListItem = ({user, onDeleteClicked}) => {
           </Card.Text>
           <Card.Footer>
             <Row>
-              <Col sm={width > 575 ? 7 : 0}>
-                <Button className="defaultButtonRadius">Edit  <RiEditFill style={{marginLeft: 4, marginBottom: 4}}/></Button>
+              <Col>
+                <Button className="defaultButtonRadius">Edit <RiEditFill style={{marginLeft: 4, marginBottom: 4}}/></Button>
               </Col>
               {user.role == "admin" 
               ? <Col className="text-right">
@@ -45,6 +42,7 @@ const UserListItem = ({user, onDeleteClicked}) => {
             </Row>
           </Card.Footer>
         </Card>
+        </div>
       </>
     )
   }
