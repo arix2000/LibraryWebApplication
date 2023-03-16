@@ -43,7 +43,7 @@ function SearchBar({ onSubmit }) {
                         placeholder="Search for books"
                         className="me-2 bg-secondary border-dark text-light"
                         />
-                        <Button className="button-color text-light">Search</Button>
+                        <Button className="button-color text-light" onClick={handleFormSubmit}>Search</Button>
                     </Form>
                     </Navbar.Collapse>
                 </Container>

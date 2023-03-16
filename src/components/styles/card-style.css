@@ -5,6 +5,10 @@
     margin: 3rem auto auto auto;
 }
 
+.card-radius {
+    border-radius: 24px !important;
+}
+
 .card:hover {
     box-shadow: 4px 10px 20px 1px rgb(0, 0, 0);
     transform: scale(1.05);

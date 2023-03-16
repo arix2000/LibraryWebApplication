@@ -9,14 +9,13 @@ export default function BookList({ books }) {
     const renderedBooks = books.map((book) => {
         return(
             <Card
-                className="card rounded text-center border border-primary pb-0"
-                bg="dark"
+                className="card text-center border border-primary pb-0 pr-1 card-radius label-color"
                 text="light"
                 key={book.isbn13}>
                     <div className="row g-5">
                         <div className="col-md-4 my-0 pt-5">
                             <Card.Img
-                            className="card-img rounded"
+                            className="card-img card-radius"
                             src={book.thumbnail} 
                             alt={book.title + " Cover"}
                             />
@@ -40,7 +39,7 @@ export default function BookList({ books }) {
     
 
     return(
-        <div className="background-color full-height px-5">
+        <div className="background-color full-height px-5 pb-5">
             <div className="d-flex flex-row flex-wrap">
                 {renderedBooks}
             </div>
