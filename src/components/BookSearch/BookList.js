@@ -10,26 +10,25 @@ export default function BookList({ books }) {
     const renderedBooks = books.map((book) => {
         return(
             <Card
-                className="card my-2 mx-5 text-center border border-primary"
+                className="card rounded text-center border border-primary"
                 bg="dark"
-                key="dark"
-                text="light">
-                    <div class="row g-5">
-                        <div class="col-md-4">
+                text="light"
+                key={book.isbn13}>
+                    <div className="row g-5">
+                        <div className="col-md-4 my-0 pt-5">
                             <Card.Img
-                            className="book-thumbnail img-margin"
-                            variant="top" 
+                            className="book-thumbnail card-img rounded"
                             src={book.thumbnail} 
                             alt={book.title + " Cover"}
                             />
                         </div>
-                        <div class="col-md-8">
+                        <div className="col-md-8">
                             <Card.Body>
-                                <Card.Title>{'"' + book.title + '"'}</Card.Title>
-                                <Card.Title className="rounded author">{book.authors}</Card.Title>
+                                <Card.Title className="mt-0">{'"' + book.title + '"'}</Card.Title>
+                                <Card.Title className="author">{book.authors.replaceAll(';', ", ")}</Card.Title>
                                 <Button variant="primary">Borrow</Button>
                             </Card.Body>
-                            <Card.Footer className="text-center label-color">
+                            <Card.Footer className="text-center">
                                 <Rating name="half-rating-read" defaultValue={book.average_rating} precision={0.1} readOnly />
                             </Card.Footer>
                         </div>
@@ -41,7 +40,7 @@ export default function BookList({ books }) {
     
 
     return(
-        <div className="background-color full-height pl-5">
+        <div className="background-color full-height px-5">
             <div className="d-flex flex-row flex-wrap">
                 {renderedBooks}
             </div>

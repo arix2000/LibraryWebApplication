@@ -1,9 +1,13 @@
 .card {
+    height: 10rem;
     width: 30rem !important;
     min-width: 2rem !important;
     box-shadow: 2px 4px 8px 0px rgb(0, 0, 0);
-    border-radius: 1% !important;
-    padding-top: 1rem;
+    /* border-radius: 10% !important; */
+    margin-top: 3rem;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card:hover {
@@ -20,6 +24,9 @@
     width: 100%;
 }
 
-.img-margin {
-    margin-left: 1rem;
+.card-img {
+    /* border-radius: 12% !important; */
+    min-height: 100% !important;
+    max-width: 10em;
+    margin: 0 !important;
 }

@@ -17,5 +17,6 @@
 .full-height {
     min-height: 94vh;
     height: 100%;
+    margin: auto;
 }
 
