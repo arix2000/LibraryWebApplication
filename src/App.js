@@ -21,9 +21,9 @@ function App() {
 
 
     return (
-        <>
-            <SearchBar onSubmit={handleSearchSubmit}/>
-            <BookList books={books}/>
+            <>
+                <SearchBar onSubmit={handleSearchSubmit}/>
+                <BookList books={books}/>
             </>
         )
 };

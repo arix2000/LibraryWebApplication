@@ -1,13 +1,8 @@
 .card {
-    height: 10rem;
+    height: auto !important;
     width: 30rem !important;
-    min-width: 2rem !important;
     box-shadow: 2px 4px 8px 0px rgb(0, 0, 0);
-    /* border-radius: 10% !important; */
-    margin-top: 3rem;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 3rem auto auto auto;
 }
 
 .card:hover {
@@ -19,14 +14,9 @@
     font-size: 1rem !important;
 }
 
-.book-thumbnail {
-    height: auto;
-    width: 100%;
-}
-
 .card-img {
-    /* border-radius: 12% !important; */
-    min-height: 100% !important;
-    max-width: 10em;
+    height: 246px !important;
+    width: auto !important;
+    max-width: 169px;
     margin: 0 !important;
 }
