@@ -1,33 +1,23 @@
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Alert from 'react-bootstrap/Alert';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useState } from 'react';
 import "../styles/search-bar.css";
 
-function SearchBar({ onSubmit }) {
+function NavBar({ onSubmit }) {
 
-    const [query, setQuery] = useState('');
-
-    const shortQueryAlert = () => {
-        return (
-            <Alert variant="danger" dismissible>
-              <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-              <p>
-                Change this and that and try again. Duis mollis, est non commodo
-                luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-                Cras mattis consectetur purus sit amet fermentum.
-              </p>
-            </Alert>
-          );
-    } 
+    const [query, setQuery] = useState('Search');
 
     const handleFormSubmit = (event) => {
             event.preventDefault();
             onSubmit(query);
     };
+
+    const clearInput = () => {
+        setQuery('');
+    }
    
     const handleChange = (event) => {
         setQuery(event.target.value);
@@ -56,6 +46,7 @@ function SearchBar({ onSubmit }) {
                         type="search"
                         placeholder="Search for books"
                         className="me-2 bg-secondary border-dark text-light"
+                        onClick={clearInput}
                         />
                         <Button className="button-color text-light" onClick={handleFormSubmit}>Search</Button>
                     </Form>
@@ -64,4 +55,4 @@ function SearchBar({ onSubmit }) {
             </Navbar>
     );
     }
-export default SearchBar;
+export default NavBar;

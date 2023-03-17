@@ -1,4 +1,4 @@
-import SearchBar from "./components/BookSearch/SearchBar";
+import NavBar from "./components/BookSearch/NavBar";
 import { useState } from "react";
 import BookList from "./components/BookSearch/BookList";
 import LoginPage from "./components/LoginPage/LoginPage";
@@ -13,8 +13,8 @@ function App() {
 
     const handleSearchSubmit = (query) => {
             const result = data.filter((item) => {
-                            return query.toLowerCase() === '' ? item :
-                            item.title.toString().toLowerCase().includes(query)
+                            return query === '' ? item :
+                            item.title.toString().toLowerCase().includes(query.toLowerCase())
                             })
             setBooks(result);
     }
@@ -22,7 +22,7 @@ function App() {
 
     return (
             <>
-                <SearchBar onSubmit={handleSearchSubmit}/>
+                <NavBar onSubmit={handleSearchSubmit}/>
                 <BookList books={books}/>
             </>
         )

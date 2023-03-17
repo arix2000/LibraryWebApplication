@@ -1,5 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Col, Row } from 'react-bootstrap';
 import "../styles/card-style.css";
 import { Rating } from '@mui/material';
 import "../styles/global-styles.css";
@@ -35,15 +36,15 @@ export default function BookList({ books }) {
                 className="card text-center pb-0 pr-1 card-radius label-color"
                 text="light"
                 key={book.isbn13}>
-                    <div className="row g-5">
-                        <div className="col-md-4 my-0 pt-5">
+                    <Row g={5}>
+                        <Col md={4} my={0} pt={5}>
                             <Card.Img
                             className="card-img card-radius"
                             src={book.thumbnail} 
                             alt={book.title + " Cover"}
                             />
-                        </div>
-                        <div className="col-md-8">
+                        </Col>
+                        <Col md={8}>
                             <Card.Body className="p-0">
                                 <Card.Title className="mt-2 mb-3">{'"' + book.title + '"'}</Card.Title>
                                 <Card.Title className="author mb-1">{book.authors.replaceAll(';', ", ")}</Card.Title>
@@ -53,8 +54,8 @@ export default function BookList({ books }) {
                                 <h3>{book.average_rating}</h3>
                                 <Rating name="half-rating-read" defaultValue={book.average_rating} precision={0.1} readOnly/>
                             </Card.Footer>
-                        </div>
-                    </div>
+                        </Col>
+                    </Row>
             </Card>
 
     )})
