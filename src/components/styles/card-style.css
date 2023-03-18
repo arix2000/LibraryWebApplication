@@ -1,0 +1,26 @@
+.card {
+    height: auto !important;
+    width: 30rem !important;
+    box-shadow: 2px 4px 8px 0px rgb(0, 0, 0);
+    margin: 3rem auto auto auto;
+}
+
+.card-radius {
+    border-radius: 24px !important;
+}
+
+.card:hover {
+    box-shadow: 4px 10px 20px 1px rgb(0, 0, 0);
+    transform: scale(1.05);
+}
+
+.author {
+    font-size: 1rem !important;
+}
+
+.card-img {
+    height: 247px !important;
+    width: auto !important;
+    max-width: 169px;
+    margin: 0 !important;
+}

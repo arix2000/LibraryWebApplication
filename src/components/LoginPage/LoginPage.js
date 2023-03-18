@@ -1,5 +1,5 @@
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
-import "../components/styles/global-styles.css"
+import { Link } from "react-router-dom";
 
 export default function LoginPage() {
   return (
@@ -17,7 +17,7 @@ export default function LoginPage() {
                         <Form.Label className="text-center text-light">
                             Email adress
                         </Form.Label>
-                        <Form.Control className="bg-secondary border border-dark" type="email" placeholder="Enter email" />
+                        <Form.Control className="bg-secondary border border-dark text-light" type="email" placeholder="Enter email" />
                       </Form.Group>
 
                       <Form.Group
@@ -26,7 +26,7 @@ export default function LoginPage() {
                         <Form.Label className="text-light">
                             Password
                         </Form.Label>
-                        <Form.Control className="bg-secondary border border-dark" type="password" placeholder="Password" />
+                        <Form.Control className="bg-secondary border border-dark text-light" type="password" placeholder="Password" />
                       </Form.Group>
                       <Form.Group
                         className="mb-3"
@@ -38,9 +38,11 @@ export default function LoginPage() {
                         </p>
                       </Form.Group>
                       <div className="d-grid button-color">
-                        <Button type="submit">
-                          Login
-                        </Button>
+                        <Link to="search">
+                          <Button type="submit">
+                            Login
+                          </Button>
+                        </Link>
                       </div>
                     </Form>
                   </div>

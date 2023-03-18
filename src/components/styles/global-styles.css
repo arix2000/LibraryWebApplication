@@ -3,13 +3,33 @@
 }
 
 .label-color {
-    background-color: #3b3a3a;
+    background-color: #3b3a3a !important;
 }
 
 .button-color {
     color: #4169E1;
 }
 
+.custom-border {
+    border: solid 2px #4169E1;
+}
+
+.full-height {
+    min-height: 94vh;
+    height: 100%;
+    margin: auto;
+}
+
 .defaultButtonRadius {
     border-radius: 12px;
+}
+
+.custom-border {
+    border: solid 2px #4169E1;
+}
+
+.full-height {
+    min-height: 94vh;
+    height: 100%;
+    margin: auto;
 }
