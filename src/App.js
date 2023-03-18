@@ -1,4 +1,4 @@
-import NavBar from "./components/BookSearch/NavBar";
+import NavBar from "./components/NavBar/NavBar";
 import { useState } from "react";
 import BookList from "./components/BookSearch/BookList";
 import LoginPage from "./components/LoginPage/LoginPage";
