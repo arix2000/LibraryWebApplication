@@ -13,6 +13,7 @@ export default function PasswordText(props) {
     <span>
         {passwordShown ? props.pass : "•••••••••"}
         <span size="sm" className="passwordVisibilityButton" onClick={togglePassword}>
+          <br/>
             {passwordShown 
             ? <AiFillEyeInvisible style={{width: 20, height: 20}}/> 
             : <AiFillEye style={{width: 20, height: 20}}/>}

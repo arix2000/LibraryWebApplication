@@ -19,17 +19,3 @@
     height: 100%;
     margin: auto;
 }
-
-.defaultButtonRadius {
-    border-radius: 12px;
-}
-
-.custom-border {
-    border: solid 2px #4169E1;
-}
-
-.full-height {
-    min-height: 94vh;
-    height: 100%;
-    margin: auto;
-}

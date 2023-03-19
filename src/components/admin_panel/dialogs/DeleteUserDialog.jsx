@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import "../styles/admin-panel-styles.css"
+import "../../styles/admin-panel-styles.css"
 
 export default function DeleteUserDialog(props) {
   return (
@@ -9,6 +9,7 @@ export default function DeleteUserDialog(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      dialogClassName="modal-500w"
     >
       <Modal.Header>
         <Modal.Title>

@@ -1,11 +1,10 @@
 import NavBar from "./components/BookSearch/NavBar";
 import { useState } from "react";
 import BookList from "./components/BookSearch/BookList";
-import LoginPage from "./components/LoginPage/LoginPage";
-import AdminPanel from "./components/AdminPanel";
-import data from "./models/books.json"
+import data from "./models/books.json";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './components/styles/global-styles.css';
+import AdminPanel from "./components/admin_panel/AdminPanel";
 
 function App() {
 
@@ -23,7 +22,7 @@ function App() {
     return (
             <>
                 <NavBar onSubmit={handleSearchSubmit}/>
-                <BookList books={books}/>
+                <AdminPanel/>
             </>
         )
 };
