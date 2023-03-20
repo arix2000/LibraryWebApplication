@@ -3,8 +3,13 @@ import { RiEditFill } from "react-icons/ri";
 import { Button, Card, Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import "../styles/admin-panel-styles.css"
 import PasswordText from "./PasswordText";
+import DeleteUserDialog from "./dialogs/DeleteUserDialog";
+import { useState } from "react";
+import AddEditUserDialog from "./dialogs/AddEditUserDialog";
 
-const UserListItem = ({user, onDeleteClicked}) => {
+const UserListItem = ({user}) => {
+  const [modalDeleteShow, setModalDeleteShow] = useState(false);
+  const [modalEditShow, setModalEditShow] = useState(false);
     return (
       <>
       <div>
@@ -24,7 +29,9 @@ const UserListItem = ({user, onDeleteClicked}) => {
           <Card.Footer>
             <Row>
               <Col>
-                <Button className="defaultButtonRadius">Edit <RiEditFill style={{marginLeft: 4, marginBottom: 4}}/></Button>
+                <Button className="defaultButtonRadius" onClick={() => setModalEditShow(true)}>
+                  Edit <RiEditFill style={{marginLeft: 4, marginBottom: 4}}/>
+                </Button>
               </Col>
               {user.role == "admin" 
               ? <Col className="text-right">
@@ -37,12 +44,23 @@ const UserListItem = ({user, onDeleteClicked}) => {
                   </OverlayTrigger>
                 </Col>
               : <Col className="text-right">
-                  <Button className="defaultButtonRadius" variant="danger" onClick={() => onDeleteClicked(user)}><BsTrashFill/></Button>
+                  <Button className="defaultButtonRadius" variant="danger" onClick={() => setModalDeleteShow(true)}><BsTrashFill/></Button>
                 </Col>}
             </Row>
           </Card.Footer>
         </Card>
         </div>
+
+        <DeleteUserDialog
+          show={modalDeleteShow}
+          onHide={() => setModalDeleteShow(false)}
+          user={user}
+        />
+        <AddEditUserDialog
+          show={modalEditShow}
+          onHide={() => setModalEditShow(false)}
+          user={user}
+        />
       </>
     )
   }

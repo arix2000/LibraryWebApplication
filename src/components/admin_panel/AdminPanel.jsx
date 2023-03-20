@@ -1,22 +1,20 @@
 import { Button, Container } from "react-bootstrap";
 import "../styles/admin-panel-styles.css"
 import UserListItem from "./UserListItem";
-import usersJson from '../../models/users.json';
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import UserManager from "./UserManager"
-import DeleteUserDialog from "./dialogs/DeleteUserDialog";
+import AddEditUserDialog from "./dialogs/AddEditUserDialog";
 
 function AdminPanel() {
   const userManager = new UserManager();
-  const [modalShow, setModalShow] = useState(false);
-  const users = usersJson;
-  const userItems = users.map((user) => 
-  <UserListItem key={user.id.toString()} user={user} onDeleteClicked={() => {
-    setModalShow(true)
-    userManager.removeUser(user)
-  }}/>)
 
+  const [modalAddShow, setModalAddShow] = useState(false);
+  var [users, setUsers] = useState(userManager.getUsers())
+  window.addEventListener('storage', (storageEvent) => {
+    setUsers(userManager.getUsers());
+   })
+  const userItems = users.map((user) => <UserListItem key={user.id.toString()} user={user}/>)
   return (
     <>
         <div className='adminPanelHeader'>
@@ -27,11 +25,11 @@ function AdminPanel() {
             {userItems}
         </div>
       <Container style={{height: 70}}></Container>
-        <Button className="fab"><IoMdAdd style={{height: 24, width: 24}}/></Button>
+        <Button className="fab" onClick={() => setModalAddShow(true)}><IoMdAdd style={{height: 24, width: 24}}/></Button>
 
-      <DeleteUserDialog
-        show={modalShow}
-        onHide={() => setModalShow(false)}
+      <AddEditUserDialog
+        show={modalAddShow}
+        onHide={() => setModalAddShow(false)}
       />
     </>
   )
