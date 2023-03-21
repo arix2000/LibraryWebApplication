@@ -18,11 +18,11 @@
     width: 800px;
 }
 
-.defaultButtonRadius {
+.default-button-radius {
     border-radius: 12px;
 }
 
-.adminPanelHeader {
+.admin-panel-header {
     padding: 6px;
     padding-left: 20px;
     padding-top: 15px;
@@ -33,7 +33,7 @@
     border-radius: 0px 0px 40px 0px;
 }
 
-.listItemBody {
+.list-item-body {
     margin-bottom: 20px;
     margin-left: 10px;
     margin-right: 10px;
@@ -47,14 +47,14 @@
     list-style: none;
     margin: 0;
     padding: 0.8em;
-  
+
     border-radius: 100px;
     position: fixed;
     right: 2em;
     bottom: 1.5em;
 }
 
-.passwordVisibilityButton {
+.password-visibility-button {
     margin-left: 10px;
     color: aliceblue;
     display: inline-flex;
@@ -62,11 +62,11 @@
     justify-content: center;
 }
 
-.passwordVisibilityButton:hover {
+.password-visibility-button:hover {
     cursor: pointer;
 }
 
-.passwordVisibilityInline {
+.password-visibility-inline {
     background-color: #4169E1;
     border-radius: 0px 14px 14px 0px;
     width: 40px;
@@ -125,6 +125,13 @@
     box-shadow: none;
     border-width: 1px;
     border-color: #4169E1;
+}
+
+.one-line-text {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: red;
+    overflow: hidden;
 }
 
 body {

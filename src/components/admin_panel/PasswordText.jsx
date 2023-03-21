@@ -7,11 +7,12 @@ export default function PasswordText(props) {
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
+  const dotedPass = props.pass.split('').map(letter => '•');
 
   return (
     <span>
-        {passwordShown ? props.pass : "•••••••••"}
-        <span size="sm" className="passwordVisibilityButton" onClick={togglePassword}>
+        {passwordShown ? props.pass : dotedPass}
+        <span className="password-visibility-button" onClick={togglePassword}>
           <br/>
             {passwordShown 
             ? <AiFillEyeInvisible style={{width: 20, height: 20}}/> 

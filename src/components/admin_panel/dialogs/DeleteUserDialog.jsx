@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import "../../styles/admin-panel-styles.css"
-import UserManager from '../UserManager';
+import UserManager from '../utils/UserManager';
 
 export default function DeleteUserDialog(props) {
   const userManager = new UserManager();
@@ -20,8 +20,8 @@ export default function DeleteUserDialog(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Footer >
-        <Button className="defaultButtonRadius" onClick={props.onHide}>Close</Button>
-        <Button className="defaultButtonRadius" onClick={() => {props.onHide(); userManager.removeUser(user);} } variant="danger">Usuń użytkownika</Button>
+        <Button className="default-button-radius" onClick={props.onHide}>Close</Button>
+        <Button className="default-button-radius" onClick={() => { props.onHide(); userManager.removeUser(user); }} variant="danger">Usuń użytkownika</Button>
       </Modal.Footer>
     </Modal>
   );

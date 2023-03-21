@@ -7,62 +7,75 @@ import DeleteUserDialog from "./dialogs/DeleteUserDialog";
 import { useState } from "react";
 import AddEditUserDialog from "./dialogs/AddEditUserDialog";
 
-const UserListItem = ({user}) => {
+const UserListItem = ({ user }) => {
   const [modalDeleteShow, setModalDeleteShow] = useState(false);
   const [modalEditShow, setModalEditShow] = useState(false);
-    return (
-      <>
+  return (
+    <>
       <div>
-        <Card border="primary" className='listItemBody text-light label-color'>
-            <Row>
-              <Col sm={7} xs={9}><Card.Title>{user.name} {user.surname}</Card.Title></Col>
-              <Col> 
-              <Card.Subtitle className="text-right" style={{margin: 5}}><b>{user.role}</b></Card.Subtitle>
-              </Col>
-            </Row>
-          
+        <Card border="primary" className='list-item-body text-light label-color'>
+          <Row>
+            <Col sm={7} xs={9}><Card.Title className="text-truncate">{user.name} {user.surname}</Card.Title></Col>
+            <Col>
+              <Card.Subtitle className="text-right" style={{ margin: 5 }}><b>{user.role}</b></Card.Subtitle>
+            </Col>
+          </Row>
+
           <Card.Text>
             <Row>
-              <Col>Login: {user.login}<br/>Hasło: <PasswordText pass={user.password}/></Col>
+              <Col className="text-truncate">
+                Login: {user.login}<br />
+                Hasło: <PasswordText pass={user.password} /><br />
+                Zarezerwowane: {user.reserved_books.length}<br />
+                Wypożyczone: {user.borrowed_books.length}
+              </Col>
             </Row>
           </Card.Text>
           <Card.Footer>
             <Row>
               <Col>
-                <Button className="defaultButtonRadius" onClick={() => setModalEditShow(true)}>
-                  Edit <RiEditFill style={{marginLeft: 4, marginBottom: 4}}/>
-                </Button>
-              </Col>
-              {user.role == "admin" 
-              ? <Col className="text-right">
-                  <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Nie można usunąć admina</Tooltip>}>
-                  <span className="d-inline-block">
-                    <Button className="disabled" variant="secondary" style={{borderRadius: 12}}>
-                      <BsTrashFill/>
-                    </Button>
-                  </span>
+                {user.login == "root"
+                  ? <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Nie można edytować root'a</Tooltip>}>
+                    <span className="d-inline-block">
+                      <Button disabled variant="secondary" className="default-button-radius" onClick={() => setModalEditShow(true)}>
+                        Edit <RiEditFill style={{ marginLeft: 4, marginBottom: 4 }} />
+                      </Button>
+                    </span>
                   </OverlayTrigger>
-                </Col>
-              : <Col className="text-right">
-                  <Button className="defaultButtonRadius" variant="danger" onClick={() => setModalDeleteShow(true)}><BsTrashFill/></Button>
-                </Col>}
+                  : <Button className="default-button-radius" onClick={() => setModalEditShow(true)}>
+                    Edit <RiEditFill style={{ marginLeft: 4, marginBottom: 4 }} />
+                  </Button>
+                }
+              </Col>
+              <Col className="text-right">
+                {user.role == "admin"
+                  ? <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Nie można usunąć admina</Tooltip>}>
+                    <span className="d-inline-block">
+                      <Button className="disabled" variant="secondary" style={{ borderRadius: 12 }}>
+                        <BsTrashFill />
+                      </Button>
+                    </span>
+                  </OverlayTrigger>
+                  : <Button className="default-button-radius" variant="danger" onClick={() => setModalDeleteShow(true)}><BsTrashFill /></Button>
+                }
+              </Col>
             </Row>
           </Card.Footer>
         </Card>
-        </div>
+      </div>
 
-        <DeleteUserDialog
-          show={modalDeleteShow}
-          onHide={() => setModalDeleteShow(false)}
-          user={user}
-        />
-        <AddEditUserDialog
-          show={modalEditShow}
-          onHide={() => setModalEditShow(false)}
-          user={user}
-        />
-      </>
-    )
-  }
+      <DeleteUserDialog
+        show={modalDeleteShow}
+        onHide={() => setModalDeleteShow(false)}
+        user={user}
+      />
+      <AddEditUserDialog
+        show={modalEditShow}
+        onHide={() => setModalEditShow(false)}
+        user={user}
+      />
+    </>
+  )
+}
 
-  export default UserListItem
+export default UserListItem
