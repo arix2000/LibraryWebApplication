@@ -1,7 +1,9 @@
+import { margin } from "@mui/system";
 import { useState } from "react";
 import { Button, Col, Form, InputGroup, Modal, Row } from "react-bootstrap";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import "../../styles/admin-panel-styles.css"
+import translateRole from "../utils/RoleTranslate";
 import UserManager from "../utils/UserManager"
 
 export default function AddEditUserDialog(props) {
@@ -112,10 +114,10 @@ export default function AddEditUserDialog(props) {
                             <Form.Label column>Rola: </Form.Label>
                             <Col xs={9} lg={10}>
                                 <Form.Select noValidate defaultValue={role} className="default-selector"
-                                    onChange={(event) => { setRole(event.target.value) }}>
-                                    <option>user</option>
-                                    <option>admin</option>
-                                    <option>librarian</option>
+                                    onChange={(event) => { setRole(translateRole(event.target.value)) }}>
+                                    <option>{translateRole("user")}</option>
+                                    <option>{translateRole("admin")}</option>
+                                    <option>{translateRole("librarian")}</option>
                                 </Form.Select>
                             </Col>
                         </Form.Group>

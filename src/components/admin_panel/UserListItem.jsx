@@ -6,6 +6,7 @@ import PasswordText from "./PasswordText";
 import DeleteUserDialog from "./dialogs/DeleteUserDialog";
 import { useState } from "react";
 import AddEditUserDialog from "./dialogs/AddEditUserDialog";
+import translateRole from "./utils/RoleTranslate";
 
 const UserListItem = ({ user }) => {
   const [modalDeleteShow, setModalDeleteShow] = useState(false);
@@ -15,9 +16,9 @@ const UserListItem = ({ user }) => {
       <div>
         <Card border="primary" className='list-item-body text-light label-color'>
           <Row>
-            <Col sm={7} xs={9}><Card.Title className="text-truncate">{user.name} {user.surname}</Card.Title></Col>
+            <Col sm={8} xs={8}><Card.Title className="text-truncate">{user.name} {user.surname}</Card.Title></Col>
             <Col>
-              <Card.Subtitle className="text-right" style={{ margin: 5 }}><b>{user.role}</b></Card.Subtitle>
+              <Card.Subtitle className="text-right" style={{ margin: 5 }}><b>{translateRole(user.role)}</b></Card.Subtitle>
             </Col>
           </Row>
 
