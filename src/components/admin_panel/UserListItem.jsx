@@ -39,12 +39,12 @@ const UserListItem = ({ user }) => {
                   ? <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Nie można edytować root'a</Tooltip>}>
                     <span className="d-inline-block">
                       <Button disabled variant="secondary" className="default-button-radius" onClick={() => setModalEditShow(true)}>
-                        Edit <RiEditFill style={{ marginLeft: 4, marginBottom: 4 }} />
+                        Edytuj <RiEditFill style={{ marginLeft: 4, marginBottom: 4 }} />
                       </Button>
                     </span>
                   </OverlayTrigger>
                   : <Button className="default-button-radius" onClick={() => setModalEditShow(true)}>
-                    Edit <RiEditFill style={{ marginLeft: 4, marginBottom: 4 }} />
+                    Edytuj <RiEditFill style={{ marginLeft: 4, marginBottom: 4 }} />
                   </Button>
                 }
               </Col>

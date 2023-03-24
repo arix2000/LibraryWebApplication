@@ -20,7 +20,7 @@ export default function DeleteUserDialog(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Footer >
-        <Button className="default-button-radius" onClick={props.onHide}>Close</Button>
+        <Button className="default-button-radius" onClick={props.onHide}>Anuluj</Button>
         <Button className="default-button-radius" onClick={() => { props.onHide(); userManager.removeUser(user); }} variant="danger">Usuń użytkownika</Button>
       </Modal.Footer>
     </Modal>

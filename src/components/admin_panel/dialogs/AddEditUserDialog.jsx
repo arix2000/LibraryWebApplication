@@ -125,7 +125,7 @@ export default function AddEditUserDialog(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button className="default-button-radius" variant="secondary"
-                        onClick={() => { props.onHide(); setValidated(false) }}>Close</Button>
+                        onClick={() => { props.onHide(); setValidated(false) }}>Anuluj</Button>
                     <Button className="default-button-radius" onClick={onAcceptClicked}>
                         {editMode ? <span>Edytuj użytkownika</span> : <span>Dodaj użytkownika</span>}
                     </Button>
