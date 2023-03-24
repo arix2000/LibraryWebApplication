@@ -1,14 +1,14 @@
 [
     {
         "id": 0,
-        "name": "Maciej",
-        "surname": "Jebaka",
-        "login": "McKiel",
-        "password":"mckiel",
-        "role": "user",
-        "reserved_books": [9780060000141, 9780060088743, 9780060094935, 9780060584757],
+        "name": "Roman",
+        "surname": "Rutkowski",
+        "login": "root",
+        "password":"root",
+        "role": "admin",
+        "reserved_books": [],
         "history": [],
-        "borrowed_books": [9780007121106, 9780007136582, 9780007162994, 9780007179817, 9780007204465]
+        "borrowed_books": []
     },
     {
         "id": 1,
@@ -97,5 +97,16 @@
         "reserved_books": [9780006178736, 9780006280934, 9780006482079, 9780006496434, 9780006496922],
         "history": [],
         "borrowed_books": [9780007122585, 9780007129652, 9780007136599, 9780007149827, 9780007154883]
+    },
+    {
+        "id": 9,
+        "name": "Maciej",
+        "surname": "Jebaka",
+        "login": "McKiel",
+        "password":"mckiel",
+        "role": "user",
+        "reserved_books": [9780060000141, 9780060088743, 9780060094935, 9780060584757],
+        "history": [],
+        "borrowed_books": [9780007121106, 9780007136582, 9780007162994, 9780007179817, 9780007204465]
     }
 ]
