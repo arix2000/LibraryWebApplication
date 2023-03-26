@@ -1,9 +1,8 @@
 import NavBar from "./components/NavBar/NavBar";
 import { useState } from "react";
-import BookList from "./components/BookSearch/BookList";
-import LoginPage from "./components/LoginPage/LoginPage";
-import AdminPanel from "./components/AdminPanel";
-import data from "./models/books.json"
+import BookList from "./components/BookList/BookList";
+import usersJson from './models/users.json';
+import data from "./models/books.json";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './components/styles/global-styles.css';
 
