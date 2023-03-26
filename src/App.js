@@ -1,11 +1,16 @@
 import NavBar from "./components/NavBar/NavBar";
 import { useState } from "react";
 import BookList from "./components/BookList/BookList";
+import usersJson from './models/users.json';
 import data from "./models/books.json";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './components/styles/global-styles.css';
+import AdminPanel from "./components/admin_panel/AdminPanel";
+import FirstTimeManager from "./common/FirstTimeManager";
+import LocalStorageKeys from "./common/LocalStorageKeys";
 
 function App() {
+    handleFirstTimeOpen();
     const [books, setBooks] = useState([]);
 
     const handleSearchSubmit = (query) => {
@@ -26,3 +31,11 @@ function App() {
 };
 
 export default App;
+
+
+function handleFirstTimeOpen() {
+    const firstTimeManager = new FirstTimeManager();
+    if (firstTimeManager.isFirstTime()) {
+        localStorage.setItem(LocalStorageKeys.userList, JSON.stringify(usersJson))
+    }
+}

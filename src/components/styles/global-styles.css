@@ -1,3 +1,7 @@
+:root {
+    color-scheme: dark;
+}
+
 .background-color{
     background-color: #252525;
 }
@@ -19,4 +23,3 @@
     height: 100%;
     margin: auto;
 }
-
