@@ -8,16 +8,12 @@ import "../styles/search-bar.css";
 
 function NavBar({ onSubmit }) {
 
-    const [query, setQuery] = useState('Search');
+    const [query, setQuery] = useState('');
 
     const handleFormSubmit = (event) => {
             event.preventDefault();
             onSubmit(query);
     };
-
-    const clearInput = () => {
-        setQuery('');
-    }
    
     const handleChange = (event) => {
         setQuery(event.target.value);
@@ -46,7 +42,6 @@ function NavBar({ onSubmit }) {
                         type="search"
                         placeholder="Search for books"
                         className="me-2 bg-secondary border-dark text-light"
-                        onClick={clearInput}
                         />
                         <Button className="button-color text-light" onClick={handleFormSubmit}>Search</Button>
                     </Form>
