@@ -14,11 +14,8 @@ export default function LoginPage() {
     const user = users.find((u) => u.login === login && u.password === password);
     if (user) {
       setMessage('Zalogowano!');
-      console.log('Zalogowano!');
     } else {
-      console.log(users);
       setMessage('Nieprawidłowy email lub hasło');
-      console.log('Nieprawidłowy email lub hasło');
     }
   };
 
