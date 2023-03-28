@@ -8,6 +8,7 @@ import './components/styles/global-styles.css';
 import AdminPanel from "./components/admin_panel/AdminPanel";
 import FirstTimeManager from "./common/FirstTimeManager";
 import LocalStorageKeys from "./common/LocalStorageKeys";
+import LoginPage from "./components/LoginPage/LoginPage";
 
 function App() {
     handleFirstTimeOpen();
@@ -24,8 +25,9 @@ function App() {
 
     return (
         <>
-            <NavBar onSubmit={handleSearchSubmit} />
-            <AdminPanel />
+            <LoginPage />
+            {/* <NavBar onSubmit={handleSearchSubmit} /> */}
+            {/* <AdminPanel /> */}
         </>
     )
 };
