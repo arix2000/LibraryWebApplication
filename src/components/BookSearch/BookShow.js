@@ -7,7 +7,7 @@ import { Rating } from '@mui/material';
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { FiMoreHorizontal } from "react-icons/fi";
 import { useState } from "react";
-import BookDetail from "../BookList/BookDetail";
+import BookDetail from "../BookDetail/BookDetail";
 
 export default function BookShow({ book }) {
 

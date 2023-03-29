@@ -1,6 +1,6 @@
 import NavBar from "./components/NavBar/NavBar";
 import { useState } from "react";
-import BookList from "./components/BookList/BookList";
+import BookList from "./components/BookSearch/BookList";
 import usersJson from './models/users.json';
 import data from "./models/books.json";
 import 'bootstrap/dist/css/bootstrap.min.css';

@@ -5,7 +5,7 @@
     margin: 3rem auto auto auto;
     transition-duration: 1s;
     border-width: 1px;
-    border-color: #4169E1;
+    border-color: #4169E1 !important;
 }
 
 .card-radius {
@@ -13,8 +13,8 @@
 }
 
 .card:hover {
-    box-shadow: 4px 10px 20px 1px rgb(0, 0, 0);
-    transform: scale(1.05);
+    box-shadow: 4px 10px 20px 1px rgb(0, 0, 0) !important;
+    transform: scale(1.05) !important;
 }
 
 .author {

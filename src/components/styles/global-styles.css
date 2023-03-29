@@ -15,7 +15,7 @@
 }
 
 .custom-border {
-    border: solid 2px #4169E1;
+    border: solid 2px #4169E1 !important;
 }
 
 .full-height {

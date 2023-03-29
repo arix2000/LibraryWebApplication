@@ -1,4 +1,4 @@
-import BookShow from '../BookShow/BookShow';
+import BookShow from './BookShow';
 import { useState, useEffect } from 'react';
 
 export default function BookList({ books }) {
