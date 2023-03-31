@@ -23,3 +23,7 @@
     height: 100%;
     margin: auto;
 }
+
+.button-radius {
+    border-radius: 150px !important;
+}

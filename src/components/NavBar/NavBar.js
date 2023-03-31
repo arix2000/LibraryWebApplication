@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import "../styles/search-bar.css";
 
 function NavBar({ onSubmit }) {
@@ -18,6 +18,14 @@ function NavBar({ onSubmit }) {
     const handleChange = (event) => {
         setQuery(event.target.value);
     };
+
+    useEffect(() => {
+        const delayDebounceFn = setTimeout(() => {
+          onSubmit(query);
+        }, 500);
+    
+        return () => clearTimeout(delayDebounceFn);
+      }, [query, onSubmit]);
 
     return (
             <Navbar className="navbar-body label-color fixed-top" expand="lg" sticky="top">

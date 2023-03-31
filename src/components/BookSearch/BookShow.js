@@ -28,8 +28,8 @@ export default function BookShow({ book }) {
                             <Card.Body>
                                 <Card.Title className="mb-2 book-title">{'"' + book.title + '"'}</Card.Title>
                                 <Card.Title className="author mt-3 font-italic">{book.authors.replaceAll(';', ", ")}</Card.Title>
-                                <Card.Title className="mt-5"><Rating name="half-rating-read" defaultValue={book.average_rating} precision={0.1} readOnly/></Card.Title>
-                                <Card.Title className="mb-0"><BorrowButton width={80} height={25}/></Card.Title>
+                                <Card.Title className="mt-4"><Rating name="half-rating-read" defaultValue={book.average_rating} precision={0.1} readOnly/></Card.Title>
+                                <Card.Title className="mb-0"><BorrowButton width={50} height={25}/></Card.Title>
                             </Card.Body>
                         </Col>
                     </Row>

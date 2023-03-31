@@ -19,14 +19,14 @@ export default function BookDetail({ show, onHide, book }) {
                   <h1 className="font-weight-bold">{'"' + book.title + '"'}</h1>
               </Modal.Title>
             </Modal.Header>
-            <Modal.Body className="custom-body">
-              <h4 className="font-italic font-weight-bold my-3 fade-in" style={{ "--anim-time": "3s" }}>Authors: {book.authors.replaceAll(';', ", ")}</h4>
-              <h4 className="my-4 fade-in" style={{ "--anim-time": "4s" }}>Categories: {book.categories}</h4>
-              <p className="mt-4 fade-in" style={{ "--anim-time": "5s" }}>{book.description}</p>
+            <Modal.Body className="custom-body px-5">
+              <h4 className="font-italic font-weight-bold my-3 fade-in" style={{ "--anim-time": "3s" }}>{book.authors.replaceAll(';', ", ")}</h4>
+              <h5 className="my-4 font-weight-bold fade-in" style={{ "--anim-time": "4s" }}>{book.categories}</h5>
+              <p className="mt-4 fade-in" style={{ "--anim-time": "5s", "text-align": "justify" }}>{book.description}</p>
             </Modal.Body>
-            <Modal.Footer className="custom-footer pr-5 pb-3">
+            <Modal.Footer className="custom-footer px-5 py-2 label-color" style={{disply:'flex', justifyContent:'space-between'}}>
               <BorrowButton width={60} height={30}/>
-              <Button className="ml-3" onClick={onHide}>Close</Button>
+              <Button className="ml-3 button-radius" onClick={onHide}>Close</Button>
             </Modal.Footer>
         </Modal>
       );
