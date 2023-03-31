@@ -1,5 +1,33 @@
 
-.custom-header {
-    border: solid 2px #4169E1 !important;
-    border-radius: 23px 23px 0 0 !important;
-}
+.fade-in {
+    animation: fadeIn var(--anim-time);
+    -webkit-animation: fadeIn var(--anim-time);
+    -moz-animation: fadeIn var(--anim-time);
+    -o-animation: fadeIn var(--anim-time);
+    -ms-animation: fadeIn var(--anim-time);
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-moz-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-webkit-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-o-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @-ms-keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
