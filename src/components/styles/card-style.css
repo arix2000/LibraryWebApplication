@@ -1,9 +1,11 @@
 .card {
     height: auto !important;
     width: 30rem !important;
+    max-height: 14rem;
     box-shadow: 2px 4px 8px 0px rgb(0, 0, 0);
     margin: 3rem auto auto auto;
-    transition-duration: 1s;
+    transition-duration: 0.2s;
+    overflow: hidden;
 }
 
 .card-radius {
@@ -11,8 +13,8 @@
 }
 
 .card:hover {
-    box-shadow: 4px 10px 20px 1px rgb(0, 0, 0) !important;
-    transform: scale(1.05) !important;
+    box-shadow: 4px 5px 10px 0px rgb(0, 0, 0) !important;
+    transform: scale(1.02) !important;
 }
 
 .author {
@@ -20,9 +22,10 @@
 }
 
 .card-img {
-    height: 100% !important;
+    height: 100%;
     object-fit: cover;
-    max-width: 169px;
+    max-width: 100%;
+    max-height: 14rem;
     margin: 0 !important;
     border-radius: 24px 0px 0px 24px!important;
 }

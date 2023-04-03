@@ -1,33 +1,11 @@
+.upper-radius {
+    border-radius: 25px 25px 0px 0px
+}
 
-.fade-in {
-    animation: fadeIn var(--anim-time);
-    -webkit-animation: fadeIn var(--anim-time);
-    -moz-animation: fadeIn var(--anim-time);
-    -o-animation: fadeIn var(--anim-time);
-    -ms-animation: fadeIn var(--anim-time);
-  }
-  
-  @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  @-moz-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  @-webkit-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  @-o-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  
-  @-ms-keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
+.bottom-radius{
+    border-radius: 0px 0px 25px 25px
+}
+
+.gray-text {
+    color: rgb(167, 167, 167);
+}
