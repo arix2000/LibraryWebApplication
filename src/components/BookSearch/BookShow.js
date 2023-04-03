@@ -41,7 +41,7 @@ export default function BookShow({ book }) {
                 />
               </Card.Title>
               <Card.Title className="mb-0">
-                <BorrowButton width={35} height={35} useIcon={true}/>
+                <BorrowButton width={35} height={35} useIcon={true} />
               </Card.Title>
             </Card.Body>
           </Col>

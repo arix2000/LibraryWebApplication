@@ -30,7 +30,7 @@ export default function BookDetail({ show, onHide, book }) {
         <Button className="mr-3 button-radius" onClick={onHide}>
           Close
         </Button>
-        <BorrowButton width={35} height={21} useIcon={false}/>
+        <BorrowButton width={35} height={21} useIcon={false} />
       </Modal.Footer>
     </Modal>
   );
