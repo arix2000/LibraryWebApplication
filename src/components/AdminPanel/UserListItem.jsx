@@ -1,20 +1,19 @@
 import { BsTrashFill } from "react-icons/bs";
 import { RiEditFill } from "react-icons/ri";
 import { Button, Card, Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
-import "../styles/admin-panel-styles.css"
 import PasswordText from "./PasswordText";
 import DeleteUserDialog from "./dialogs/DeleteUserDialog";
 import { useState } from "react";
 import AddEditUserDialog from "./dialogs/AddEditUserDialog";
 import translateRole from "./utils/RoleTranslate";
 
-const UserListItem = ({ user }) => {
+const UserListItem = ({ user, styles }) => {
   const [modalDeleteShow, setModalDeleteShow] = useState(false);
   const [modalEditShow, setModalEditShow] = useState(false);
   return (
     <>
       <div>
-        <Card border="primary" className='list-item-body text-light label-color'>
+        <Card border="primary" className={`${styles.userListItemBody} ${styles.card}`}>
           <Row>
             <Col sm={8} xs={8}><Card.Title className="text-truncate">{user.name} {user.surname}</Card.Title></Col>
             <Col>
@@ -38,12 +37,12 @@ const UserListItem = ({ user }) => {
                 {user.login == "root"
                   ? <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Nie można edytować root'a</Tooltip>}>
                     <span className="d-inline-block">
-                      <Button disabled variant="secondary" className="default-button-radius" onClick={() => setModalEditShow(true)}>
+                      <Button disabled variant="secondary" className={styles.defaultButtonRadius} onClick={() => setModalEditShow(true)}>
                         Edytuj <RiEditFill style={{ marginLeft: 4, marginBottom: 4 }} />
                       </Button>
                     </span>
                   </OverlayTrigger>
-                  : <Button className="default-button-radius" onClick={() => setModalEditShow(true)}>
+                  : <Button className={styles.defaultButtonRadius} onClick={() => setModalEditShow(true)}>
                     Edytuj <RiEditFill style={{ marginLeft: 4, marginBottom: 4 }} />
                   </Button>
                 }
@@ -57,7 +56,7 @@ const UserListItem = ({ user }) => {
                       </Button>
                     </span>
                   </OverlayTrigger>
-                  : <Button className="default-button-radius" variant="danger" onClick={() => setModalDeleteShow(true)}><BsTrashFill /></Button>
+                  : <Button className={styles.defaultButtonRadius} variant="danger" onClick={() => setModalDeleteShow(true)}><BsTrashFill /></Button>
                 }
               </Col>
             </Row>

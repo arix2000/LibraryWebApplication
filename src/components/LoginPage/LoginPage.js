@@ -38,7 +38,7 @@ export default function LoginPage() {
                         </p>
                       </Form.Group>
                       <div className="d-grid button-color">
-                        <Link to="search">
+                        <Link to="adminPanel">
                           <Button type="submit">
                             Login
                           </Button>

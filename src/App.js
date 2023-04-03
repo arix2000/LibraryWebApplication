@@ -1,13 +1,16 @@
-import NavBar from "./components/NavBar/NavBar";
 import { useState } from "react";
-import BookList from "./components/BookList/BookList";
+import AdminPanel from "./components/AdminPanel/AdminPanel"
 import usersJson from './models/users.json';
 import data from "./models/books.json";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import LoginPage from "./components/LoginPage/LoginPage"
 import './components/styles/global-styles.css';
-import AdminPanel from "./components/admin_panel/AdminPanel";
 import FirstTimeManager from "./common/FirstTimeManager";
 import LocalStorageKeys from "./common/LocalStorageKeys";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+} from "react-router-dom";
 
 function App() {
     handleFirstTimeOpen();
@@ -24,8 +27,14 @@ function App() {
 
     return (
         <>
-            <NavBar onSubmit={handleSearchSubmit} />
-            <BookList books={books}/>
+            <div className="appContainer">
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<LoginPage />} />
+                    <Route path="/adminPanel" element={<AdminPanel />} />
+                </Routes>
+            </BrowserRouter>
+            </div>
         </>
     )
 };

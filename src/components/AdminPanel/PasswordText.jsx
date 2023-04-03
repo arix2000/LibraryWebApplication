@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"
-import "../styles/admin-panel-styles.css"
+import styles from "../styles/adminPanel.module.css"
 
 export default function PasswordText(props) {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -12,7 +12,7 @@ export default function PasswordText(props) {
   return (
     <span>
         {passwordShown ? props.pass : dotedPass}
-        <span className="password-visibility-button" onClick={togglePassword}>
+        <span className={styles.passwordVisibilityButton} onClick={togglePassword}>
           <br/>
             {passwordShown 
             ? <AiFillEyeInvisible style={{width: 20, height: 20}}/> 
