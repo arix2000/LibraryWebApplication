@@ -113,7 +113,7 @@ export default function AddEditUserDialog(props) {
                             <Form.Group as={Row} className={styles.formMarginTop}>
                                 <Form.Label column>Rola: </Form.Label>
                                 <Col xs={9} lg={10}>
-                                    <Form.Select noValidate defaultValue={role} className={styles.defaultSelector}
+                                    <Form.Select  noValidate defaultValue={translateRole(role)} className={styles.defaultSelector}
                                         onChange={(event) => { setRole(translateRole(event.target.value)) }}>
                                         <option>{translateRole("user")}</option>
                                         <option>{translateRole("admin")}</option>

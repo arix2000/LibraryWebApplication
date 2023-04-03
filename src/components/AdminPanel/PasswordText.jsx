@@ -15,8 +15,8 @@ export default function PasswordText(props) {
         <span className={styles.passwordVisibilityButton} onClick={togglePassword}>
           <br/>
             {passwordShown 
-            ? <AiFillEyeInvisible style={{width: 20, height: 20}}/> 
-            : <AiFillEye style={{width: 20, height: 20}}/>}
+            ? <AiFillEyeInvisible style={{width: 20, height: 20, marginLeft: 8}}/> 
+            : <AiFillEye style={{width: 20, height: 20, marginLeft: 8}}/>}
         </span>
     </span>
   );
