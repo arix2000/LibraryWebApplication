@@ -25,9 +25,6 @@ function App() {
 
     return (
         <>
-            <LoginPage />
-            {/* <NavBar onSubmit={handleSearchSubmit} /> */}
-            {/* <AdminPanel /> */}
         </>
     )
 };
