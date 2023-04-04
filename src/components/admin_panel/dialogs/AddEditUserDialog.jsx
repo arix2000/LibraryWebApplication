@@ -1,9 +1,7 @@
-import { margin } from "@mui/system";
 import { useState } from "react";
 import { Button, Col, Form, InputGroup, Modal, Row } from "react-bootstrap";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import "../../styles/admin-panel-styles.css"
-import translateRole from "../utils/RoleTranslate";
 import UserManager from "../utils/UserManager"
 
 export default function AddEditUserDialog(props) {
@@ -65,25 +63,25 @@ export default function AddEditUserDialog(props) {
                 centered>
                 <Modal.Header>
                     <Modal.Title>
-                        {editMode ? <span>Edytuj użytkownika</span> : <span>Dodaj użytkownika</span>}
+                        {editMode ? <span>Edit User</span> : <span>Add User</span>}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form noValidate validated={validated}>
                         <Form.Group as={Row}>
-                            <Form.Label column>Imię: </Form.Label>
+                            <Form.Label column>Name: </Form.Label>
                             <Col xs={9} lg={10}>
                                 <Form.Control required defaultValue={name} className="default-text-field"
                                     onChange={(event) => setName(event.target.value)} />
-                                <Form.Control.Feedback type="invalid">Imię nie może być pusty!</Form.Control.Feedback>
+                                <Form.Control.Feedback type="invalid">Name cannot be empty!</Form.Control.Feedback>
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="form-margin-top">
-                            <Form.Label column>Nazwisko: </Form.Label>
+                            <Form.Label column>Surname: </Form.Label>
                             <Col xs={9} lg={10}>
                                 <Form.Control required defaultValue={surname} className="default-text-field"
                                     onChange={(event) => setSurname(event.target.value)} />
-                                <Form.Control.Feedback type="invalid">Nazwisko nie może być puste!</Form.Control.Feedback>
+                                <Form.Control.Feedback type="invalid">Surname cannot be empty!</Form.Control.Feedback>
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="form-margin-top">
@@ -91,11 +89,11 @@ export default function AddEditUserDialog(props) {
                             <Col xs={9} lg={10}>
                                 <Form.Control required defaultValue={login} placeholder={"np. ministrant2137"}
                                     className="default-text-field" onChange={(event) => setLogin(event.target.value)} />
-                                <Form.Control.Feedback type="invalid">Login nie może być pusty!</Form.Control.Feedback>
+                                <Form.Control.Feedback type="invalid">Login cannot be empty!</Form.Control.Feedback>
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="form-margin-top">
-                            <Form.Label column>Hasło: </Form.Label>
+                            <Form.Label column>Password: </Form.Label>
                             <Col xs={9} lg={10}>
                                 <InputGroup hasValidation>
                                     <Form.Control required defaultValue={password} type={passwordShown ? "text" : "password"}
@@ -106,18 +104,18 @@ export default function AddEditUserDialog(props) {
                                             ? <AiFillEyeInvisible style={{ width: 20, height: 20 }} />
                                             : <AiFillEye style={{ width: 20, height: 20 }} />}
                                     </span>
-                                    <Form.Control.Feedback type="invalid">Hasło nie może być puste!</Form.Control.Feedback>
+                                    <Form.Control.Feedback type="invalid">Password cannot be empty!</Form.Control.Feedback>
                                 </InputGroup>
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="form-margin-top">
-                            <Form.Label column>Rola: </Form.Label>
+                            <Form.Label column>Role: </Form.Label>
                             <Col xs={9} lg={10}>
                                 <Form.Select noValidate defaultValue={role} className="default-selector"
-                                    onChange={(event) => { setRole(translateRole(event.target.value)) }}>
-                                    <option>{translateRole("user")}</option>
-                                    <option>{translateRole("admin")}</option>
-                                    <option>{translateRole("librarian")}</option>
+                                    onChange={(event) => { setRole(event.target.value) }}>
+                                    <option>{"User"}</option>
+                                    <option>{"Admin"}</option>
+                                    <option>{"Librarian"}</option>
                                 </Form.Select>
                             </Col>
                         </Form.Group>
@@ -125,9 +123,9 @@ export default function AddEditUserDialog(props) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button className="default-button-radius" variant="secondary"
-                        onClick={() => { props.onHide(); setValidated(false) }}>Anuluj</Button>
+                        onClick={() => { props.onHide(); setValidated(false) }}>Cancel</Button>
                     <Button className="default-button-radius" onClick={onAcceptClicked}>
-                        {editMode ? <span>Edytuj użytkownika</span> : <span>Dodaj użytkownika</span>}
+                        {editMode ? <span>Edit user</span> : <span>Add user</span>}
                     </Button>
                 </Modal.Footer>
             </Modal>
