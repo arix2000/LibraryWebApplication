@@ -19,7 +19,7 @@ export default function AddEditUserDialog(props) {
 
     const [name, setName] = useState(getSafeUserParameter(() => user.name));
     const [surname, setSurname] = useState(getSafeUserParameter(() => user.surname));
-    const [email, setEmail] = useState(getSafeUserParameter(() => user.email));
+    const [login, setLogin] = useState(getSafeUserParameter(() => user.login));
     const [password, setPassword] = useState(getSafeUserParameter(() => user.password));
     const [role, setRole] = useState(getSafeUserParameter(() => user.role));
 
@@ -31,7 +31,7 @@ export default function AddEditUserDialog(props) {
             event.preventDefault();
             event.stopPropagation();
         }
-        if (name != "" && surname != "" && email != "" && password != "") {
+        if (name != "" && surname != "" && login != "" && password != "") {
             setValidated(true);
         } else {
             setValidated(true);
@@ -39,9 +39,9 @@ export default function AddEditUserDialog(props) {
         }
         props.onHide();
         if (editMode)
-            userManager.updateUser(user.id, name, surname, email, password, role)
+            userManager.updateUser(user.id, name, surname, login, password, role)
         else {
-            userManager.addUser(name, surname, email, password, role);
+            userManager.addUser(name, surname, login, password, role);
             clearAllParams();
         }
         setValidated(false);
@@ -50,7 +50,7 @@ export default function AddEditUserDialog(props) {
     function clearAllParams() {
         setName("");
         setSurname("");
-        setEmail("");
+        setLogin("");
         setPassword("");
         setRole("");
     }
@@ -87,11 +87,11 @@ export default function AddEditUserDialog(props) {
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="form-margin-top">
-                            <Form.Label column>email: </Form.Label>
+                            <Form.Label column>login: </Form.Label>
                             <Col xs={9} lg={10}>
-                                <Form.Control required defaultValue={email} placeholder={"np. ministrant2137"}
-                                    className="default-text-field" onChange={(event) => setEmail(event.target.value)} />
-                                <Form.Control.Feedback type="invalid">email nie może być pusty!</Form.Control.Feedback>
+                                <Form.Control required defaultValue={login} placeholder={"np. ministrant2137"}
+                                    className="default-text-field" onChange={(event) => set(event.target.value)} />
+                                <Form.Control.Feedback type="invalid">login nie może być pusty!</Form.Control.Feedback>
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="form-margin-top">
