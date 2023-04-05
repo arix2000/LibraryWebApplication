@@ -17,12 +17,12 @@ export default function DeleteUserDialog(props) {
       <div className={`${styles.adminPanelModalContent}`}>
         <Modal.Header className={styles.adminPanelModalHeader}>
           <Modal.Title>
-            Czy napewno chcesz usunąć tego użytkownika?
+            Are you sure you want to delete this user?
           </Modal.Title>
         </Modal.Header>
         <Modal.Footer className={styles.adminPanelModalFooter}>
-          <Button className={styles.defaultButtonRadius} onClick={props.onHide}>Anuluj</Button>
-          <Button className={styles.defaultButtonRadius} onClick={() => { props.onHide(); userManager.removeUser(user); }} variant="danger">Usuń użytkownika</Button>
+          <Button className={styles.defaultButtonRadius} onClick={props.onHide}>Cancel</Button>
+          <Button className={styles.defaultButtonRadius} onClick={() => { props.onHide(); userManager.removeUser(user); }} variant="danger">Delete user</Button>
         </Modal.Footer>
       </div>
     </Modal>

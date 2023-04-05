@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Button, Col, Form, InputGroup, Modal, Row } from "react-bootstrap";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/adminPanel.module.css"
-import translateRole from "../utils/RoleTranslate";
 import UserManager from "../utils/UserManager"
 
 export default function AddEditUserDialog(props) {
@@ -65,25 +64,25 @@ export default function AddEditUserDialog(props) {
                 <div className={styles.adminPanelModalContent}>
                     <Modal.Header>
                         <Modal.Title>
-                            {editMode ? <span>Edytuj użytkownika</span> : <span>Dodaj użytkownika</span>}
+                        {editMode ? <span>Edit User</span> : <span>Add User</span>}
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <Form noValidate validated={validated}>
                             <Form.Group as={Row}>
-                                <Form.Label column>Imię: </Form.Label>
+                                <Form.Label column>Name: </Form.Label>
                                 <Col xs={9} lg={10}>
                                     <Form.Control required defaultValue={name} className={styles.defaultTextField}
                                         onChange={(event) => setName(event.target.value)} />
-                                    <Form.Control.Feedback type="invalid">Imię nie może być pusty!</Form.Control.Feedback>
+                                    <Form.Control.Feedback type="invalid">Name cannot be empty!</Form.Control.Feedback>
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row} className={styles.formMarginTop}>
-                                <Form.Label column>Nazwisko: </Form.Label>
+                                <Form.Label column>Surname: </Form.Label>
                                 <Col xs={9} lg={10}>
                                     <Form.Control required defaultValue={surname} className={styles.defaultTextField}
                                         onChange={(event) => setSurname(event.target.value)} />
-                                    <Form.Control.Feedback type="invalid">Nazwisko nie może być puste!</Form.Control.Feedback>
+                                    <Form.Control.Feedback type="invalid">Surname cannot be empty!</Form.Control.Feedback>
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row} className={styles.formMarginTop}>
@@ -91,11 +90,11 @@ export default function AddEditUserDialog(props) {
                                 <Col xs={9} lg={10}>
                                     <Form.Control required defaultValue={login} placeholder={"np. ministrant2137"}
                                         className={styles.defaultTextField} onChange={(event) => setLogin(event.target.value)} />
-                                    <Form.Control.Feedback type="invalid">Login nie może być pusty!</Form.Control.Feedback>
+                                    <Form.Control.Feedback type="invalid">Login cannot be empty!</Form.Control.Feedback>
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row} className={styles.formMarginTop}>
-                                <Form.Label column>Hasło: </Form.Label>
+                                <Form.Label column>Password: </Form.Label>
                                 <Col xs={9} lg={10}>
                                     <InputGroup hasValidation>
                                         <Form.Control required defaultValue={password} type={passwordShown ? "text" : "password"}
@@ -106,18 +105,18 @@ export default function AddEditUserDialog(props) {
                                                 ? <AiFillEyeInvisible style={{ width: 20, height: 20 }} />
                                                 : <AiFillEye style={{ width: 20, height: 20 }} />}
                                         </span>
-                                        <Form.Control.Feedback type="invalid">Hasło nie może być puste!</Form.Control.Feedback>
+                                        <Form.Control.Feedback type="invalid">Password cannot be empty!</Form.Control.Feedback>
                                     </InputGroup>
                                 </Col>
                             </Form.Group>
                             <Form.Group as={Row} className={styles.formMarginTop}>
-                                <Form.Label column>Rola: </Form.Label>
+                                <Form.Label column>Role: </Form.Label>
                                 <Col xs={9} lg={10}>
-                                    <Form.Select  noValidate defaultValue={translateRole(role)} className={styles.defaultSelector}
-                                        onChange={(event) => { setRole(translateRole(event.target.value)) }}>
-                                        <option>{translateRole("user")}</option>
-                                        <option>{translateRole("admin")}</option>
-                                        <option>{translateRole("librarian")}</option>
+                                    <Form.Select  noValidate defaultValue={role} className={styles.defaultSelector}
+                                        onChange={(event) => { setRole(event.target.value) }}>
+                                        <option>user</option>
+                                        <option>admin</option>
+                                        <option>librarian</option>
                                     </Form.Select>
                                 </Col>
                             </Form.Group>
@@ -125,9 +124,9 @@ export default function AddEditUserDialog(props) {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button className={styles.defaultButtonRadius} variant="secondary"
-                            onClick={() => { props.onHide(); setValidated(false) }}>Anuluj</Button>
+                            onClick={() => { props.onHide(); setValidated(false) }}>Cancel</Button>
                         <Button className={styles.defaultButtonRadius} onClick={onAcceptClicked}>
-                            {editMode ? <span>Edytuj użytkownika</span> : <span>Dodaj użytkownika</span>}
+                            {editMode ? <span>Apply changes</span> : <span>Add user</span>}
                         </Button>
                     </Modal.Footer>
                 </div>

@@ -19,7 +19,7 @@ function AdminPanel() {
     <>
       <div className="background-color">
         <div className={styles.adminPanelHeader}>
-          <h4>Panel administratora</h4>
+          <h4>Admin Panel</h4>
         </div>
         <br />
         <div className="background-color d-flex flex-wrap justify-content-center">
