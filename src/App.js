@@ -13,17 +13,21 @@ import {
 } from "react-router-dom";
 
 function App() {
-    handleFirstTimeOpen();
-    const [books, setBooks] = useState([]);
+  handleFirstTimeOpen();
+  const [books, setBooks] = useState([]);
 
-    const handleSearchSubmit = (query) => {
-        const result = data.filter((item) => {
-            return query === '' ? item :
-                item.title.toString().toLowerCase().includes(query.toLowerCase())
-        })
-        setBooks(result);
+  const handleSearchSubmit = (query) => {
+    if (query.length >= 2) {
+      const result = data.filter((item) => {
+        return query === ""
+          ? item
+          : item.title.toString().toLowerCase().includes(query.toLowerCase());
+      });
+      setBooks(result);
+    } else {
+      setBooks([]);
     }
-
+  };
 
     return (
         <>
@@ -41,10 +45,9 @@ function App() {
 
 export default App;
 
-
 function handleFirstTimeOpen() {
-    const firstTimeManager = new FirstTimeManager();
-    if (firstTimeManager.isFirstTime()) {
-        localStorage.setItem(LocalStorageKeys.userList, JSON.stringify(usersJson))
-    }
+  const firstTimeManager = new FirstTimeManager();
+  if (firstTimeManager.isFirstTime()) {
+    localStorage.setItem(LocalStorageKeys.userList, JSON.stringify(usersJson));
+  }
 }

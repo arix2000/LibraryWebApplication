@@ -15,22 +15,30 @@ export default function LoginPage() {
                     <Form>
                       <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label className="text-center text-light">
-                            Email adress
+                          Email adress
                         </Form.Label>
-                        <Form.Control className="bg-secondary border border-dark text-light" type="email" placeholder="Enter email" />
+                        <Form.Control
+                          className="bg-secondary border border-dark text-light"
+                          type="email"
+                          placeholder="Enter email"
+                        />
                       </Form.Group>
 
                       <Form.Group
                         className="mb-3"
-                        controlId="formBasicPassword">
-                        <Form.Label className="text-light">
-                            Password
-                        </Form.Label>
-                        <Form.Control className="bg-secondary border border-dark text-light" type="password" placeholder="Password" />
+                        controlId="formBasicPassword"
+                      >
+                        <Form.Label className="text-light">Password</Form.Label>
+                        <Form.Control
+                          className="bg-secondary border border-dark text-light"
+                          type="password"
+                          placeholder="Password"
+                        />
                       </Form.Group>
                       <Form.Group
                         className="mb-3"
-                        controlId="formBasicCheckbox">
+                        controlId="formBasicCheckbox"
+                      >
                         <p className="small text-center">
                           <a className="text-light" href="#!">
                             Forgot password?
@@ -39,9 +47,7 @@ export default function LoginPage() {
                       </Form.Group>
                       <div className="d-grid button-color">
                         <Link to="adminPanel">
-                          <Button type="submit">
-                            Login
-                          </Button>
+                          <Button type="submit">Login</Button>
                         </Link>
                       </div>
                     </Form>

@@ -15,7 +15,7 @@
 }
 
 .custom-border {
-    border: solid 2px #4169E1;
+    border: solid 2px #4169E1 !important;
 }
 
 .full-height {
@@ -34,4 +34,8 @@
 
 .modal-footer {
     border: 0px none;
+}
+
+.button-radius {
+    border-radius: 12px !important;
 }

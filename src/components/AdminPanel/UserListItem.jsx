@@ -77,5 +77,3 @@ const UserListItem = ({ user, styles }) => {
     </>
   )
 }
-
-export default UserListItem
