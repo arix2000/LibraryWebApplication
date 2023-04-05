@@ -1,46 +1,35 @@
 import { useState } from "react";
 import AdminPanel from "./components/AdminPanel/AdminPanel"
 import usersJson from './models/users.json';
-import data from "./models/books.json";
 import LoginPage from "./components/LoginPage/LoginPage"
+import BookPage from "./components/BookSearch/BookPage"
 import './components/styles/global-styles.css';
 import FirstTimeManager from "./common/FirstTimeManager";
 import LocalStorageKeys from "./common/LocalStorageKeys";
 import {
-    BrowserRouter,
-    Routes,
-    Route,
+  BrowserRouter,
+  Routes,
+  Route,
 } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import NavigationPaths from "./common/NavigationPaths";
 
 function App() {
   handleFirstTimeOpen();
-  const [books, setBooks] = useState([]);
 
-  const handleSearchSubmit = (query) => {
-    if (query.length >= 2) {
-      const result = data.filter((item) => {
-        return query === ""
-          ? item
-          : item.title.toString().toLowerCase().includes(query.toLowerCase());
-      });
-      setBooks(result);
-    } else {
-      setBooks([]);
-    }
-  };
-
-    return (
-        <>
-            <div className="appContainer">
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<LoginPage />} />
-                    <Route path="/adminPanel" element={<AdminPanel />} />
-                </Routes>
-            </BrowserRouter>
-            </div>
-        </>
-    )
+  return (
+    <>
+      <BrowserRouter>
+        <Container fluid style={{ padding: 0 }}>
+          <Routes>
+            <Route path={NavigationPaths.root} element={<LoginPage />} />
+            <Route path={NavigationPaths.adminPanel} element={<AdminPanel />} />
+            <Route path={NavigationPaths.booksPage} element={<BookPage />} />
+          </Routes>
+        </Container>
+      </BrowserRouter>
+    </>
+  )
 };
 
 export default App;

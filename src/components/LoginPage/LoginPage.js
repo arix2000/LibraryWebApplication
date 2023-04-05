@@ -1,9 +1,11 @@
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import NavBar from "../NavBar/NavBar";
 
 export default function LoginPage() {
   return (
     <div className="background-color">
+      <NavBar/>
       <Container>
         <Row className="vh-100 d-flex justify-content-center align-items-center">
           <Col md={16} lg={6} xs={24}>
@@ -46,7 +48,7 @@ export default function LoginPage() {
                         </p>
                       </Form.Group>
                       <div className="d-grid button-color">
-                        <Link to="adminPanel">
+                        <Link to="/booksPage">
                           <Button type="submit">Login</Button>
                         </Link>
                       </div>

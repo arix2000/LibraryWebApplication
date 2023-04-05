@@ -4,9 +4,14 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useState, useEffect } from "react";
-import "../styles/search-bar.css";
+import styles from "../styles/search-bar.module.css";
+import { BsSearch } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import { Col, Row } from "react-bootstrap";
+import NavigationPaths from "../../common/NavigationPaths";
 
-function NavBar({ onSubmit }) {
+function NavBar({ onSubmit, showSearchBar }) {
+  const navigate = useNavigate();
   const [query, setQuery] = useState("");
 
   const handleFormSubmit = (event) => {
@@ -28,23 +33,23 @@ function NavBar({ onSubmit }) {
 
   return (
     <Navbar
-      className="navbar-body label-color fixed-top"
+      className={`${styles.navbarBody} fixed-top`}
       expand="lg"
       sticky="top"
     >
       <Container fluid>
-        <Navbar.Brand className="text-light ml-3" href="#">
+        <Navbar.Brand className="text-light" href="#">
           Fish Library
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
             defaultActiveKey="/home"
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
             navbarScroll
+            fluid
+            className={styles.fullWidth}
           >
-            <Nav.Link className="text-light" href="#">
+            <Nav.Link className={"text-light"} href="#">
               Borrowed
             </Nav.Link>
             <Nav.Link className="text-light" href="#action2">
@@ -53,22 +58,22 @@ function NavBar({ onSubmit }) {
             <Nav.Link className="text-light" href="#action2">
               Contact
             </Nav.Link>
+            <Col>
+              {showSearchBar
+                ? <Form className="d-flex" onSubmit={handleFormSubmit} style={{ disply: 'flex', justifyContent: 'right' }}>
+                  <Form.Control
+                    value={query}
+                    onChange={handleChange}
+                    type="search"
+                    placeholder="Search for books"
+                    className={styles.searchTextField}
+                  />
+                  <Button className={styles.searchButton} onClick={handleFormSubmit}>Search</Button>
+                </Form>
+                : <div className="d-flex" style={{ disply: 'flex', justifyContent: 'right' }}>
+                  <Button className={styles.searchButtonWithoutField} onClick={() => navigate(NavigationPaths.booksPage)}><BsSearch /></Button></div>}
+            </Col>
           </Nav>
-          <Form className="d-flex" onSubmit={handleFormSubmit}>
-            <Form.Control
-              value={query}
-              onChange={handleChange}
-              type="search"
-              placeholder="Search for books"
-              className="me-2 bg-secondary border-dark text-light"
-            />
-            <Button
-              className="button-color text-light"
-              onClick={handleFormSubmit}
-            >
-              Search
-            </Button>
-          </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>
