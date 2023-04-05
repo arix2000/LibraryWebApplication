@@ -13,7 +13,6 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="background-color">
       <div className="background-color">
         <Container>
           <Row className="vh-100 d-flex justify-content-center align-items-center" >
@@ -58,6 +57,5 @@ export default function LoginPage() {
           </Row>
         </Container>
       </div>
-    </div>
   );
 }
