@@ -85,7 +85,7 @@ export default function AddEditUserDialog(props) {
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="form-margin-top">
-                            <Form.Label column>Login: </Form.Label>
+                            <Form.Label column>login: </Form.Label>
                             <Col xs={9} lg={10}>
                                 <Form.Control required defaultValue={login} placeholder={"np. ministrant2137"}
                                     className="default-text-field" onChange={(event) => setLogin(event.target.value)} />
