@@ -1,35 +1,34 @@
-import "../styles/card-style.css";
-import "../styles/global-styles.css";
-import { Col, Row, Card, Button } from "react-bootstrap";
+import styles from "../styles/bookItem.module.css";
+import { Col, Row, Card, Container } from "react-bootstrap";
 import { Rating } from "@mui/material";
 import { useState } from "react";
-import BookDetail from "./BookDetail/BookDetail";
+import BookDetailModal from "./BookDetail/BookDetailModal";
 import BorrowButton from "./common/BorrowButton";
 
-export default function BookShow({ book }) {
+export default function BookItem({ book }) {
   const [detailShow, setDetailShow] = useState(false);
 
   return (
     <>
       <Card
-        className="card text-center mt-5 card-radius label-color"
+        className={`text-center mt-4 label-color ${styles.card}`}
         text="light"
         onClick={() => setDetailShow(true)}
-      >
-        <Row g={5}>
-          <Col md={4} my={0} pt={5}>
+      > 
+        <Row >
+          <Col>
             <Card.Img
-              className="card-img"
+              className={styles.cardImg}
               src={book.thumbnail}
               alt={book.title + " Cover"}
             />
           </Col>
-          <Col md={8}>
+          <Col>
             <Card.Body>
-              <Card.Title className="mb-2 book-title">
+              <Card.Title className={`mb-2 ${styles.bookTitle}`}>
                 {'"' + book.title + '"'}
               </Card.Title>
-              <Card.Title className="author mt-3 font-italic">
+              <Card.Title className={`${styles.author} mt-3 font-italic`}>
                 {book.authors.replaceAll(";", ", ")}
               </Card.Title>
               <Card.Title className="mt-4">
@@ -40,14 +39,12 @@ export default function BookShow({ book }) {
                   readOnly
                 />
               </Card.Title>
-              <Card.Title className="mb-0">
-                <BorrowButton width={35} height={35} useIcon={true} />
-              </Card.Title>
             </Card.Body>
           </Col>
         </Row>
+        <BorrowButton width={28} height={28} useIcon={true} />
       </Card>
-      <BookDetail
+      <BookDetailModal
         show={detailShow}
         onHide={() => setDetailShow(false)}
         book={book}

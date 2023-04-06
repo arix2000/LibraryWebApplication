@@ -1,4 +1,4 @@
-import BookShow from "./BookShow";
+import BookShow from "./BookItem";
 import { useState, useEffect } from "react";
 
 export default function BookList({ books }) {
@@ -28,7 +28,7 @@ export default function BookList({ books }) {
   });
 
   return (
-    <div className="background-color full-height px-5 pb-5">
+    <div className="background-color full-height px-2 pb-2">
       <div className="d-flex flex-row flex-wrap">
         {renderedBooks}
         <div id="end-of-list" />

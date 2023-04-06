@@ -22,7 +22,8 @@ export default function DeleteUserDialog(props) {
         </Modal.Header>
         <Modal.Footer className={styles.adminPanelModalFooter}>
           <Button className={styles.defaultButtonRadius} onClick={props.onHide}>Cancel</Button>
-          <Button className={styles.defaultButtonRadius} onClick={() => { props.onHide(); userManager.removeUser(user); }} variant="danger">Delete user</Button>
+          <Button className={styles.defaultButtonRadius}
+            onClick={() => { props.onHide(); userManager.removeUser(user); }} variant="danger">Delete user</Button>
         </Modal.Footer>
       </div>
     </Modal>

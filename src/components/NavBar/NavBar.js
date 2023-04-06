@@ -4,10 +4,10 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useState, useEffect } from "react";
-import styles from "../styles/search-bar.module.css";
+import styles from "../styles/searchBar.module.css";
 import { BsSearch } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import { Col, Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import NavigationPaths from "../../common/NavigationPaths";
 
 function NavBar({ onSubmit, showSearchBar }) {
