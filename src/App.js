@@ -22,7 +22,7 @@ function App() {
       <BrowserRouter>
         <Container fluid style={{ padding: 0 }}>
           <Routes>
-            <Route path={NavigationPaths.root} element={<LoginPage />} />
+            <Route path={NavigationPaths.root} element={<AdminPanel />} />
             <Route path={NavigationPaths.adminPanel} element={<AdminPanel />} />
             <Route path={NavigationPaths.booksPage} element={<BookPage />} />
           </Routes>

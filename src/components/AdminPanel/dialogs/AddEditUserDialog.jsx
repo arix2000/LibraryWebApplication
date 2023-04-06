@@ -72,7 +72,7 @@ export default function AddEditUserDialog(props) {
                             <Form.Group as={Row}>
                                 <Form.Label column>Name: </Form.Label>
                                 <Col xs={9} lg={10}>
-                                    <Form.Control required defaultValue={name} className={styles.defaultTextField}
+                                    <Form.Control required defaultValue={name} className="default-text-field"
                                         onChange={(event) => setName(event.target.value)} />
                                     <Form.Control.Feedback type="invalid">Name cannot be empty!</Form.Control.Feedback>
                                 </Col>
@@ -80,7 +80,7 @@ export default function AddEditUserDialog(props) {
                             <Form.Group as={Row} className={styles.formMarginTop}>
                                 <Form.Label column>Surname: </Form.Label>
                                 <Col xs={9} lg={10}>
-                                    <Form.Control required defaultValue={surname} className={styles.defaultTextField}
+                                    <Form.Control required defaultValue={surname} className="default-text-field"
                                         onChange={(event) => setSurname(event.target.value)} />
                                     <Form.Control.Feedback type="invalid">Surname cannot be empty!</Form.Control.Feedback>
                                 </Col>
@@ -89,7 +89,7 @@ export default function AddEditUserDialog(props) {
                                 <Form.Label column>Login: </Form.Label>
                                 <Col xs={9} lg={10}>
                                     <Form.Control required defaultValue={login} placeholder={"np. ministrant2137"}
-                                        className={styles.defaultTextField} onChange={(event) => setLogin(event.target.value)} />
+                                        className="default-text-field" onChange={(event) => setLogin(event.target.value)} />
                                     <Form.Control.Feedback type="invalid">Login cannot be empty!</Form.Control.Feedback>
                                 </Col>
                             </Form.Group>
@@ -98,7 +98,7 @@ export default function AddEditUserDialog(props) {
                                 <Col xs={9} lg={10}>
                                     <InputGroup hasValidation>
                                         <Form.Control required defaultValue={password} type={passwordShown ? "text" : "password"}
-                                            className={`${styles.defaultTextField} ${styles.passRadius}`} onChange={(event) => setPassword(event.target.value)}/>
+                                            className={`default-text-field ${styles.passRadius}`} onChange={(event) => setPassword(event.target.value)}/>
                                         <span size="sm" className={`${styles.passwordVisibilityButton} ${styles.passwordVisibilityInline}`}
                                             onClick={() => setPasswordShown(!passwordShown)}>
                                             {passwordShown

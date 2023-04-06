@@ -90,35 +90,14 @@
     margin-top: 10px ;
 }
 
-.defaultTextField {
-    background-color: #3b3a3a ;
-    color: antiquewhite ;
-    border-width: 0px ;
-    border-color: transparent ;
-    border-radius: 14px ;
-}
-
 .passRadius {
     border-radius: 14px 0px 0px 14px;
-}
-
-.defaultTextField:hover {
-    background-color: #3b3a3a ;
-    color: antiquewhite ;
-}
-
-.defaultTextField:focus {
-    background-color: #3b3a3a ;
-    color: antiquewhite ;
-    box-shadow: none;
-    border-width: 1px ;
-    border-color: #4169E1 ;
 }
 
 .defaultSelector {
     background-color: #3b3a3a ;
     color: antiquewhite ;
-    border-width: 0px ;
+    border-width: 1px ;
     border-color: transparent;
     border-radius: 14px ;
     width: 100%;

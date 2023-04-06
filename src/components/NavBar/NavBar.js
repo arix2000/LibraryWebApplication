@@ -33,7 +33,7 @@ function NavBar({ onSubmit, showSearchBar }) {
 
   return (
     <Navbar
-      className={`${styles.navbarBody} fixed-top`}
+      className={`${styles.navbarBody} fixed-top navbar-dark`}
       expand="lg"
       sticky="top"
     >
