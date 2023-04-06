@@ -15,11 +15,15 @@
 }
 
 .custom-border {
-    border: solid 2px #4169E1;
+    border: solid 2px #4169E1 !important;
 }
 
 .full-height {
     min-height: 94vh;
     height: 100%;
     margin: auto;
+}
+
+.button-radius {
+    border-radius: 12px !important;
 }
