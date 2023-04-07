@@ -5,7 +5,7 @@ import { IoMdAdd } from "react-icons/io";
 import styles from "../styles/adminPanel.module.css";
 import UserManager from "./utils/UserManager";
 import AddEditUserDialog from "./dialogs/AddEditUserDialog";
-import NavBar from "../NavBar/NavBar";
+import NavBar from "../UiCommon/NavBar";
 
 function AdminPanel() {
   const userManager = new UserManager();

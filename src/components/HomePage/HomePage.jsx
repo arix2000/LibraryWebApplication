@@ -1,4 +1,4 @@
-import NavBar from "../NavBar/NavBar";
+import NavBar from "../UiCommon/NavBar";
 
 export default function HomePage() {
     return (

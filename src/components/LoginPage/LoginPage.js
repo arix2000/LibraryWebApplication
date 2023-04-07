@@ -1,18 +1,27 @@
-import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
+import { Col, Button, Row, Container, Card, Form, InputGroup } from "react-bootstrap";
 import React, { useState } from 'react';
 import UserManager from "../AdminPanel/utils/UserManager";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AppRoutes from "../../common/AppRoutes";
+import ErrorToast from "../UiCommon/ErrorToast";
+import styles from "../styles/adminPanel.module.css"
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 export default function LoginPage() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
+  const [showErrorMassage, setShowErrorMassage] = useState(false);
+  const [passwordShown, setPasswordShown] = useState(false);
   const userManager = new UserManager();
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const isLoginSuccess = userManager.getUsers().find((u) => u.login === login && u.password === password);
+    if (isLoginSuccess)
+      navigate(AppRoutes.homePage);
+    else
+      setShowErrorMassage(true);
   };
 
   return (
@@ -40,16 +49,24 @@ export default function LoginPage() {
                       </Form.Group>
                       <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label className="text-light">Password</Form.Label>
-                        <Form.Control
-                          className="default-text-field"
-                          type="password"
-                          placeholder="Password"
-                          value={password}
-                          onChange={(event) => setPassword(event.target.value)}
-                        />
+                        <InputGroup>
+                          <Form.Control
+                            className="default-text-field"
+                            type={passwordShown ? "text" : "password"}
+                            placeholder="Password"
+                            value={password}
+                            onChange={(event) => setPassword(event.target.value)}
+                          />
+                          <span size="sm" className={`${styles.passwordVisibilityButton} ${styles.passwordVisibilityInline}`}
+                            onClick={() => setPasswordShown(!passwordShown)}>
+                            {passwordShown
+                              ? <AiFillEyeInvisible style={{ width: 20, height: 20 }} />
+                              : <AiFillEye style={{ width: 20, height: 20 }} />}
+                          </span>
+                        </InputGroup>
                       </Form.Group>
                       <div className="d-grid button-color text-center" variant="secondary">
-                        <Button className="button-radius" style={{ width: 120 }} onClick={() => { navigate(AppRoutes.homePage) }}>Login</Button>
+                        <Button type="submit" className="button-radius" style={{ width: 120 }} onClick={handleSubmit}>Login</Button>
                       </div>
                     </Form>
                   </div>
@@ -59,6 +76,7 @@ export default function LoginPage() {
           </Col>
         </Row>
       </Container>
+      <ErrorToast text={"Incorrect login or password!"} show={showErrorMassage} setShow={setShowErrorMassage} />
     </div>
   );
 }

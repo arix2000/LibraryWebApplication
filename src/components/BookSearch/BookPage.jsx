@@ -1,5 +1,5 @@
 import BookList from "./BookList";
-import NavBar from "../NavBar/NavBar";
+import NavBar from "../UiCommon/NavBar";
 import data from "../../models/books.json"
 import { useState } from "react";
 
