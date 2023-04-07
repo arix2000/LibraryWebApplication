@@ -6,6 +6,7 @@ import AppRoutes from "../../common/AppRoutes";
 import ErrorToast from "../UiCommon/ErrorToast";
 import styles from "../styles/adminPanel.module.css"
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import SessionManager from "../../common/SessionManager";
 
 export default function LoginPage() {
   const [login, setLogin] = useState('');
@@ -13,13 +14,16 @@ export default function LoginPage() {
   const [showErrorMassage, setShowErrorMassage] = useState(false);
   const [passwordShown, setPasswordShown] = useState(false);
   const userManager = new UserManager();
+  const sessionManager = new SessionManager();
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const isLoginSuccess = userManager.getUsers().find((u) => u.login === login && u.password === password);
-    if (isLoginSuccess)
+    const userFound = userManager.getUsers().find((u) => u.login === login && u.password === password);
+    if (userFound) {
+      sessionManager.login(userFound);
       navigate(AppRoutes.homePage);
+    }
     else
       setShowErrorMassage(true);
   };

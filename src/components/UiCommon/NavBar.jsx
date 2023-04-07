@@ -4,15 +4,18 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useState, useEffect } from "react";
-import styles from "../styles/searchBar.module.css";
+import styles from "../styles/navBar.module.css";
 import { useNavigate } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import AppRoutes from "../../common/AppRoutes";
+import SessionManager from "../../common/SessionManager";
 
 function NavBar({ onSubmit, showSearchBar, initialExpand = false, searchAutoFocus = false }) {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState(initialExpand);
+  const sessionManager = new SessionManager();
+  const loggedUserRole = sessionManager.getLoggedUser().role;
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -53,12 +56,16 @@ function NavBar({ onSubmit, showSearchBar, initialExpand = false, searchAutoFocu
             <Nav.Link className={"text-light"}>
               Borrowed
             </Nav.Link>
-            <Nav.Link className="text-light" href="#action2">
+            <Nav.Link className="text-light">
               Your History
             </Nav.Link>
-            <Nav.Link className="text-light" href="#action2">
+            <Nav.Link className="text-light">
               Contact
             </Nav.Link>
+            {loggedUserRole === "admin"
+              ? <Nav.Link className="text-light" onClick={() => navigate(AppRoutes.adminPanel)}>
+                Admin Panel
+              </Nav.Link> : <div/>}
             <Col>
               <Form className="d-flex" onSubmit={handleFormSubmit} style={{ disply: 'flex', justifyContent: 'right' }}>
                 <Form.Control
@@ -67,10 +74,12 @@ function NavBar({ onSubmit, showSearchBar, initialExpand = false, searchAutoFocu
                   type="search"
                   placeholder="Search for books"
                   className={styles.searchTextField}
-                  onClick={showSearchBar ? () => { } : () => { navigate(AppRoutes.booksPage) }}
+                  onClick={showSearchBar ? null : () => { navigate(AppRoutes.booksPage) }}
                   autoFocus={searchAutoFocus}
                 />
-                <Button className={styles.searchButton} onClick={showSearchBar ? handleFormSubmit : () => { navigate(AppRoutes.booksPage) }}>Search</Button>
+                <Button className={styles.searchButton} onClick={showSearchBar ? handleFormSubmit : () => { navigate(AppRoutes.booksPage) }}>
+                  Search
+                </Button>
               </Form>
             </Col>
           </Nav>
