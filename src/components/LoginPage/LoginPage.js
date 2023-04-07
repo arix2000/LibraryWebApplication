@@ -1,12 +1,14 @@
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import React, { useState } from 'react';
 import UserManager from "../AdminPanel/utils/UserManager";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import AppRoutes from "../../common/AppRoutes";
 
 export default function LoginPage() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const userManager = new UserManager();
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -14,11 +16,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={{backgroundColor: "#303030"}}>
+    <div style={{ backgroundColor: "#303030" }}>
       <Container>
         <Row className="vh-100 d-flex justify-content-center align-items-center" >
           <Col md={16} lg={6} xs={24}>
-            <Card className="shadow" style={{ borderRadius: '2rem', backgroundColor: "#2a2a2a"}}>
+            <Card className="shadow" style={{ borderRadius: '2rem', backgroundColor: "#2a2a2a" }}>
               <Card.Body>
                 <div className="mb-3 mt-md-4">
                   <h2 className="text-center text-light">Fish library</h2>
@@ -46,10 +48,8 @@ export default function LoginPage() {
                           onChange={(event) => setPassword(event.target.value)}
                         />
                       </Form.Group>
-                      <div className="d-grid button-color" variant="secondary">
-                        <Link to={"/booksPage"}>
-                          <Button type="submit">Login</Button>
-                        </Link>
+                      <div className="d-grid button-color text-center" variant="secondary">
+                        <Button className="button-radius" style={{ width: 120 }} onClick={() => { navigate(AppRoutes.homePage) }}>Login</Button>
                       </div>
                     </Form>
                   </div>

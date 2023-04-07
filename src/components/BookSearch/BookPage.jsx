@@ -21,7 +21,7 @@ export default function BookPage() {
 
     return (
     <>
-        <NavBar onSubmit={handleSearchSubmit} showSearchBar={true}/>
+        <NavBar onSubmit={handleSearchSubmit} showSearchBar={true} initialExpand={true} searchAutoFocus={true}/>
         <BookList books={books}/>
     </>)
 }

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import AdminPanel from "./components/AdminPanel/AdminPanel"
 import usersJson from './models/users.json';
 import LoginPage from "./components/LoginPage/LoginPage"
@@ -12,7 +11,8 @@ import {
   Route,
 } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import NavigationPaths from "./common/NavigationPaths";
+import AppRoutes from "./common/AppRoutes";
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
   handleFirstTimeOpen();
@@ -22,9 +22,10 @@ function App() {
       <BrowserRouter>
         <Container fluid style={{ padding: 0 }}>
           <Routes>
-            <Route path={NavigationPaths.root} element={<AdminPanel />} />
-            <Route path={NavigationPaths.adminPanel} element={<AdminPanel />} />
-            <Route path={NavigationPaths.booksPage} element={<BookPage />} />
+            <Route path={AppRoutes.root} element={<LoginPage />} />
+            <Route path={AppRoutes.adminPanel} element={<AdminPanel />} />
+            <Route path={AppRoutes.booksPage} element={<BookPage />} />
+            <Route path={AppRoutes.homePage} element={<HomePage />} />
           </Routes>
         </Container>
       </BrowserRouter>

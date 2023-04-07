@@ -2,9 +2,10 @@ import { Button, Container } from "react-bootstrap";
 import UserListItem from "./UserListItem";
 import React, { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
-import styles from "../styles/adminPanel.module.css"
-import UserManager from "./utils/UserManager"
+import styles from "../styles/adminPanel.module.css";
+import UserManager from "./utils/UserManager";
 import AddEditUserDialog from "./dialogs/AddEditUserDialog";
+import NavBar from "../NavBar/NavBar";
 
 function AdminPanel() {
   const userManager = new UserManager();
@@ -18,6 +19,7 @@ function AdminPanel() {
   return (
     <>
       <div className="background-color">
+        <NavBar showSearchBar={false}/>
         <div className={styles.adminPanelHeader}>
           <h4>Admin Panel</h4>
         </div>

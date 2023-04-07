@@ -14,14 +14,14 @@ export default function BookItem({ book }) {
         className={`text-center mt-4 label-color ${styles.card}`}
         text="light"
         onClick={() => setDetailShow(true)}
-      > 
+      >
         <Row >
-          <Col>
-            <Card.Img
+          <Col md='auto' xs='auto'>
+            {book.thumbnail.length != 0 ? <img
               className={styles.cardImg}
               src={book.thumbnail}
-              alt={book.title + " Cover"}
-            />
+            /> : <img styles={styles.cardImg} style={{ width: '167px' }}
+              src="https://linda-hoang.com/wp-content/uploads/2014/10/img-placeholder-dark-vertical.jpg" />}
           </Col>
           <Col>
             <Card.Body>
