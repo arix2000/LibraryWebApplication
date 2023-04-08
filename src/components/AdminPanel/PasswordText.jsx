@@ -7,11 +7,11 @@ export default function PasswordText(props) {
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
-  const dotedPass = props.pass.split('').map(letter => '•');
+  const dottedPass = props.pass.split('').map(letter => '•');
 
   return (
     <span>
-        {passwordShown ? props.pass : dotedPass}
+        {passwordShown ? props.pass : dottedPass}
         <span className={styles.passwordVisibilityButton} onClick={togglePassword}>
           <br/>
             {passwordShown 
