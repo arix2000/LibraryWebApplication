@@ -1,8 +1,7 @@
-import BookShow from "./BookShow";
+import BookShow from "./BookItem";
 import { useState, useEffect } from "react";
 
 export default function BookList({ books }) {
-  // Infinite Scroll
   const itemsPerPage = 9;
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,15 +23,12 @@ export default function BookList({ books }) {
     observer.observe(document.querySelector("#end-of-list"));
   }, []);
 
-  // Books mapping
   const renderedBooks = currentBooks.map((book) => {
     return <BookShow book={book} key={book.isbn13} />;
   });
 
-  // Modal
-
   return (
-    <div className="background-color full-height px-5 pb-5">
+    <div className="background-color full-height px-2 pb-2">
       <div className="d-flex flex-row flex-wrap">
         {renderedBooks}
         <div id="end-of-list" />

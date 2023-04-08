@@ -2,7 +2,6 @@ import LocalStorageKeys from "../../../common/LocalStorageKeys";
 
 export default class UserManager {
   userListKey = LocalStorageKeys.userList;
-
   storageEventKey = "storage";
 
   getUsers() {

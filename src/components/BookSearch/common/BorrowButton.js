@@ -1,23 +1,17 @@
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { Button } from "react-bootstrap";
-import "./common-styles/borrow-button.css";
+import styles from "../../styles/bookItem.module.css";
 
 export default function BorrowButton({ width, height, useIcon }) {
   const buttonHandler = (e) => {
     console.log("borrowed");
+    /* TODO add borrow button logic */ 
     e.stopPropagation();
   };
 
   return (
-    <Button variant="success" className="button-radius">
-      {useIcon ? (
-        <BsFillCartPlusFill
-          style={{ width: width, height: height }}
-          onClick={buttonHandler}
-        />
-      ) : (
-        <span onClick={buttonHandler}>Borrow</span>
-      )}
+    <Button onClick={buttonHandler} variant="success" className={`${styles.borrowButton} button-radius`}>
+      <BsFillCartPlusFill style={{ width: width, height: height }} />
     </Button>
   );
 }

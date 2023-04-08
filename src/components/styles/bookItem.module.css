@@ -1,15 +1,12 @@
 .card {
-  height: auto !important;
-  width: 30rem !important;
-  max-height: 14rem;
+  width: 480px !important;
+  height: 240px;
   box-shadow: 2px 4px 8px 0px rgb(0, 0, 0);
   margin: 3rem auto auto auto;
   transition-duration: 0.2s;
   overflow: hidden;
-}
-
-.card-radius {
   border-radius: 24px !important;
+  position: relative;
 }
 
 .card:hover {
@@ -21,23 +18,15 @@
   font-size: 1rem !important;
 }
 
-.card-img {
-  height: 100%;
-  object-fit: cover;
-  max-width: 100%;
-  max-height: 14rem;
+.cardImg {
+  height: 240px;
+  object-fit: contain;
+  object-position: left;
   margin: 0 !important;
   border-radius: 24px 0px 0px 24px !important;
 }
 
-.detail-button {
-  width: fit-content;
-  margin: auto;
-  display: flex;
-  border-radius: 8px;
-}
-
-.book-title {
+.bookTitle {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -53,9 +42,33 @@
   box-lines: 2;
 }
 
-.borrow-button-wrapper {
+.borrowButtonWrapper {
   width: 40px;
   height: 40px; 
   margin: auto;
   padding: auto;
+}
+
+.upperRadius {
+  border-radius: 25px 25px 0px 0px;
+}
+
+.bottomRadius {
+  border-radius: 0px 0px 25px 25px;
+}
+
+.grayText {
+  color: rgb(167, 167, 167);
+}
+
+.borrowButton {
+  position:absolute;
+  right: 13px;
+  bottom: 13px;
+}
+
+.bookDetailsModalBody {
+  background-color: #252525;
+  overflow-y: auto;
+  max-height: 600px;
 }
