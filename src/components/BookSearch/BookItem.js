@@ -1,12 +1,13 @@
 import styles from "../styles/bookItem.module.css";
 import { Col, Row, Card, Container } from "react-bootstrap";
 import { Rating } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
 import BookDetailModal from "./BookDetail/BookDetailModal";
 import BorrowButton from "./common/BorrowButton";
 
 export default function BookItem({ book }) {
   const [detailShow, setDetailShow] = useState(false);
+  const [imgObjectFitStyle, setImgObjectFitStyle] = useState(styles.cardImgFitContain);
 
   return (
     <>
@@ -18,8 +19,13 @@ export default function BookItem({ book }) {
         <Row >
           <Col md='auto' xs='auto' className={styles.bookImgWrapperCol}>
             {book.thumbnail.length != 0 ? <img
-              className={styles.cardImg}
+              className={`${styles.cardImg} ${imgObjectFitStyle}`}
               src={book.thumbnail}
+              onLoad={(img) => {
+                if (img.currentTarget.clientWidth == 180) {
+                  setImgObjectFitStyle(styles.cardImgFitFill);
+                }
+              }}
             /> : <img styles={styles.cardImg} style={{ width: '167px' }}
               src="https://linda-hoang.com/wp-content/uploads/2014/10/img-placeholder-dark-vertical.jpg" />}
           </Col>
@@ -39,7 +45,7 @@ export default function BookItem({ book }) {
                   readOnly
                 />
               </Card.Title>
-              <BorrowButton rowStyles={styles.itemButtonSection}/>
+              <BorrowButton rowStyles={styles.itemButtonSection} />
             </Card.Body>
           </Col>
         </Row>
