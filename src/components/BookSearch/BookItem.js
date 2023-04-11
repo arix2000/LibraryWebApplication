@@ -16,7 +16,7 @@ export default function BookItem({ book }) {
         onClick={() => setDetailShow(true)}
       >
         <Row >
-          <Col md='auto' xs='auto'>
+          <Col md='auto' xs='auto' className={styles.bookImgWrapperCol}>
             {book.thumbnail.length != 0 ? <img
               className={styles.cardImg}
               src={book.thumbnail}
@@ -39,10 +39,10 @@ export default function BookItem({ book }) {
                   readOnly
                 />
               </Card.Title>
+              <BorrowButton rowStyles={styles.itemButtonSection}/>
             </Card.Body>
           </Col>
         </Row>
-        <BorrowButton width={28} height={28} useIcon={true} />
       </Card>
       <BookDetailModal
         show={detailShow}
