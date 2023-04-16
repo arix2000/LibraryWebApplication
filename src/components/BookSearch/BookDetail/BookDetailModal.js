@@ -2,6 +2,8 @@ import { Modal, Button } from "react-bootstrap";
 import styles from "../../styles/bookItem.module.css"
 
 export default function BookDetailModal({ show, onHide, book }) {
+  console.log(book);
+
   return (
     <Modal
       show={show}

@@ -1,4 +1,4 @@
-import BookShow from "./BookItem";
+import BookItem from "./BookItem";
 import { useState, useEffect } from "react";
 
 export default function BookList({ books }) {
@@ -24,7 +24,7 @@ export default function BookList({ books }) {
   }, []);
 
   const renderedBooks = currentBooks.map((book) => {
-    return <BookShow book={book} key={book.isbn13} />;
+    return <BookItem book={book} key={book.isbn13} />;
   });
 
   return (
