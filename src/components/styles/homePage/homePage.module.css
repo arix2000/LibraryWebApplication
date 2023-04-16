@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
 }
-.recommBadge {
+.carouselBadge {
   box-shadow: 8px 8px 8px 0px black;
   border-radius: 24px;
   padding-top: 15px;
