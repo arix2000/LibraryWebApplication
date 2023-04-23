@@ -8,9 +8,9 @@ export default class UserManager {
     return JSON.parse(localStorage.getItem(this.userListKey));
   }
 
-  removeUser(user) {
+  removeUser(userToRemove) {
     var users = this.getUsers();
-    const index = users.findIndex((userEl) => userEl.id == user.id);
+    const index = users.findIndex((user) => user.id == userToRemove.id);
     if (index > -1) {
       users.splice(index, 1);
     }
@@ -41,7 +41,7 @@ export default class UserManager {
     window.dispatchEvent(new Event(this.storageEventKey));
   }
 
-  updateUser(id, name, surname, login, password, role) {
+  updateUserPersonalInfo(id, name, surname, login, password, role) {
     var users = this.getUsers();
     const index = users.findIndex((userEl) => userEl.id == id);
     if (index > -1) {
@@ -50,6 +50,16 @@ export default class UserManager {
       users[index].login = login;
       users[index].password = password;
       users[index].role = role;
+    }
+    localStorage.setItem(this.userListKey, JSON.stringify(users));
+    window.dispatchEvent(new Event("storage"));
+  }
+
+  updateUser(user) {
+    var users = this.getUsers();
+    const index = users.findIndex((userEl) => userEl.id == user.id);
+    if (index > -1) {
+      users[index] = user;
     }
     localStorage.setItem(this.userListKey, JSON.stringify(users));
     window.dispatchEvent(new Event("storage"));
