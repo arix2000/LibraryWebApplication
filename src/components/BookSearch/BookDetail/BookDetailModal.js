@@ -1,5 +1,6 @@
 import { Modal, Button } from "react-bootstrap";
 import styles from "../../styles/bookItem.module.css"
+import BorrowButton from "../common/BorrowButton";
 
 export default function BookDetailModal({ show, onHide, book }) {
   console.log(book);
@@ -28,9 +29,8 @@ export default function BookDetailModal({ show, onHide, book }) {
           <p className="mt-4 fade-in">{book.description}</p>
         </Modal.Body>
         <Modal.Footer className={`px-3 py-2 label-color bottom-radius ${styles.bottomRadius}`}>
-          <Button className="button-radius" onClick={onHide}>Close</Button>
-          <Button onClick={() => { /* TODO add borrow button logic */ }} variant="success"
-            className={`button-radius`}>Borrow</Button>
+          <Button className="button-radius" variant="secondary" onClick={onHide}>Close</Button>
+          <BorrowButton rowStyles={styles.itemButtonSectionModal}/>
         </Modal.Footer>
     </Modal>
   );

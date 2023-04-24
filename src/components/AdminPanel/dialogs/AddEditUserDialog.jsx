@@ -37,7 +37,7 @@ export default function AddEditUserDialog(props) {
         }
         props.onHide();
         if (editMode)
-            userManager.updateUser(user.id, name, surname, login, password, role)
+            userManager.updateUserPersonalInfo(user.id, name, surname, login, password, role)
         else {
             userManager.addUser(name, surname, login, password, role);
             clearAllParams();

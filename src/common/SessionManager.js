@@ -11,6 +11,10 @@ export default class SessionManager {
     return JSON.parse(localStorage.getItem(this.loggedUserKey));
   }
 
+  updateLoggedUser(user) {
+    localStorage.setItem(this.loggedUserKey, JSON.stringify(user));
+  }
+
   logout() {
     localStorage.removeItem(this.loggedUserKey);
   }

@@ -10,7 +10,7 @@ import { Col } from "react-bootstrap";
 import AppRoutes from "../../common/AppRoutes";
 import SessionManager from "../../common/SessionManager";
 
-function NavBar({ onSubmit, showSearchBar, initialExpand = false, searchAutoFocus = false }) {
+function NavBar({ onSubmit = () => {}, showSearchBar, initialExpand = false, searchAutoFocus = false }) {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState(initialExpand);
