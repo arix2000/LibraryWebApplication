@@ -3,12 +3,15 @@ import HomePageCarousel from "./HomePageCarousel";
 import styles from "../styles/homePage/homePage.module.css";
 import books from "../../models/books.json";
 import { Container, Row, Col } from "react-bootstrap";
+import UserBookManager from "../../common/UserBookManager";
 
 export default function HomePage() {
   const recommBooks = [books[2676], books[65], books[3955]];
   const bestBooks = [books[12], books[19]];
-  const borrowedBooks = [books[126], books[718], books[351], books[913], books[83]];
 
+  const userBookManager = new UserBookManager();
+  const borrowedBooks = userBookManager.getAllBorrowedBooks();
+  
   return (
     <>
       <NavBar showSearchBar={false} />

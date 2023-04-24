@@ -4,7 +4,13 @@
   width: 300px;
   display: flex;
   justify-content: center;
+  transition-duration: 0.2s;
 }
+
+.outer:hover {
+  transform: scale(1.02);
+}
+
 .carouselBadge {
   box-shadow: 8px 8px 8px 0px black;
   border-radius: 24px;
