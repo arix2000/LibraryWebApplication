@@ -4,6 +4,7 @@ import styles from "../styles/homePage/homePage.module.css";
 import books from "../../models/books.json";
 import { Container, Row, Col } from "react-bootstrap";
 import UserBookManager from "../../common/UserBookManager";
+import { useState } from "react";
 
 export default function HomePage() {
   const recommBooks = [books[2676], books[65], books[3955]];
@@ -11,7 +12,8 @@ export default function HomePage() {
 
   const userBookManager = new UserBookManager();
   const borrowedBooks = userBookManager.getAllBorrowedBooks();
-  
+  const reservedBooks = userBookManager.getAllReservedBooks();
+
   return (
     <>
       <NavBar showSearchBar={false} />
@@ -38,6 +40,16 @@ export default function HomePage() {
               <div className={styles.carouselBadge}>
                 <h4>Borrowed</h4>
                 <HomePageCarousel books={borrowedBooks} />
+              </div>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <div className={styles.outer}>
+              <div className={styles.carouselBadge}>
+                <h4>Reserved</h4>
+                <HomePageCarousel books={reservedBooks} />
               </div>
             </div>
           </Col>

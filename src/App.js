@@ -1,15 +1,11 @@
-import AdminPanel from "./components/AdminPanel/AdminPanel"
-import usersJson from './models/users.json';
-import LoginPage from "./components/LoginPage/LoginPage"
-import BookPage from "./components/BookSearch/BookPage"
-import './components/styles/global-styles.css';
+import AdminPanel from "./components/AdminPanel/AdminPanel";
+import usersJson from "./models/users.json";
+import LoginPage from "./components/LoginPage/LoginPage";
+import BookPage from "./components/BookSearch/BookPage";
+import "./components/styles/global-styles.css";
 import FirstTimeManager from "./common/FirstTimeManager";
 import LocalStorageKeys from "./common/LocalStorageKeys";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import AppRoutes from "./common/AppRoutes";
 import HomePage from "./components/HomePage/HomePage";
@@ -30,8 +26,8 @@ function App() {
         </Container>
       </BrowserRouter>
     </>
-  )
-};
+  );
+}
 
 export default App;
 

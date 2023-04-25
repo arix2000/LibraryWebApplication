@@ -11,6 +11,7 @@ export default function HomePageCarousel({ books }) {
     setSelectedBook(book);
     setDetailShow(true);
   };
+  
 
   return (
     <>
