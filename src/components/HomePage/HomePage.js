@@ -4,7 +4,6 @@ import styles from "../styles/homePage/homePage.module.css";
 import books from "../../models/books.json";
 import { Container, Row, Col } from "react-bootstrap";
 import UserBookManager from "../../common/UserBookManager";
-import { useState } from "react";
 
 export default function HomePage() {
   const recommBooks = [books[2676], books[65], books[3955]];
