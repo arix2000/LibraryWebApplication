@@ -49,4 +49,10 @@ export default class UserBookManager {
         this.sessionManager.updateLoggedUser(this.user);
         window.dispatchEvent(new Event(this.storageEventKey));
     }
+
+    setOnBookChangeListener(onChange) {
+        window.addEventListener(this.storageEventKey, (storageEvent) => {
+            onChange();
+          });
+    }
 }
