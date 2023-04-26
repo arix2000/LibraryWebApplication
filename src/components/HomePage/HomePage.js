@@ -16,7 +16,7 @@ export default function HomePage() {
   return (
     <>
       <NavBar showSearchBar={false} />
-      <Container>
+      <Container className="mb-5">
         <Row>
           <Col>
             <div className={styles.outer}>

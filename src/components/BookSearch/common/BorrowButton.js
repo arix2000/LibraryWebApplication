@@ -49,7 +49,7 @@ export default function BorrowButton({
             variant="primary"
             className={`${styles.borrowButton} button-radius`}
           >
-            Cancel Reservation{" "}
+            Cancel Res...{" "}
             <RiBookMarkFill style={{ width: 20, height: 20 }} />
           </Button>
           <Button

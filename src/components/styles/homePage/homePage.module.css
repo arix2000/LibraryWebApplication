@@ -1,7 +1,7 @@
 .outer {
   margin-top: 24px;
   margin-left: 24px;
-  width: 300px;
+  width: 480px;
   display: flex;
   justify-content: center;
   transition-duration: 0.2s;
