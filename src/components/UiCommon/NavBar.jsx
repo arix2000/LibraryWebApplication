@@ -34,7 +34,7 @@ function NavBar({ onSubmit = () => {}, showSearchBar, initialExpand = false, sea
     }, 500);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [query, onSubmit]);
+  }, [query]);
 
   return (
     <>
