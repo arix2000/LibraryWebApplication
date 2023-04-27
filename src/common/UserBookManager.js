@@ -6,6 +6,7 @@ export default class UserBookManager {
   userManager = new UserManager();
   sessionManager = new SessionManager();
   user = this.sessionManager.getLoggedUser();
+  storageEventKey = "storage"
 
   borrowBook(bookId) {
     this.user.borrowed_books.push(bookId);
@@ -64,5 +65,12 @@ export default class UserBookManager {
   #updateUser() {
     this.userManager.updateUser(this.user);
     this.sessionManager.updateLoggedUser(this.user);
+    window.dispatchEvent(new Event(this.storageEventKey));
+    }
+
+    setOnBookChangeListener(onChange) {
+        window.addEventListener(this.storageEventKey, (storageEvent) => {
+            onChange();
+          });
   }
 }

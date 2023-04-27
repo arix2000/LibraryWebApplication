@@ -50,7 +50,6 @@ export default function BorrowButton({
             className={`${styles.borrowButton} button-radius`}
           >
             Cancel Res...{" "}
-            <RiBookMarkFill style={{ width: 20, height: 20 }} />
           </Button>
           <Button
             onClick={handleBorrowClick}
