@@ -13,8 +13,8 @@ export default function BookItem({ book, margin, radius }) {
   );
   const userBookManager = new UserBookManager();
 
-  const isBookReserved = userBookManager.isBookReservedByUser(book.isbn13);
-  const isBookBorrowed = userBookManager.isBookBorrowedByUser(book.isbn13);
+  const isBookReserved = userBookManager.isReserved(book.isbn13);
+  const isBookBorrowed = userBookManager.isBorrowed(book.isbn13);
 
   const handleBorrow = () => {
     userBookManager.borrowBook(book.isbn13);

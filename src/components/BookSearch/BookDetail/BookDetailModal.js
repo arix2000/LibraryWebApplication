@@ -6,8 +6,8 @@ import UserBookManager from "../../../common/UserBookManager";
 export default function BookDetailModal({ show, onHide, book }) {
   const userBookManager = new UserBookManager();
 
-  const isBookReserved = userBookManager.isBookReservedByUser(book.isbn13);
-  const isBookBorrowed = userBookManager.isBookBorrowedByUser(book.isbn13);
+  const isBookReserved = userBookManager.isReserved(book.isbn13);
+  const isBookBorrowed = userBookManager.isBorrowed(book.isbn13);
 
   const handleBorrow = () => {
     userBookManager.borrowBook(book.isbn13);
