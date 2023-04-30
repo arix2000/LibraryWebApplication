@@ -1,76 +1,74 @@
 import UserManager from "../components/AdminPanel/utils/UserManager";
 import SessionManager from "./SessionManager";
-import allBooks from "../models/books.json";
+import allBooks from "../models/books.json"
 
 export default class UserBookManager {
   userManager = new UserManager();
   sessionManager = new SessionManager();
-  user = this.sessionManager.getLoggedUser();
-  storageEventKey = "storage"
+  storageEventKey = "storage";
+
+
+  getUser() { return this.sessionManager.getLoggedUser(); }
 
   borrowBook(bookId) {
-    this.user.borrowed_books.push(bookId);
-    this.cancelReservation(bookId);
-    this.#updateUser();
+    let user = this.getUser();
+    user.borrowed_books.push(bookId);
+    this.#updateUser(user);
   }
 
   reserviseBook(bookId) {
-    this.user.reserved_books.push(bookId);
-    this.returnBook(bookId);
-    this.#updateUser();
+    let user = this.getUser();
+    user.reserved_books.push(bookId);
+    this.#updateUser(user);
   }
 
   returnBook(bookId) {
-    const index = this.user.borrowed_books.findIndex(
-      (borrowedBookId) => borrowedBookId == bookId
-    );
+    let user = this.getUser();
+    const index = user.borrowed_books.findIndex((borrowedBookId) => borrowedBookId == bookId);
     if (index > -1) {
-      this.user.borrowed_books.splice(index, 1);
+      user.borrowed_books.splice(index, 1);
     }
-    this.#updateUser();
+    this.#updateUser(user);
   }
 
   cancelReservation(bookId) {
-    const index = this.user.reserved_books.findIndex(
-      (reservedBookId) => reservedBookId == bookId
-    );
+    let user = this.getUser();
+    const index = user.reserved_books.findIndex((reservedBookId) => reservedBookId == bookId);
     if (index > -1) {
-      this.user.reserved_books.splice(index, 1);
+      user.reserved_books.splice(index, 1);
     }
-    this.#updateUser();
+    this.#updateUser(user);
   }
 
   getAllBorrowedBooks() {
-    const userBorrowedBooks = allBooks.filter((book) =>
-      this.user.borrowed_books.includes(book.isbn13)
-    );
+    const userBorrowedBooks = allBooks.filter(book => this.getUser().borrowed_books.includes(book.isbn13));
     return userBorrowedBooks;
   }
 
   getAllReservedBooks() {
-    const userReservedBooks = allBooks.filter((book) =>
-      this.user.reserved_books.includes(book.isbn13)
-    );
+    const userReservedBooks = allBooks.filter(book => this.getUser().reserved_books.includes(book.isbn13));
     return userReservedBooks;
   }
 
-  isBookReservedByUser(bookId) {
-    return this.user.reserved_books.includes(bookId);
+  isReserved(bookId) {
+    let user = this.getUser();
+    return user.reserved_books.includes(bookId);
   }
 
-  isBookBorrowedByUser(bookId) {
-    return this.user.borrowed_books.includes(bookId);
+  isBorrowed(bookId) {
+    let user = this.getUser();
+    return this.sessionManager.getLoggedUser().borrowed_books.includes(bookId);
   }
 
-  #updateUser() {
-    this.userManager.updateUser(this.user);
-    this.sessionManager.updateLoggedUser(this.user);
+  #updateUser(user) {
+    this.userManager.updateUser(user);
+    this.sessionManager.updateLoggedUser(user);
     window.dispatchEvent(new Event(this.storageEventKey));
-    }
+  }
 
-    setOnBookChangeListener(onChange) {
-        window.addEventListener(this.storageEventKey, (storageEvent) => {
-            onChange();
-          });
+  setOnBookChangeListener(onChange) {
+    window.addEventListener(this.storageEventKey, (storageEvent) => {
+      onChange();
+    });
   }
 }

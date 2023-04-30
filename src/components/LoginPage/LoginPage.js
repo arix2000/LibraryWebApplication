@@ -1,5 +1,5 @@
 import { Col, Button, Row, Container, Card, Form, InputGroup } from "react-bootstrap";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import UserManager from "../AdminPanel/utils/UserManager";
 import { useNavigate } from "react-router-dom";
 import AppRoutes from "../../common/AppRoutes";
@@ -22,7 +22,7 @@ export default function LoginPage() {
     const userFound = userManager.getUsers().find((u) => u.login === login && u.password === password);
     if (userFound) {
       sessionManager.login(userFound);
-      navigate(AppRoutes.homePage);
+      navigate(AppRoutes.homePage, { replace: true });
     }
     else
       setShowErrorMassage(true);

@@ -1,0 +1,97 @@
+.body {
+    font-size: 14px;
+    background-color: #252525;
+    border-radius: 24px;
+    color: aliceblue;
+    padding: 30px;
+    padding-bottom: 15px;
+}
+
+.modalDialogClass {
+    max-width: fit-content;
+}
+
+.autoScaledFontSize {
+    font-size: 1em;
+}
+
+@media (min-width: 780px) {
+    .autoScaledFontSize {
+        font-size: 1.1em;
+    }
+}
+
+@media (min-width: 1200px) {
+    .autoScaledFontSize {
+        font-size: 1.2em;
+    }
+}
+
+.profileBasicInfo {
+    composes: autoScaledFontSize;
+    text-align: left;
+    width: 500px !important;
+}
+
+.contentTextWrapper {
+    display: flex;
+}
+
+.nameTitleText {
+    font-size: 2em;
+    max-width: 85%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.contentText {
+    font-size: 1em;
+    flex-grow: 1;
+    text-align: left;
+    max-width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.recentChanges {
+    composes: nameTitleText;
+    padding: 10px;
+}
+
+.browseHistoryButton {
+    composes: autoScaledFontSize;
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid var(--secondary);
+    
+    border-right-color: transparent;
+    border-left-color: transparent;
+}
+
+.browseHistoryButton:hover {
+    background-color: #2e2e2e;
+}
+
+.logoutButton {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-top: 10px;
+    width: 105px;
+    transition: width .2s ease-in-out;
+    font-size: 1em;
+}
+
+.cancelButton {
+    border-radius: 14px;
+    overflow: hidden;
+    margin-right: 10px;
+    margin-top: 10px;
+    transition: width .2s ease-in-out;
+    font-size: 1em;
+}
