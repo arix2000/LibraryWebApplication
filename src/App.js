@@ -13,7 +13,7 @@ import {
 import { Container } from "react-bootstrap";
 import AppRoutes from "./common/AppRoutes";
 import HomePage from "./components/HomePage/HomePage";
-import UserHistoryPage from "./components/ProfilePage/UserHistoryPage";
+import UserHistoryPage from "./components/ProfilePage/history/ui/UserHistoryPage";
 import PrivateRoute from "./components/UiCommon/PrivateRoute";
 function App() {
   handleFirstTimeOpen();

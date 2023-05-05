@@ -1,0 +1,19 @@
+.twoSidesWrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    text-align: center;
+}
+
+.historyListPanel {
+    width: 50%;
+}
+
+.historyItemContainer {
+    background-color: #3b3a3a;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 14px;
+    border-width: 1px;
+    text-align: left;
+}
