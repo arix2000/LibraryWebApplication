@@ -15,6 +15,7 @@ import AppRoutes from "./common/AppRoutes";
 import HomePage from "./components/HomePage/HomePage";
 import UserHistoryPage from "./components/ProfilePage/UserHistoryPage";
 import PrivateRoute from "./components/UiCommon/PrivateRoute";
+import ContactPage from "./components/ContactPage/ContactPage"
 function App() {
   handleFirstTimeOpen();
   return (
@@ -23,6 +24,7 @@ function App() {
         <Container className="text-light" fluid style={{ padding: 0 }}>
           <Routes>
             <Route path={AppRoutes.root} element={<LoginPage />} />
+            <Route path={AppRoutes.contactPage} element={<PrivateRoute><ContactPage /></PrivateRoute>} />
             <Route path={AppRoutes.adminPanel} element={<PrivateRoute><AdminPanel /></PrivateRoute>} />
             <Route path={AppRoutes.booksPage} element={<PrivateRoute><BookPage /></PrivateRoute>} />
             <Route path={AppRoutes.homePage} element={<PrivateRoute><HomePage /></PrivateRoute>} />

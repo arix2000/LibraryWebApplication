@@ -59,7 +59,7 @@ function NavBar({ onSubmit = () => {}, showSearchBar, initialExpand = false, sea
               <Nav.Link className={"text-light"}>
                 Borrowed
               </Nav.Link>
-              <Nav.Link className="text-light">
+              <Nav.Link className="text-light" onClick={() => navigate(AppRoutes.contactPage)}>
                 Contact
               </Nav.Link>
               {loggedUser.role === "admin"
