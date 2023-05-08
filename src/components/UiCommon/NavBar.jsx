@@ -53,7 +53,6 @@ function NavBar({ onSubmit = () => {}, showSearchBar, initialExpand = false, sea
             <Nav
               defaultActiveKey="/home"
               navbarScroll
-              fluid
               className={styles.fullWidth}
             >
               <Nav.Link className={"text-light"}>

@@ -20,7 +20,7 @@ export default function HomePage() {
     books[12],
     books[19],
     books[11],
-    books[19],
+    books[121],
     books[66],
     books[71],
     books[1],
@@ -63,7 +63,7 @@ export default function HomePage() {
             <div className={styles.carouselOuter}>
               <div className={styles.carouselBadge}>
                 <h4 className={styles.badgeHeader}>Borrowed</h4>
-                <HomePageCarousel books={borrowedBooks} />
+                <HomePageCarousel books={borrowedBooks} setBooks={setBorrowedBooks}/>
               </div>
             </div>
           </Col>
@@ -71,7 +71,7 @@ export default function HomePage() {
             <div className={styles.carouselOuter}>
               <div className={styles.carouselBadge}>
                 <h4 className={styles.badgeHeader}>Reserved</h4>
-                <HomePageCarousel books={reservedBooks} />
+                <HomePageCarousel books={reservedBooks} setBooks={setReservedBooks} />
               </div>
             </div>
           </Col>

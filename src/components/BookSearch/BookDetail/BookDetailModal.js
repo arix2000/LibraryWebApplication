@@ -1,30 +1,8 @@
 import { Modal, Button } from "react-bootstrap";
 import styles from "../../styles/bookItem.module.css";
 import BorrowButton from "../common/BorrowButton";
-import UserBookManager from "../../../common/UserBookManager";
 
 export default function BookDetailModal({ show, onHide, book }) {
-  const userBookManager = new UserBookManager();
-
-  const isBookReserved = userBookManager.isReserved(book.isbn13);
-  const isBookBorrowed = userBookManager.isBorrowed(book.isbn13);
-
-  const handleBorrow = () => {
-    userBookManager.borrowBook(book.isbn13);
-    onHide();
-  };
-  const handleReserve = () => {
-    userBookManager.reserviseBook(book.isbn13);
-    onHide();
-  };
-  const handleReserveCancel = () => {
-    userBookManager.cancelReservation(book.isbn13);
-    onHide();
-  };
-  const handleBookReturn = () => {
-    userBookManager.returnBook(book.isbn13);
-    onHide();
-  };
 
   return (
     <Modal
@@ -58,14 +36,9 @@ export default function BookDetailModal({ show, onHide, book }) {
           Close
         </Button>
         <BorrowButton
-          onHide={onHide}
           rowStyles={styles.itemButtonSectionModal}
-          handleBorrow={handleBorrow}
-          handleBookReturn={handleBookReturn}
-          handleReserve={handleReserve}
-          handleReserveCancel={handleReserveCancel}
-          isBookBorrowed={isBookBorrowed}
-          isBookReserved={isBookReserved}
+          book={book}
+          onClick={(e) => e.stopPropagation()}
         />
       </Modal.Footer>
     </Modal>
