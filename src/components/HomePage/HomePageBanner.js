@@ -2,7 +2,6 @@ import BookItem from "../BookSearch/BookItem";
 import styles from "../styles/homePage/homePage.module.css";
 
 export default function HomePageBanner({ books }) {
-  
   return (
     <>
       <div className={styles.homePageBanner}>

@@ -20,19 +20,20 @@ export default function BookItem({ book, margin }) {
       >
         <Row>
           <Col md="auto" xs="auto" className={styles.bookImgWrapperCol}>
-              <img
-                className={`${styles.cardImg} ${imgObjectFitStyle}`}
-                src={book.thumbnail}
-                onLoad={(img) => {
-                  if (img.currentTarget.clientWidth == 180) {
-                    setImgObjectFitStyle(styles.cardImgFitFill);
-                  }
-                }}
-                onError={({ currentTarget }) => {
-                  currentTarget.onerror = null;
-                  currentTarget.src="https://linda-hoang.com/wp-content/uploads/2014/10/img-placeholder-dark-vertical.jpg";
-                }}
-              />
+            <img
+              className={`${styles.cardImg} ${imgObjectFitStyle}`}
+              src={book.thumbnail}
+              onLoad={(img) => {
+                if (img.currentTarget.clientWidth == 180) {
+                  setImgObjectFitStyle(styles.cardImgFitFill);
+                }
+              }}
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null;
+                currentTarget.src =
+                  "https://linda-hoang.com/wp-content/uploads/2014/10/img-placeholder-dark-vertical.jpg";
+              }}
+            />
           </Col>
           <Col>
             <Card.Body>

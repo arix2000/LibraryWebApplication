@@ -33,10 +33,10 @@ export default function HomePage() {
   const [reservedBooks, setReservedBooks] = useState(
     userBookManager.getAllReservedBooks()
   );
-  userBookManager.setOnBookChangeListener(() => { 
+  userBookManager.setOnBookChangeListener(() => {
     setBorrowedBooks(userBookManager.getAllBorrowedBooks());
     setReservedBooks(userBookManager.getAllReservedBooks());
- });
+  });
 
   return (
     <>
@@ -63,7 +63,7 @@ export default function HomePage() {
             <div className={styles.carouselOuter}>
               <div className={styles.carouselBadge}>
                 <h4 className={styles.badgeHeader}>Borrowed</h4>
-                <HomePageCarousel books={borrowedBooks} setBooks={setBorrowedBooks}/>
+                <HomePageCarousel books={borrowedBooks} />
               </div>
             </div>
           </Col>
@@ -71,7 +71,7 @@ export default function HomePage() {
             <div className={styles.carouselOuter}>
               <div className={styles.carouselBadge}>
                 <h4 className={styles.badgeHeader}>Reserved</h4>
-                <HomePageCarousel books={reservedBooks} setBooks={setReservedBooks} />
+                <HomePageCarousel books={reservedBooks} />
               </div>
             </div>
           </Col>

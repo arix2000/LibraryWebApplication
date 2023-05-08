@@ -2,7 +2,7 @@ import { Carousel } from "react-bootstrap";
 import styles from "../styles/homePage/homePage.module.css";
 import BookItem from "../BookSearch/BookItem";
 
-export default function HomePageCarousel({ books, setBooks }) {
+export default function HomePageCarousel({ books }) {
   return (
     <>
       <Carousel

@@ -24,7 +24,7 @@ export default function BookList({ books }) {
   }, []);
 
   const renderedBooks = currentBooks.map((book) => {
-    return <BookItem book={book} key={book.isbn13} margin={4} radius='24px'/>;
+    return <BookItem book={book} key={book.isbn13} margin={4} radius="24px" />;
   });
 
   return (
