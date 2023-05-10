@@ -22,8 +22,8 @@ export default class HistoryManager {
     logHistory(historyAction, bookId, user) {
         const globalHistoryNextIndex = this.getGlobalHistory().length;
         const userHistoryNextIndex = user.history.length;
-        this.#saveUserHistory(new HistoryObject(userHistoryNextIndex, historyAction, bookId, user));
-        this.#saveGlobalHistory(new HistoryObject(globalHistoryNextIndex, historyAction, bookId, user));
+        this.#saveUserHistory(new HistoryObject(userHistoryNextIndex, historyAction, bookId, user.name, user.surname));
+        this.#saveGlobalHistory(new HistoryObject(globalHistoryNextIndex, historyAction, bookId, user.name, user.surname));
     }
 
     #saveUserHistory(historyObject) {

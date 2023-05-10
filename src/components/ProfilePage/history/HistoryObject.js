@@ -1,10 +1,11 @@
 export default class HistoryObject {
 
-    constructor(historyId, action, bookId, user) {
+    constructor(historyId, action, bookId, userName, userSurname) {
         this.historyId = historyId;
         this.action = action;
         this.bookId = bookId;
-        this.user = user;
+        this.userName = userName;
+        this.userSurname = userSurname;
         let date = new Date();
         this.date = this.#getDateFormat(date);
         this.time = date.toLocaleTimeString('en-GB', {
