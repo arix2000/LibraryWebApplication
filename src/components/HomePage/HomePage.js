@@ -1,5 +1,4 @@
 import NavBar from "../UiCommon/NavBar";
-import HomePageCarousel from "./HomePageCarousel";
 import styles from "../styles/homePage/homePage.module.css";
 import books from "../../models/books.json";
 import { Container, Row, Col } from "react-bootstrap";
@@ -7,7 +6,16 @@ import UserBookManager from "../../common/UserBookManager";
 import HomePageBanner from "./HomePageBanner";
 import { useState } from "react";
 
-export default function HomePage() {
+export default function HomePage({
+  handleBorrowClick,
+  handleReserveClick,
+  handleReturnClick,
+  handleCancelClick,
+  isBookBorrowed,
+  isBookReserved,
+  setIsBookBorrowed,
+  setIsBookReserved,
+}) {
   const recommBooks = [
     books[2676],
     books[65],
@@ -38,6 +46,13 @@ export default function HomePage() {
     setReservedBooks(userBookManager.getAllReservedBooks());
   });
 
+  const filteredRecommBooks = recommBooks.filter(
+    (book) => !borrowedBooks.includes(book) && !reservedBooks.includes(book)
+  );
+  const filteredBestBooks = bestBooks.filter(
+    (book) => !borrowedBooks.includes(book) && !reservedBooks.includes(book)
+  );
+
   return (
     <>
       <NavBar showSearchBar={false} />
@@ -46,7 +61,17 @@ export default function HomePage() {
           <div className={styles.bannerOuter}>
             <div className={styles.carouselBadge}>
               <h4 className={styles.badgeHeader}>Recommended</h4>
-              <HomePageBanner books={recommBooks} />
+              <HomePageBanner
+                books={filteredRecommBooks}
+                handleBorrowClick={handleBorrowClick}
+                handleCancelClick={handleCancelClick}
+                handleReserveClick={handleReserveClick}
+                handleReturnClick={handleReturnClick}
+                isBookBorrowed={isBookBorrowed}
+                isBookReserved={isBookReserved}
+                setIsBookBorrowed={setIsBookBorrowed}
+                setIsBookReserved={setIsBookReserved}
+              />
             </div>
           </div>
         </Row>
@@ -54,7 +79,17 @@ export default function HomePage() {
           <div className={styles.bannerOuter}>
             <div className={styles.carouselBadge}>
               <h4 className={styles.badgeHeader}>Most Popular Choices</h4>
-              <HomePageBanner books={bestBooks} />
+              <HomePageBanner
+                books={filteredBestBooks}
+                handleBorrowClick={handleBorrowClick}
+                handleCancelClick={handleCancelClick}
+                handleReserveClick={handleReserveClick}
+                handleReturnClick={handleReturnClick}
+                isBookBorrowed={isBookBorrowed}
+                isBookReserved={isBookReserved}
+                setIsBookBorrowed={setIsBookBorrowed}
+                setIsBookReserved={setIsBookReserved}
+              />
             </div>
           </div>
         </Row>
@@ -63,7 +98,17 @@ export default function HomePage() {
             <div className={styles.carouselOuter}>
               <div className={styles.carouselBadge}>
                 <h4 className={styles.badgeHeader}>Borrowed</h4>
-                <HomePageCarousel books={borrowedBooks} />
+                <HomePageBanner
+                  books={borrowedBooks}
+                  handleBorrowClick={handleBorrowClick}
+                  handleCancelClick={handleCancelClick}
+                  handleReserveClick={handleReserveClick}
+                  handleReturnClick={handleReturnClick}
+                  isBookBorrowed={isBookBorrowed}
+                  isBookReserved={isBookReserved}
+                  setIsBookBorrowed={setIsBookBorrowed}
+                  setIsBookReserved={setIsBookReserved}
+                />
               </div>
             </div>
           </Col>
@@ -71,7 +116,17 @@ export default function HomePage() {
             <div className={styles.carouselOuter}>
               <div className={styles.carouselBadge}>
                 <h4 className={styles.badgeHeader}>Reserved</h4>
-                <HomePageCarousel books={reservedBooks} />
+                <HomePageBanner
+                  books={reservedBooks}
+                  handleBorrowClick={handleBorrowClick}
+                  handleCancelClick={handleCancelClick}
+                  handleReserveClick={handleReserveClick}
+                  handleReturnClick={handleReturnClick}
+                  isBookBorrowed={isBookBorrowed}
+                  isBookReserved={isBookReserved}
+                  setIsBookBorrowed={setIsBookBorrowed}
+                  setIsBookReserved={setIsBookReserved}
+                />
               </div>
             </div>
           </Col>

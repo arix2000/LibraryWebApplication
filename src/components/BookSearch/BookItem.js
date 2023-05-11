@@ -1,15 +1,30 @@
 import styles from "../styles/bookItem.module.css";
 import { Col, Row, Card, Container } from "react-bootstrap";
 import { Rating } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BookDetailModal from "./BookDetail/BookDetailModal";
 import BorrowButton from "./common/BorrowButton";
+import UserBookManager from "../../common/UserBookManager";
 
-export default function BookItem({ book, margin }) {
+export default function BookItem({
+  book,
+  margin,
+  handleBorrowClick,
+  handleReserveClick,
+  handleReturnClick,
+  handleCancelClick,
+  isBookBorrowed,
+  isBookReserved,
+}) {
   const [detailShow, setDetailShow] = useState(false);
   const [imgObjectFitStyle, setImgObjectFitStyle] = useState(
     styles.cardImgFitContain
   );
+
+  const userBookManager = new UserBookManager();
+
+  const isBorrowed = userBookManager.isBorrowed(book.isbn13);
+  const isReserved = userBookManager.isReserved(book.isbn13);
 
   return (
     <>
@@ -54,7 +69,12 @@ export default function BookItem({ book, margin }) {
               <BorrowButton
                 rowStyles={styles.itemButtonSection}
                 book={book}
-                onClick={(e) => e.stopPropagation()}
+                handleBorrowClick={handleBorrowClick}
+                handleCancelClick={handleCancelClick}
+                handleReserveClick={handleReserveClick}
+                handleReturnClick={handleReturnClick}
+                isBookBorrowed={isBorrowed}
+                isBookReserved={isReserved}
               />
             </Card.Body>
           </Col>
@@ -64,6 +84,12 @@ export default function BookItem({ book, margin }) {
         show={detailShow}
         onHide={() => setDetailShow(false)}
         book={book}
+        handleBorrowClick={handleBorrowClick}
+        handleCancelClick={handleCancelClick}
+        handleReserveClick={handleReserveClick}
+        handleReturnClick={handleReturnClick}
+        isBookBorrowed={isBookBorrowed}
+        isBookReserved={isBookReserved}
       />
     </>
   );

@@ -1,7 +1,15 @@
 import BookItem from "./BookItem";
 import { useState, useEffect } from "react";
 
-export default function BookList({ books }) {
+export default function BookList({
+  books,
+  handleBorrowClick,
+  handleReserveClick,
+  handleReturnClick,
+  handleCancelClick,
+  isBookBorrowed,
+  isBookReserved,
+}) {
   const itemsPerPage = 9;
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,7 +32,19 @@ export default function BookList({ books }) {
   }, []);
 
   const renderedBooks = currentBooks.map((book) => {
-    return <BookItem book={book} key={book.isbn13} margin={4} radius="24px" />;
+    return (
+      <BookItem
+        book={book}
+        key={book.isbn13}
+        margin={4}
+        handleBorrowClick={handleBorrowClick}
+        handleCancelClick={handleCancelClick}
+        handleReserveClick={handleReserveClick}
+        handleReturnClick={handleReturnClick}
+        isBookBorrowed={isBookBorrowed}
+        isBookReserved={isBookReserved}
+      />
+    );
   });
 
   return (
