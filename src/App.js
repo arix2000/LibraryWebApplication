@@ -12,33 +12,27 @@ import HomePage from "./components/HomePage/HomePage";
 import UserHistoryPage from "./components/ProfilePage/UserHistoryPage";
 import PrivateRoute from "./components/UiCommon/PrivateRoute";
 import UserBookManager from "./common/UserBookManager";
-import { useState, useEffect } from "react";
 
 function App() {
   handleFirstTimeOpen();
 
   const userBookManager = new UserBookManager();
 
-  const [isBookBorrowed, setIsBookBorrowed] = useState();
-  const [isBookReserved, setIsBookReserved] = useState();
-
   const handleBorrowClick = (book) => {
     userBookManager.borrowBook(book.isbn13);
-    setIsBookBorrowed(true);
-    setIsBookReserved(false);
+    console.log("Borrowed");
   };
   const handleReturnClick = (book) => {
     userBookManager.returnBook(book.isbn13);
-    setIsBookBorrowed(false);
+    console.log("Return");
   };
   const handleReserveClick = (book) => {
     userBookManager.reserviseBook(book.isbn13);
-    setIsBookReserved(true);
-    setIsBookBorrowed(false);
+    console.log("Reserve");
   };
   const handleCancelClick = (book) => {
     userBookManager.cancelReservation(book.isbn13);
-    setIsBookReserved(false);
+    console.log("Cancel");
   };
 
   return (
@@ -64,10 +58,6 @@ function App() {
                     handleCancelClick={handleCancelClick}
                     handleReserveClick={handleReserveClick}
                     handleReturnClick={handleReturnClick}
-                    isBookBorrowed={isBookBorrowed}
-                    isBookReserved={isBookReserved}
-                    setIsBookBorrowed={setIsBookBorrowed}
-                    setIsBookReserved={setIsBookReserved}
                   />
                 </PrivateRoute>
               }
@@ -81,10 +71,6 @@ function App() {
                     handleCancelClick={handleCancelClick}
                     handleReserveClick={handleReserveClick}
                     handleReturnClick={handleReturnClick}
-                    isBookBorrowed={isBookBorrowed}
-                    isBookReserved={isBookReserved}
-                    setIsBookBorrowed={setIsBookBorrowed}
-                    setIsBookReserved={setIsBookReserved}
                   />
                 </PrivateRoute>
               }

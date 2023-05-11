@@ -1,7 +1,7 @@
 import styles from "../styles/bookItem.module.css";
-import { Col, Row, Card, Container } from "react-bootstrap";
+import { Col, Row, Card } from "react-bootstrap";
 import { Rating } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import BookDetailModal from "./BookDetail/BookDetailModal";
 import BorrowButton from "./common/BorrowButton";
 import UserBookManager from "../../common/UserBookManager";
@@ -13,8 +13,6 @@ export default function BookItem({
   handleReserveClick,
   handleReturnClick,
   handleCancelClick,
-  isBookBorrowed,
-  isBookReserved,
 }) {
   const [detailShow, setDetailShow] = useState(false);
   const [imgObjectFitStyle, setImgObjectFitStyle] = useState(
@@ -88,8 +86,8 @@ export default function BookItem({
         handleCancelClick={handleCancelClick}
         handleReserveClick={handleReserveClick}
         handleReturnClick={handleReturnClick}
-        isBookBorrowed={isBookBorrowed}
-        isBookReserved={isBookReserved}
+        isBookBorrowed={isBorrowed}
+        isBookReserved={isReserved}
       />
     </>
   );

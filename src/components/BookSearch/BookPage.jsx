@@ -8,10 +8,6 @@ export default function BookPage(
   handleReserveClick,
   handleReturnClick,
   handleCancelClick,
-  isBookBorrowed,
-  isBookReserved,
-  setIsBookBorrowed,
-  setIsBookReserved
 ) {
   const [books, setBooks] = useState([]);
 
@@ -42,10 +38,6 @@ export default function BookPage(
         handleCancelClick={handleCancelClick}
         handleReserveClick={handleReserveClick}
         handleReturnClick={handleReturnClick}
-        isBookBorrowed={isBookBorrowed}
-        isBookReserved={isBookReserved}
-        setIsBookBorrowed={setIsBookBorrowed}
-        setIsBookReserved={setIsBookReserved}
       />
     </>
   );

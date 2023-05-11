@@ -11,10 +11,7 @@ export default function BookDetailModal({
   handleReserveClick,
   handleReturnClick,
   handleCancelClick,
-  isBookBorrowed,
-  isBookReserved,
 }) {
-
   const userBookManager = new UserBookManager();
 
   const isBorrowed = userBookManager.isBorrowed(book.isbn13);

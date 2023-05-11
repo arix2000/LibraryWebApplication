@@ -7,12 +7,7 @@ export default function HomePageBanner({
   handleReserveClick,
   handleReturnClick,
   handleCancelClick,
-  isBookBorrowed,
-  isBookReserved,
-  setIsBookBorrowed,
-  setIsBookReserved,
 }) {
-
   return (
     <>
       <div className={styles.homePageBanner}>
@@ -26,10 +21,6 @@ export default function HomePageBanner({
                 handleCancelClick={handleCancelClick}
                 handleReserveClick={handleReserveClick}
                 handleReturnClick={handleReturnClick}
-                isBookBorrowed={isBookBorrowed}
-                isBookReserved={isBookReserved}
-                setIsBookBorrowed={setIsBookBorrowed}
-                setIsBookReserved={setIsBookReserved}
               />
             </div>
           ))}

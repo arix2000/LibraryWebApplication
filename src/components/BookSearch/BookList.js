@@ -7,8 +7,6 @@ export default function BookList({
   handleReserveClick,
   handleReturnClick,
   handleCancelClick,
-  isBookBorrowed,
-  isBookReserved,
 }) {
   const itemsPerPage = 9;
 
@@ -41,8 +39,6 @@ export default function BookList({
         handleCancelClick={handleCancelClick}
         handleReserveClick={handleReserveClick}
         handleReturnClick={handleReturnClick}
-        isBookBorrowed={isBookBorrowed}
-        isBookReserved={isBookReserved}
       />
     );
   });
