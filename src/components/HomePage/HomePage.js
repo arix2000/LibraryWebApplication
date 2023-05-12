@@ -8,34 +8,19 @@ import { useState } from "react";
 
 function Banner({
   books,
-  title,
-  handleBorrowClick,
-  handleReserveClick,
-  handleReturnClick,
-  handleCancelClick,
+  title
 }) {
   return (
     <div className={styles.bannerOuter}>
       <div className={styles.carouselBadge}>
         <h4 className={styles.badgeHeader}>{title}</h4>
-        <HomePageBanner
-          books={books}
-          handleBorrowClick={handleBorrowClick}
-          handleCancelClick={handleCancelClick}
-          handleReserveClick={handleReserveClick}
-          handleReturnClick={handleReturnClick}
-        />
+        <HomePageBanner books={books} />
       </div>
     </div>
   );
 }
 
-export default function HomePage({
-  handleBorrowClick,
-  handleReserveClick,
-  handleReturnClick,
-  handleCancelClick,
-}) {
+export default function HomePage() {
   const recommBooks = [
     books[2676],
     books[65],
@@ -44,6 +29,7 @@ export default function HomePage({
     books[64],
     books[2677],
   ];
+
   const bestBooks = [
     books[12],
     books[19],
@@ -62,39 +48,37 @@ export default function HomePage({
     userBookManager.getAllReservedBooks()
   );
   userBookManager.setOnBookChangeListener(() => {
-    setBorrowedBooks(userBookManager.getAllBorrowedBooks());
-    setReservedBooks(userBookManager.getAllReservedBooks());
+    const borrowedBooksLocal = userBookManager.getAllBorrowedBooks();
+    const reservedBooksLocal = userBookManager.getAllReservedBooks();
+    setBorrowedBooks([]);
+    setReservedBooks([]);
+    setRecommBooks([]);
+    setBestBooks([]);
+    setTimeout(() => {
+      setBorrowedBooks(borrowedBooksLocal);
+      setReservedBooks(reservedBooksLocal);
+      setRecommBooks(recommBooks);
+      setBestBooks(bestBooks);
+    }, 0);
   });
 
-  const filteredRecommBooks = recommBooks.filter(
-    (book) => !borrowedBooks.includes(book) && !reservedBooks.includes(book)
-  );
-  const filteredBestBooks = bestBooks.filter(
-    (book) => !borrowedBooks.includes(book) && !reservedBooks.includes(book)
-  );
+  const [recommBooksDynamic, setRecommBooks] = useState(recommBooks);
+  const [bestBooksDynamic, setBestBooks] = useState(bestBooks);
 
   return (
     <>
       <NavBar showSearchBar={false} />
-      <Container className="mb-5">
+      <Container className="mb-5" style={{ minHeight: "1300px" }}>
         <Row>
           <Banner
-            books={filteredRecommBooks}
+            books={recommBooksDynamic}
             title="Recommended"
-            handleBorrowClick={handleBorrowClick}
-            handleCancelClick={handleCancelClick}
-            handleReserveClick={handleReserveClick}
-            handleReturnClick={handleReturnClick}
           />
         </Row>
         <Row>
           <Banner
-            books={filteredBestBooks}
+            books={bestBooksDynamic}
             title="Bestsellers"
-            handleBorrowClick={handleBorrowClick}
-            handleCancelClick={handleCancelClick}
-            handleReserveClick={handleReserveClick}
-            handleReturnClick={handleReturnClick}
           />
         </Row>
         <Row className={styles.userBooksRow}>
@@ -102,20 +86,12 @@ export default function HomePage({
             <Banner
               books={borrowedBooks}
               title="Recommended"
-              handleBorrowClick={handleBorrowClick}
-              handleCancelClick={handleCancelClick}
-              handleReserveClick={handleReserveClick}
-              handleReturnClick={handleReturnClick}
             />
           </Col>
           <Col>
             <Banner
               books={reservedBooks}
               title="Recommended"
-              handleBorrowClick={handleBorrowClick}
-              handleCancelClick={handleCancelClick}
-              handleReserveClick={handleReserveClick}
-              handleReturnClick={handleReturnClick}
             />
           </Col>
         </Row>

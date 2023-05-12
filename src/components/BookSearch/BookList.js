@@ -1,13 +1,7 @@
 import BookItem from "./BookItem";
 import { useState, useEffect } from "react";
 
-export default function BookList({
-  books,
-  handleBorrowClick,
-  handleReserveClick,
-  handleReturnClick,
-  handleCancelClick,
-}) {
+export default function BookList({books}) {
   const itemsPerPage = 9;
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -35,10 +29,6 @@ export default function BookList({
         book={book}
         key={book.isbn13}
         margin={4}
-        handleBorrowClick={handleBorrowClick}
-        handleCancelClick={handleCancelClick}
-        handleReserveClick={handleReserveClick}
-        handleReturnClick={handleReturnClick}
       />
     );
   });

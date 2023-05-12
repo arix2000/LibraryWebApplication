@@ -7,16 +7,7 @@ export default function BookDetailModal({
   show,
   onHide,
   book,
-  handleBorrowClick,
-  handleReserveClick,
-  handleReturnClick,
-  handleCancelClick,
 }) {
-  const userBookManager = new UserBookManager();
-
-  const isBorrowed = userBookManager.isBorrowed(book.isbn13);
-  const isReserved = userBookManager.isReserved(book.isbn13);
-
   return (
     <Modal
       show={show}
@@ -51,12 +42,6 @@ export default function BookDetailModal({
         <BorrowButton
           rowStyles={styles.itemButtonSectionModal}
           book={book}
-          handleBorrowClick={handleBorrowClick}
-          handleCancelClick={handleCancelClick}
-          handleReserveClick={handleReserveClick}
-          handleReturnClick={handleReturnClick}
-          isBookBorrowed={isBorrowed}
-          isBookReserved={isReserved}
         />
       </Modal.Footer>
     </Modal>

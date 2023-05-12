@@ -15,26 +15,6 @@ import UserBookManager from "./common/UserBookManager";
 
 function App() {
   handleFirstTimeOpen();
-
-  const userBookManager = new UserBookManager();
-
-  const handleBorrowClick = (book) => {
-    userBookManager.borrowBook(book.isbn13);
-    console.log("Borrowed");
-  };
-  const handleReturnClick = (book) => {
-    userBookManager.returnBook(book.isbn13);
-    console.log("Return");
-  };
-  const handleReserveClick = (book) => {
-    userBookManager.reserviseBook(book.isbn13);
-    console.log("Reserve");
-  };
-  const handleCancelClick = (book) => {
-    userBookManager.cancelReservation(book.isbn13);
-    console.log("Cancel");
-  };
-
   return (
     <>
       <BrowserRouter>
@@ -53,12 +33,7 @@ function App() {
               path={AppRoutes.booksPage}
               element={
                 <PrivateRoute>
-                  <BookPage
-                    handleBorrowClick={handleBorrowClick}
-                    handleCancelClick={handleCancelClick}
-                    handleReserveClick={handleReserveClick}
-                    handleReturnClick={handleReturnClick}
-                  />
+                  <BookPage />
                 </PrivateRoute>
               }
             />
@@ -66,12 +41,7 @@ function App() {
               path={AppRoutes.homePage}
               element={
                 <PrivateRoute>
-                  <HomePage
-                    handleBorrowClick={handleBorrowClick}
-                    handleCancelClick={handleCancelClick}
-                    handleReserveClick={handleReserveClick}
-                    handleReturnClick={handleReturnClick}
-                  />
+                  <HomePage />
                 </PrivateRoute>
               }
             />
