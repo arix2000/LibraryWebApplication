@@ -5,21 +5,25 @@
 .twoSidesWrapper {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    max-width: 1500px;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .historyListPanelSingle {
-    width: 100%;
+    max-width: 100%;
 }
 
 .historyListPanel {
-    width: 50%;
+    max-width: 50%;
 }
 
 @media (max-width: 985px) {
     .historyListPanel {
-        width: 100%;
+        max-width: 100%;
     }
 }
 

@@ -45,7 +45,7 @@ export default function BookItem({ book }) {
                   readOnly
                 />
               </Card.Title>
-              <BorrowButton rowStyles={styles.itemButtonSection} bookId={book.isbn13}/>
+              <BorrowButton rowStyles={styles.itemButtonSection} />
             </Card.Body>
           </Col>
         </Row>
