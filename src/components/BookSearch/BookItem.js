@@ -5,14 +5,7 @@ import React, { useState } from "react";
 import BookDetailModal from "./BookDetail/BookDetailModal";
 import BorrowButton from "./common/BorrowButton";
 
-export default function BookItem({
-  book,
-  margin,
-  handleBorrowClick,
-  handleReserveClick,
-  handleReturnClick,
-  handleCancelClick,
-}) {
+export default function BookItem({ book, margin }) {
   const [detailShow, setDetailShow] = useState(false);
   const [imgObjectFitStyle, setImgObjectFitStyle] = useState(
     styles.cardImgFitContain
@@ -61,10 +54,6 @@ export default function BookItem({
               <BorrowButton
                 rowStyles={styles.itemButtonSection}
                 book={book}
-                handleBorrowClick={handleBorrowClick}
-                handleCancelClick={handleCancelClick}
-                handleReserveClick={handleReserveClick}
-                handleReturnClick={handleReturnClick}
               />
             </Card.Body>
           </Col>
@@ -74,10 +63,6 @@ export default function BookItem({
         show={detailShow}
         onHide={() => setDetailShow(false)}
         book={book}
-        handleBorrowClick={handleBorrowClick}
-        handleCancelClick={handleCancelClick}
-        handleReserveClick={handleReserveClick}
-        handleReturnClick={handleReturnClick}
       />
     </>
   );

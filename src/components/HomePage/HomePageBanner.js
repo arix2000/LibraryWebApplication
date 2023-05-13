@@ -1,13 +1,7 @@
 import BookItem from "../BookSearch/BookItem";
 import styles from "../styles/homePage/homePage.module.css";
 
-export default function HomePageBanner({
-  books,
-  handleBorrowClick,
-  handleReserveClick,
-  handleReturnClick,
-  handleCancelClick,
-}) {
+export default function HomePageBanner({ books }) {
   return (
     <>
       <div className={styles.homePageBanner}>
@@ -17,10 +11,6 @@ export default function HomePageBanner({
               <BookItem
                 book={book}
                 margin={0}
-                handleBorrowClick={handleBorrowClick}
-                handleCancelClick={handleCancelClick}
-                handleReserveClick={handleReserveClick}
-                handleReturnClick={handleReturnClick}
               />
             </div>
           ))}

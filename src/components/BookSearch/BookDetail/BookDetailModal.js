@@ -6,12 +6,7 @@ export default function BookDetailModal({
   show,
   onHide,
   book,
-  handleBorrowClick,
-  handleReserveClick,
-  handleReturnClick,
-  handleCancelClick,
 }) {
-
   return (
     <Modal
       show={show}
@@ -46,10 +41,6 @@ export default function BookDetailModal({
         <BorrowButton
           rowStyles={styles.itemButtonSectionModal}
           book={book}
-          handleBorrowClick={handleBorrowClick}
-          handleCancelClick={handleCancelClick}
-          handleReserveClick={handleReserveClick}
-          handleReturnClick={handleReturnClick}
         />
       </Modal.Footer>
     </Modal>

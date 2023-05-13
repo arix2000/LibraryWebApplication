@@ -3,12 +3,7 @@ import NavBar from "../UiCommon/NavBar";
 import data from "../../models/books.json";
 import { useState } from "react";
 
-export default function BookPage(
-  handleBorrowClick,
-  handleReserveClick,
-  handleReturnClick,
-  handleCancelClick,
-) {
+export default function BookPage() {
   const [books, setBooks] = useState([]);
 
   const handleSearchSubmit = (query) => {
@@ -32,13 +27,7 @@ export default function BookPage(
         initialExpand={true}
         searchAutoFocus={true}
       />
-      <BookList
-        books={books}
-        handleBorrowClick={handleBorrowClick}
-        handleCancelClick={handleCancelClick}
-        handleReserveClick={handleReserveClick}
-        handleReturnClick={handleReturnClick}
-      />
+      <BookList books={books}/>
     </>
   );
 }
