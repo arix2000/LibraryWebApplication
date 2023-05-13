@@ -1,7 +1,6 @@
 import { Modal, Button } from "react-bootstrap";
 import styles from "../../styles/bookItem.module.css";
 import BorrowButton from "../common/BorrowButton";
-import UserBookManager from "../../../common/UserBookManager";
 
 export default function BookDetailModal({
   show,
@@ -12,10 +11,6 @@ export default function BookDetailModal({
   handleReturnClick,
   handleCancelClick,
 }) {
-  const userBookManager = new UserBookManager();
-
-  const isBorrowed = userBookManager.isBorrowed(book.isbn13);
-  const isReserved = userBookManager.isReserved(book.isbn13);
 
   return (
     <Modal
@@ -55,8 +50,6 @@ export default function BookDetailModal({
           handleCancelClick={handleCancelClick}
           handleReserveClick={handleReserveClick}
           handleReturnClick={handleReturnClick}
-          isBookBorrowed={isBorrowed}
-          isBookReserved={isReserved}
         />
       </Modal.Footer>
     </Modal>

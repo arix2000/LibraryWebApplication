@@ -29,24 +29,22 @@ export default function BookList({
     observer.observe(document.querySelector("#end-of-list"));
   }, []);
 
-  const renderedBooks = currentBooks.map((book) => {
-    return (
-      <BookItem
-        book={book}
-        key={book.isbn13}
-        margin={4}
-        handleBorrowClick={handleBorrowClick}
-        handleCancelClick={handleCancelClick}
-        handleReserveClick={handleReserveClick}
-        handleReturnClick={handleReturnClick}
-      />
-    );
-  });
-
   return (
     <div className="background-color full-height px-2 pb-2">
       <div className="d-flex flex-row flex-wrap">
-        {renderedBooks}
+        {currentBooks.map((book) => {
+          return(
+          <BookItem
+            book={book}
+            key={book.isbn13}
+            margin={4}
+            handleBorrowClick={handleBorrowClick}
+            handleCancelClick={handleCancelClick}
+            handleReserveClick={handleReserveClick}
+            handleReturnClick={handleReturnClick}
+          />
+          )
+        })}
         <div id="end-of-list" />
       </div>
     </div>

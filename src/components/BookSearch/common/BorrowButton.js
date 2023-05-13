@@ -1,6 +1,7 @@
 import { Button, Row } from "react-bootstrap";
 import { RiBookMarkFill, RiHealthBookFill } from "react-icons/ri";
 import styles from "../../styles/bookItem.module.css";
+import UserBookManager from "../../../common/UserBookManager";
 
 export default function BorrowButton({
   rowStyles,
@@ -9,12 +10,14 @@ export default function BorrowButton({
   handleReserveClick,
   handleReturnClick,
   handleCancelClick,
-  isBookBorrowed,
-  isBookReserved,
 }) {
+  const userBookManager = new UserBookManager();
+
+  const isBorrowed = userBookManager.isBorrowed(book.isbn13);
+  const isReserved = userBookManager.isReserved(book.isbn13);
   return (
     <Row className={rowStyles}>
-      {isBookBorrowed ? (
+      {isBorrowed ? (
         <>
           <Button
             onClick={(e) => {
@@ -37,7 +40,7 @@ export default function BorrowButton({
             Return <RiHealthBookFill style={{ width: 20, height: 20 }} />
           </Button>
         </>
-      ) : isBookReserved ? (
+      ) : isReserved ? (
         <>
           <Button
             onClick={(e) => {

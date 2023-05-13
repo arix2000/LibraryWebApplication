@@ -4,7 +4,6 @@ import { Rating } from "@mui/material";
 import React, { useState } from "react";
 import BookDetailModal from "./BookDetail/BookDetailModal";
 import BorrowButton from "./common/BorrowButton";
-import UserBookManager from "../../common/UserBookManager";
 
 export default function BookItem({
   book,
@@ -18,11 +17,6 @@ export default function BookItem({
   const [imgObjectFitStyle, setImgObjectFitStyle] = useState(
     styles.cardImgFitContain
   );
-
-  const userBookManager = new UserBookManager();
-
-  const isBorrowed = userBookManager.isBorrowed(book.isbn13);
-  const isReserved = userBookManager.isReserved(book.isbn13);
 
   return (
     <>
@@ -71,8 +65,6 @@ export default function BookItem({
                 handleCancelClick={handleCancelClick}
                 handleReserveClick={handleReserveClick}
                 handleReturnClick={handleReturnClick}
-                isBookBorrowed={isBorrowed}
-                isBookReserved={isReserved}
               />
             </Card.Body>
           </Col>
@@ -86,8 +78,6 @@ export default function BookItem({
         handleCancelClick={handleCancelClick}
         handleReserveClick={handleReserveClick}
         handleReturnClick={handleReturnClick}
-        isBookBorrowed={isBorrowed}
-        isBookReserved={isReserved}
       />
     </>
   );
