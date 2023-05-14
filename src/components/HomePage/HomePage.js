@@ -97,8 +97,8 @@ export default function HomePage() {
               books={reservedBooks}
               title="Reserved"
               showSearchBar={false}
-              variant="outline-primary"
-              border="2px solid #3B71CA"
+              variant="outline-warning"
+              border="2px solid #E4A11B"
             />
           </Col>
         </Row>

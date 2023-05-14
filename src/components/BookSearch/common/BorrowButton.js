@@ -43,7 +43,7 @@ export default function BorrowButton({ rowStyles, book }) {
             ? (e) => handleCancelClick(e)
             : (e) => handleReserveClick(e)
         }
-        variant="primary"
+        variant="outline-warning"
         className={`${styles.borrowButton} button-radius`}
       >
         {isBookReserved ? "Cancel Res..." : "Reserve"}{" "}
@@ -55,7 +55,7 @@ export default function BorrowButton({ rowStyles, book }) {
             ? (e) => handleReturnClick(e)
             : (e) => handleBorrowClick(e)
         }
-        variant="success"
+        variant="outline-success"
         className={`${styles.borrowButton} button-radius`}
       >
         {isBookBorrowed ? "Return" : "Borrow"}{" "}
