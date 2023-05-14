@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import BookDetailModal from "./BookDetail/BookDetailModal";
 import BorrowButton from "./common/BorrowButton";
 
-export default function BookItem({ book, margin }) {
+export default function BookItem({ book, margin, radius }) {
   const [detailShow, setDetailShow] = useState(false);
   const [imgObjectFitStyle, setImgObjectFitStyle] = useState(
     styles.cardImgFitContain
@@ -15,6 +15,7 @@ export default function BookItem({ book, margin }) {
     <>
       <Card
         className={`text-center mt-${margin} label-color ${styles.card}`}
+        style={{ borderRadius: radius }}
         text="light"
         onClick={() => setDetailShow(true)}
       >
@@ -51,10 +52,7 @@ export default function BookItem({ book, margin }) {
                   readOnly
                 />
               </Card.Title>
-              <BorrowButton
-                rowStyles={styles.itemButtonSection}
-                book={book}
-              />
+              <BorrowButton rowStyles={styles.itemButtonSection} book={book} />
             </Card.Body>
           </Col>
         </Row>

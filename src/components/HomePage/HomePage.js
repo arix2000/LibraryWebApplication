@@ -6,15 +6,12 @@ import UserBookManager from "../../common/UserBookManager";
 import HomePageBanner from "./HomePageBanner";
 import { useState } from "react";
 
-function Banner({
-  books,
-  title
-}) {
+function Banner({ books, title, variant, border }) {
   return (
     <div className={styles.bannerOuter}>
-      <div className={styles.carouselBadge}>
-        <h4 className={styles.badgeHeader}>{title}</h4>
-        <HomePageBanner books={books} />
+      <div className={styles.carouselBadge} style={{ border: border }}>
+        <h4 className={styles.badgeHeader} style={{borderBottom: border}}>{title}</h4>
+        <HomePageBanner books={books} title={title} variant={variant} border={border} />
       </div>
     </div>
   );
@@ -73,25 +70,35 @@ export default function HomePage() {
           <Banner
             books={recommBooksDynamic}
             title="Recommended"
+            showSearchBar={false}
+            border="2px solid #0275d8"
           />
         </Row>
         <Row>
           <Banner
             books={bestBooksDynamic}
             title="Bestsellers"
+            showSearchBar={false}
+            border="2px solid #0275d8"
           />
         </Row>
         <Row className={styles.userBooksRow}>
           <Col>
             <Banner
               books={borrowedBooks}
-              title="Recommended"
+              title="Borrowed"
+              showSearchBar={false}
+              variant="outline-success"
+              border="2px solid #14A44D"
             />
           </Col>
           <Col>
             <Banner
               books={reservedBooks}
-              title="Recommended"
+              title="Reserved"
+              showSearchBar={false}
+              variant="outline-primary"
+              border="2px solid #3B71CA"
             />
           </Col>
         </Row>

@@ -1,7 +1,7 @@
 import BookItem from "./BookItem";
 import { useState, useEffect } from "react";
 
-export default function BookList({books}) {
+export default function BookList({ books }) {
   const itemsPerPage = 9;
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,17 +27,9 @@ export default function BookList({books}) {
     <div className="background-color full-height px-2 pb-2">
       <div className="d-flex flex-row flex-wrap">
         {currentBooks.map((book) => {
-          return(
-          <BookItem
-            book={book}
-            key={book.isbn13}
-            margin={4}
-            handleBorrowClick={handleBorrowClick}
-            handleCancelClick={handleCancelClick}
-            handleReserveClick={handleReserveClick}
-            handleReturnClick={handleReturnClick}
-          />
-          )
+          return (
+            <BookItem book={book} key={book.isbn13} margin={4} radius={24} />
+          );
         })}
         <div id="end-of-list" />
       </div>

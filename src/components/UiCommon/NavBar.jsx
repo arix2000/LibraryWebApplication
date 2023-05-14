@@ -16,6 +16,7 @@ function NavBar({
   showSearchBar,
   initialExpand = false,
   searchAutoFocus = false,
+  forwardedRef,
 }) {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
@@ -89,7 +90,8 @@ function NavBar({
                 <Form
                   className="d-flex"
                   onSubmit={handleFormSubmit}
-                  style={{ disply: "flex", justifyContent: "right" }}
+                  style={{ display: "flex", justifyContent: "right" }}
+                  ref={forwardedRef}
                 >
                   <Form.Control
                     value={query}

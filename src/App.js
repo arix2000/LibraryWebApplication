@@ -11,7 +11,6 @@ import AppRoutes from "./common/AppRoutes";
 import HomePage from "./components/HomePage/HomePage";
 import UserHistoryPage from "./components/ProfilePage/UserHistoryPage";
 import PrivateRoute from "./components/UiCommon/PrivateRoute";
-import UserBookManager from "./common/UserBookManager";
 
 function App() {
   handleFirstTimeOpen();

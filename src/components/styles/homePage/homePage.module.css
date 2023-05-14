@@ -3,7 +3,6 @@
   width: 480px;
   display: flex;
   justify-content: center;
-  transition-duration: 0.2s;
 }
 
 .bannerOuter {
@@ -11,23 +10,13 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  transition-duration: 0.2s;
-}
-
-.bannerOuter:hover {
-  transform: scale(1.02);
-}
-
-.carouselOuter:hover {
-  transform: scale(1.02);
 }
 
 .carouselBadge {
   box-shadow: 8px 8px 8px 0px black;
   border-radius: 20px 20px 0px 0px;
   padding-top: 15px;
-  background-color: #0275d8;
-  border-color: #0275d8;
+  background-color: transparent;
   color: aliceblue;
   width: 100%;
   text-align: center;
@@ -40,6 +29,9 @@
 
 .badgeHeader {
   color: rgb(241, 241, 241);
+  border-bottom: 2px solid #0275d8;
+  margin-bottom: 0;
+  padding-bottom: 1rem;
 }
 
 .carouselImg {

@@ -7,8 +7,12 @@ import { useState } from "react";
 export default function BorrowButton({ rowStyles, book }) {
   const userBookManager = new UserBookManager();
 
-  const [isBookBorrowed, setIsBookBorrowed] = useState(userBookManager.isBorrowed(book.isbn13));
-  const [isBookReserved, setIsBookReserved] = useState(userBookManager.isReserved(book.isbn13));
+  const [isBookBorrowed, setIsBookBorrowed] = useState(
+    userBookManager.isBorrowed(book.isbn13)
+  );
+  const [isBookReserved, setIsBookReserved] = useState(
+    userBookManager.isReserved(book.isbn13)
+  );
 
   const handleBorrowClick = (e) => {
     e.stopPropagation();
@@ -31,14 +35,31 @@ export default function BorrowButton({ rowStyles, book }) {
     setIsBookReserved(false);
   };
 
-
   return (
     <Row className={rowStyles}>
-      <Button onClick={isBookReserved ? (e) => handleCancelClick(e) : (e) => handleReserveClick(e)} variant="primary" className={`${styles.borrowButton} button-radius`}>
-        {isBookReserved ? "Cancel Res..." : "Reserve"} <RiBookMarkFill style={{ width: 20, height: 20 }} />
+      <Button
+        onClick={
+          isBookReserved
+            ? (e) => handleCancelClick(e)
+            : (e) => handleReserveClick(e)
+        }
+        variant="primary"
+        className={`${styles.borrowButton} button-radius`}
+      >
+        {isBookReserved ? "Cancel Res..." : "Reserve"}{" "}
+        <RiBookMarkFill style={{ width: 20, height: 20 }} />
       </Button>
-      <Button onClick={isBookBorrowed ? (e) => handleReturnClick(e) : (e) => handleBorrowClick(e)} variant="success" className={`${styles.borrowButton} button-radius`}>
-        {isBookBorrowed ? "Return" : "Borrow"} <RiHealthBookFill style={{ width: 20, height: 20 }} />
+      <Button
+        onClick={
+          isBookBorrowed
+            ? (e) => handleReturnClick(e)
+            : (e) => handleBorrowClick(e)
+        }
+        variant="success"
+        className={`${styles.borrowButton} button-radius`}
+      >
+        {isBookBorrowed ? "Return" : "Borrow"}{" "}
+        <RiHealthBookFill style={{ width: 20, height: 20 }} />
       </Button>
     </Row>
   );
