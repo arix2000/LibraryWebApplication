@@ -43,10 +43,10 @@ export default function BorrowButton({ rowStyles, book }) {
             ? (e) => handleCancelClick(e)
             : (e) => handleReserveClick(e)
         }
-        variant="outline-warning"
+        variant="primary"
         className={`${styles.borrowButton} button-radius`}
       >
-        {isBookReserved ? "Cancel Res..." : "Reserve"}{" "}
+        {isBookReserved ? "Cancel Res." : "Reserve"}{" "}
         <RiBookMarkFill style={{ width: 20, height: 20 }} />
       </Button>
       <Button
@@ -55,7 +55,7 @@ export default function BorrowButton({ rowStyles, book }) {
             ? (e) => handleReturnClick(e)
             : (e) => handleBorrowClick(e)
         }
-        variant="outline-success"
+        variant="success"
         className={`${styles.borrowButton} button-radius`}
       >
         {isBookBorrowed ? "Return" : "Borrow"}{" "}

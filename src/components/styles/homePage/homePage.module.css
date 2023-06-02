@@ -7,20 +7,20 @@
 
 .bannerOuter {
   margin-top: 24px;
-  width: 100%;
+  margin-left: 5%;
+  width: 90%;
   display: flex;
-  justify-content: center;
 }
 
 .carouselBadge {
+  width: 100%;
   box-shadow: 8px 8px 8px 0px black;
   border-radius: 20px 20px 0px 0px;
   padding-top: 15px;
-  background-color: transparent;
   color: aliceblue;
-  width: 100%;
   text-align: center;
   opacity: 0.8;
+  background-color: #404040;
 }
 
 .carouselItem {
@@ -29,7 +29,6 @@
 
 .badgeHeader {
   color: rgb(241, 241, 241);
-  border-bottom: 2px solid #0275d8;
   margin-bottom: 0;
   padding-bottom: 1rem;
 }
@@ -56,4 +55,14 @@
 .col {
   flex: 0 0 auto;
   margin-right: 1rem;
+}
+
+.fixColWidth {
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .fixColWidth {
+    width: 90%;
+  }
 }

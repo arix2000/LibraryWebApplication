@@ -6,12 +6,22 @@ import UserBookManager from "../../common/UserBookManager";
 import HomePageBanner from "./HomePageBanner";
 import { useState } from "react";
 
-function Banner({ books, title, variant, border }) {
+function Banner({ books, title, variant, border, background }) {
   return (
     <div className={styles.bannerOuter}>
-      <div className={styles.carouselBadge} style={{ border: border }}>
-        <h4 className={styles.badgeHeader} style={{borderBottom: border}}>{title}</h4>
-        <HomePageBanner books={books} title={title} variant={variant} border={border} />
+      <div
+        className={styles.carouselBadge}
+        style={{ border: border, backgroundColor: background }}
+      >
+        <h4 className={styles.badgeHeader} style={{ borderBottom: border }}>
+          {title}
+        </h4>
+        <HomePageBanner
+          books={books}
+          title={title}
+          variant={variant}
+          border={border}
+        />
       </div>
     </div>
   );
@@ -65,13 +75,14 @@ export default function HomePage() {
   return (
     <>
       <NavBar showSearchBar={false} />
-      <Container className="mb-5" style={{ minHeight: "1300px" }}>
+      <Container fluid className="mb-5">
         <Row>
           <Banner
             books={recommBooksDynamic}
             title="Recommended"
             showSearchBar={false}
-            border="2px solid #0275d8"
+            variant="primary"
+            background="#0275d8"
           />
         </Row>
         <Row>
@@ -79,26 +90,27 @@ export default function HomePage() {
             books={bestBooksDynamic}
             title="Bestsellers"
             showSearchBar={false}
-            border="2px solid #0275d8"
+            variant="primary"
+            background="#0275d8"
           />
         </Row>
-        <Row className={styles.userBooksRow}>
-          <Col>
+        <Row>
+          <Col className={styles.fixColWidth}>
             <Banner
               books={borrowedBooks}
               title="Borrowed"
               showSearchBar={false}
-              variant="outline-success"
-              border="2px solid #14A44D"
+              variant="success"
+              background="#5cb85c"
             />
           </Col>
-          <Col>
+          <Col className={styles.fixColWidth}>
             <Banner
               books={reservedBooks}
               title="Reserved"
               showSearchBar={false}
-              variant="outline-warning"
-              border="2px solid #E4A11B"
+              variant="primary"
+              background="#0275d8"
             />
           </Col>
         </Row>
