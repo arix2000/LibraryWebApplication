@@ -46,8 +46,10 @@ export default function BorrowButton({ rowStyles, book }) {
         variant="primary"
         className={`${styles.borrowButton} button-radius`}
       >
-        {isBookReserved ? "Cancel Res." : "Reserve"}{" "}
-        <RiBookMarkFill style={{ width: 20, height: 20 }} />
+        <div className={styles.buttonTextWrapper}>
+          {isBookReserved ? "Cancel Reservation" : "Reserve"}{" "}
+        </div>
+        <RiBookMarkFill className={styles.buttonIcon} />
       </Button>
       <Button
         onClick={
@@ -59,7 +61,7 @@ export default function BorrowButton({ rowStyles, book }) {
         className={`${styles.borrowButton} button-radius`}
       >
         {isBookBorrowed ? "Return" : "Borrow"}{" "}
-        <RiHealthBookFill style={{ width: 20, height: 20 }} />
+        <RiHealthBookFill className={styles.buttonIcon} />
       </Button>
     </Row>
   );

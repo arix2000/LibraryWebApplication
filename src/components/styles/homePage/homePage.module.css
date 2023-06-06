@@ -1,3 +1,7 @@
+.pageContainer {
+  height: 1100px;
+}
+
 .carouselOuter {
   margin-top: 24px;
   width: 480px;
@@ -29,8 +33,10 @@
 
 .badgeHeader {
   color: rgb(241, 241, 241);
-  margin-bottom: 0;
-  padding-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 8px;
 }
 
 .carouselImg {
@@ -45,7 +51,8 @@
 .homePageBanner {
   background-color: #252525;
   overflow-x: scroll;
-  height: 242px;
+  overflow-y: hidden;
+  height: fit-content;
 }
 
 .row {
@@ -54,7 +61,6 @@
 
 .col {
   flex: 0 0 auto;
-  margin-right: 1rem;
 }
 
 .fixColWidth {
@@ -65,4 +71,19 @@
   .fixColWidth {
     width: 90%;
   }
+}
+
+.alert {
+  background-color: #404040;
+  margin-bottom: 0;
+  color: aliceblue;
+  border-radius: 0;
+}
+
+.alertHeading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }

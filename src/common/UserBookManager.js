@@ -57,7 +57,7 @@ export default class UserBookManager {
 
   isBorrowed(bookId) {
     let user = this.getUser();
-    return user.borrowed_books.includes(bookId);
+    return this.sessionManager.getLoggedUser().borrowed_books.includes(bookId);
   }
 
   #updateUser(user) {

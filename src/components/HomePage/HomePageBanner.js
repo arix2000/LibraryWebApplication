@@ -4,12 +4,7 @@ import { Alert, Button } from "react-bootstrap";
 import AppRoutes from "../../common/AppRoutes";
 import { useNavigate } from "react-router-dom";
 
-export default function HomePageBanner({
-  books,
-  title,
-  showSearchBar,
-  variant,
-}) {
+export default function HomePageBanner({ books, title, variant }) {
   const navigate = useNavigate();
   return (
     <>
@@ -24,23 +19,19 @@ export default function HomePageBanner({
           </div>
         </div>
       ) : (
-        <Alert variant={variant} className="mb-0 px-2">
-          <Alert.Heading>
+        <Alert className={styles.alert} variant="secondary">
+          <Alert.Heading className={styles.alertHeading}>
             You haven't {title.toLowerCase()} any books yet!
           </Alert.Heading>
           <hr />
           <div className="d-flex justify-content-center">
             <Button
-              onClick={
-                showSearchBar
-                  ? null
-                  : () => {
-                      navigate(AppRoutes.booksPage);
-                    }
-              }
+              onClick={() => {
+                navigate(AppRoutes.booksPage);
+              }}
               variant={variant}
             >
-              Search for our books!
+              Search for available books!
             </Button>
           </div>
         </Alert>

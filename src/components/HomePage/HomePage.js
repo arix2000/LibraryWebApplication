@@ -16,12 +16,7 @@ function Banner({ books, title, variant, border, background }) {
         <h4 className={styles.badgeHeader} style={{ borderBottom: border }}>
           {title}
         </h4>
-        <HomePageBanner
-          books={books}
-          title={title}
-          variant={variant}
-          border={border}
-        />
+        <HomePageBanner books={books} title={title} variant={variant} />
       </div>
     </div>
   );
@@ -73,14 +68,13 @@ export default function HomePage() {
   const [bestBooksDynamic, setBestBooks] = useState(bestBooks);
 
   return (
-    <>
+    <div className={styles.pageContainer}>
       <NavBar showSearchBar={false} />
       <Container fluid className="mb-5">
         <Row>
           <Banner
             books={recommBooksDynamic}
             title="Recommended"
-            showSearchBar={false}
             variant="primary"
             background="#0275d8"
           />
@@ -89,7 +83,6 @@ export default function HomePage() {
           <Banner
             books={bestBooksDynamic}
             title="Bestsellers"
-            showSearchBar={false}
             variant="primary"
             background="#0275d8"
           />
@@ -99,7 +92,6 @@ export default function HomePage() {
             <Banner
               books={borrowedBooks}
               title="Borrowed"
-              showSearchBar={false}
               variant="success"
               background="#5cb85c"
             />
@@ -108,13 +100,12 @@ export default function HomePage() {
             <Banner
               books={reservedBooks}
               title="Reserved"
-              showSearchBar={false}
               variant="primary"
               background="#0275d8"
             />
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 }
