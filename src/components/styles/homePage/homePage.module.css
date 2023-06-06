@@ -1,0 +1,89 @@
+.pageContainer {
+  height: 1100px;
+}
+
+.carouselOuter {
+  margin-top: 24px;
+  width: 480px;
+  display: flex;
+  justify-content: center;
+}
+
+.bannerOuter {
+  margin-top: 24px;
+  margin-left: 5%;
+  width: 90%;
+  display: flex;
+}
+
+.carouselBadge {
+  width: 100%;
+  box-shadow: 8px 8px 8px 0px black;
+  border-radius: 20px 20px 0px 0px;
+  padding-top: 15px;
+  color: aliceblue;
+  text-align: center;
+  opacity: 0.8;
+  background-color: #404040;
+}
+
+.carouselItem {
+  background-color: #252525;
+}
+
+.badgeHeader {
+  color: rgb(241, 241, 241);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 8px;
+}
+
+.carouselImg {
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: auto;
+  border-radius: 0px 0px 24px 24px;
+  max-height: 431px;
+}
+
+.homePageBanner {
+  background-color: #252525;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: fit-content;
+}
+
+.row {
+  display: flex;
+}
+
+.col {
+  flex: 0 0 auto;
+}
+
+.fixColWidth {
+  width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .fixColWidth {
+    width: 90%;
+  }
+}
+
+.alert {
+  background-color: #404040;
+  margin-bottom: 0;
+  color: aliceblue;
+  border-radius: 0;
+}
+
+.alertHeading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
