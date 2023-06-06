@@ -11,7 +11,13 @@ import AppRoutes from "../../common/AppRoutes";
 import SessionManager from "../../common/SessionManager";
 import ProfileDialog from "../ProfilePage/ProfileDialog";
 
-function NavBar({ onSubmit = () => {}, showSearchBar, initialExpand = false, searchAutoFocus = false }) {
+function NavBar({
+  onSubmit = () => {},
+  showSearchBar,
+  initialExpand = false,
+  searchAutoFocus = false,
+  forwardedRef,
+}) {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState(initialExpand);
@@ -45,42 +51,73 @@ function NavBar({ onSubmit = () => {}, showSearchBar, initialExpand = false, sea
         expanded={expanded}
       >
         <Container fluid>
-          <Navbar.Brand className="text-light" onClick={() => navigate(AppRoutes.homePage)} href="#">
+          <Navbar.Brand
+            className="text-light"
+            onClick={() => navigate(AppRoutes.homePage)}
+            href="#"
+          >
             Fish Library
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="navbarScroll" onClick={() => setExpanded(!expanded)} />
+          <Navbar.Toggle
+            aria-controls="navbarScroll"
+            onClick={() => setExpanded(!expanded)}
+          />
           <Navbar.Collapse id="navbarScroll">
             <Nav
               defaultActiveKey="/home"
               navbarScroll
-              fluid
               className={styles.fullWidth}
             >
-              <Nav.Link className={"text-light"}>
-                Borrowed
-              </Nav.Link>
-              <Nav.Link className="text-light">
-                Contact
-              </Nav.Link>
-              {loggedUser.role === "admin"
-                ? <Nav.Link className="text-light" onClick={() => navigate(AppRoutes.adminPanel)}>
+              <Nav.Link className={"text-light"}>Borrowed</Nav.Link>
+              <Nav.Link className="text-light">Contact</Nav.Link>
+              {loggedUser.role === "admin" ? (
+                <Nav.Link
+                  className="text-light"
+                  onClick={() => navigate(AppRoutes.adminPanel)}
+                >
                   Admin Panel
-                </Nav.Link> : <div />}
-              <Nav.Link className="text-light" onClick={() => setModalProfileShow(true)}>
+                </Nav.Link>
+              ) : (
+                <div />
+              )}
+              <Nav.Link
+                className="text-light"
+                onClick={() => setModalProfileShow(true)}
+              >
                 Profile
               </Nav.Link>
               <Col>
-                <Form className="d-flex" onSubmit={handleFormSubmit} style={{ disply: 'flex', justifyContent: 'right' }}>
+                <Form
+                  className="d-flex"
+                  onSubmit={handleFormSubmit}
+                  style={{ display: "flex", justifyContent: "right" }}
+                  ref={forwardedRef}
+                >
                   <Form.Control
                     value={query}
                     onChange={handleChange}
                     type="search"
                     placeholder="Search for books"
                     className={styles.searchTextField}
-                    onClick={showSearchBar ? null : () => { navigate(AppRoutes.booksPage) }}
+                    onClick={
+                      showSearchBar
+                        ? null
+                        : () => {
+                            navigate(AppRoutes.booksPage);
+                          }
+                    }
                     autoFocus={searchAutoFocus}
                   />
-                  <Button className={styles.searchButton} onClick={showSearchBar ? handleFormSubmit : () => { navigate(AppRoutes.booksPage) }}>
+                  <Button
+                    className={styles.searchButton}
+                    onClick={
+                      showSearchBar
+                        ? handleFormSubmit
+                        : () => {
+                            navigate(AppRoutes.booksPage);
+                          }
+                    }
+                  >
                     Search
                   </Button>
                 </Form>

@@ -1,4 +1,4 @@
-import BookShow from "./BookItem";
+import BookItem from "./BookItem";
 import { useState, useEffect } from "react";
 
 export default function BookList({ books }) {
@@ -23,14 +23,14 @@ export default function BookList({ books }) {
     observer.observe(document.querySelector("#end-of-list"));
   }, []);
 
-  const renderedBooks = currentBooks.map((book) => {
-    return <BookShow book={book} key={book.isbn13} />;
-  });
-
   return (
     <div className="background-color full-height px-2 pb-2">
       <div className="d-flex flex-row flex-wrap">
-        {renderedBooks}
+        {currentBooks.map((book) => {
+          return (
+            <BookItem book={book} key={book.isbn13} margin={4} radius={24} />
+          );
+        })}
         <div id="end-of-list" />
       </div>
     </div>
