@@ -4,7 +4,7 @@
 
 .twoSidesWrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding-top: 20px;
     padding-bottom: 20px;
     max-width: 1500px;
@@ -13,7 +13,19 @@
     margin-right: auto;
 }
 
+.historyListPanelInTwoSides {
+    background-color: #2b2a2a;
+    border-radius: 24px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: fit-content;
+}
+
 .historyListPanelSingle {
+    padding-top: 20px;
+    padding-bottom: 20px;
     max-width: 100%;
 }
 
@@ -114,6 +126,14 @@
     justify-content: space-between; 
     height: 100%; 
     align-items: center;
+}
+
+.historyItemDivider {
+    height: 1px;
+    background-color: #353535;
+    margin-bottom: 15px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .historyBookCard {

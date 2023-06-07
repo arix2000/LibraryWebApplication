@@ -7,11 +7,10 @@ import { useState } from "react";
 const HistoryItem = ({ historyItem, showUserName, setDetailShow }) => {
     const [expanded, setExpanded] = useState(false);
     const book = allBooks.find(book => book.isbn13 == historyItem.bookId);
-    console.log(book);
     return (
         <>
             <div className={`${styles.historyItemContainer} ${getHistoryActionStyle(historyItem.action.color)}`}
-                onClick={() => setExpanded(!expanded)} style={{height: expanded ? 260 : 98}}>
+                onClick={() => setExpanded(!expanded)} style={{height: expanded ? 277 : 98}}>
                 <div className={styles.historyItemRowWrapper}>
                     <div className="text-truncate">
                         <b className="text-light">"{book.title}"</b><br />
@@ -26,6 +25,7 @@ const HistoryItem = ({ historyItem, showUserName, setDetailShow }) => {
                         {historyItem.time}
                     </div>
                 </div>
+                <div className={styles.historyItemDivider}/>
                 <div>
                     {<HistoryBookItem book={book} setDetailShow={setDetailShow} />}
                 </div>
