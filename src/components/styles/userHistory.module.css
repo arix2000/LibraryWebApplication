@@ -178,4 +178,6 @@
 .emptyViewContainer {
     text-align: center;
     margin-top: 260px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
