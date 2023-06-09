@@ -52,7 +52,7 @@ export default function ProfileDialog(props) {
                         </div>
                     </div>
                     <div className={styles.browseHistoryButton} onClick={() => { navigate(AppRoutes.userHistoryPage); props.onHide(); }}>
-                        <div>Browse your history</div>
+                        <div>Browse history</div>
                         <div>
                             <IoMdArrowRoundForward style={{ width: 20, height: 20 }} />
                         </div>

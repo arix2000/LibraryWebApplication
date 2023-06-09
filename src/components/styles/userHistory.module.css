@@ -1,0 +1,183 @@
+.historyItemTextSizeSmall {
+    font-size: 0.9em;
+}
+
+.twoSidesWrapper {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    max-width: 1500px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.historyListPanelInTwoSides {
+    background-color: #2b2a2a;
+    border-radius: 24px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: fit-content;
+}
+
+.historyListPanelSingle {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    max-width: 100%;
+}
+
+.historyListPanel {
+    max-width: 50%;
+}
+
+@media (max-width: 985px) {
+    .historyListPanel {
+        max-width: 100%;
+    }
+}
+
+.historyItemContainer {
+    background-color: #3b3a3a;
+    margin-top: 10px;
+    border-radius: 14px;
+    border-width: 1px;
+    text-align: left;
+    transition: height .2s ease-in-out;
+    overflow: hidden;
+}
+
+.historyItemContainer:hover {
+    background-color: #414040;
+    cursor: pointer;
+}
+
+.historyItemRowWrapper {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.successTint {
+    border: 1px solid var(--success);
+    color: var(--success);
+}
+
+.infoTint {
+    border: 1px solid var(--info);
+    color: var(--info);
+}
+
+.dangerTint {
+    border: 1px solid var(--danger);
+    color: var(--danger);
+}
+
+.primaryTint {
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+.pagerTabsWrapper {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.pagerTabs {
+    width: 100%;
+    border-radius: 0px;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 1px solid var(--primaryA50);
+    border-top: 0px;
+    transition: background-color .2s;
+}
+
+.pagerTabs:hover {
+    background-color: #3b3a3a;
+    cursor: pointer;
+}
+
+.selectedTab {
+    background-color: var(--primaryA50);
+}
+
+.selectedTab:hover {
+    background-color: var(--primaryA50);
+    cursor: default;
+}
+
+.leftTabStyle {
+    border-radius: 0px 0px 0px 24px;
+}
+
+.rightTabStyle {
+    border-radius: 0px 0px 24px 0px;
+}
+
+.historyBookItemBody {
+    padding: 0px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    height: 100%; 
+    align-items: center;
+}
+
+.historyItemDivider {
+    height: 1px;
+    background-color: #353535;
+    margin-bottom: 15px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.historyBookCard {
+    border: none;
+    border-radius: 50px;
+    background-color: transparent;
+}
+
+.historyBookItemImage {
+    border-radius: 0px 14px 0px 14px;
+    height: 160px;
+    object-position: bottom;
+    margin: 0 !important;
+    max-width: 180px;
+}
+
+.cardImgFitContain {
+    object-fit: contain;
+}
+
+.cardImgFitFill {
+    object-fit: fill;
+}
+
+.historyBookDescription {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 16px;
+    text-align: center;
+}
+
+.historyBookDetailsButton {
+    margin-top: 5px;
+    border-radius: 14px;
+    font-size: 14px;
+    margin-top: auto;
+    margin-bottom: 10px;
+}
+
+.emptyViewContainer {
+    text-align: center;
+    margin-top: 260px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
