@@ -3,6 +3,7 @@ import { Button, Col, Form, InputGroup, Modal, Row } from "react-bootstrap";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/adminPanel.module.css"
 import UserManager from "../utils/UserManager"
+import RolesEnum from "../../../common/RolesEnum";
 
 export default function AddEditUserDialog(props) {
     function getSafeUserParameter(param) {
@@ -11,16 +12,20 @@ export default function AddEditUserDialog(props) {
         else return "";
     }
 
+    function getSafeUserRoleParameter(param) {
+        if (user != null && !user.role)
+            return param();
+        else return RolesEnum.user;
+    }
+
     const user = props.user;
     const editMode = props.user != null;
     const userManager = new UserManager();
-
     const [name, setName] = useState(getSafeUserParameter(() => user.name));
     const [surname, setSurname] = useState(getSafeUserParameter(() => user.surname));
     const [login, setLogin] = useState(getSafeUserParameter(() => user.login));
     const [password, setPassword] = useState(getSafeUserParameter(() => user.password));
-    const [role, setRole] = useState(getSafeUserParameter(() => user.role));
-
+    const [role, setRole] = useState(getSafeUserRoleParameter(() => user.role));
     const [validated, setValidated] = useState(false);
 
     const onAcceptClicked = (event) => {
@@ -50,7 +55,7 @@ export default function AddEditUserDialog(props) {
         setSurname("");
         setLogin("");
         setPassword("");
-        setRole("");
+        setRole(RolesEnum.user);
     }
 
     const [passwordShown, setPasswordShown] = useState(false);
