@@ -69,7 +69,7 @@ export default function AddEditUserDialog(props) {
                 <div className={styles.adminPanelModalContent}>
                     <Modal.Header>
                         <Modal.Title>
-                        {editMode ? <span>Edit User</span> : <span>Add User</span>}
+                            {editMode ? <span>Edit User</span> : <span>Add User</span>}
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -103,7 +103,7 @@ export default function AddEditUserDialog(props) {
                                 <Col xs={9} lg={10}>
                                     <InputGroup hasValidation>
                                         <Form.Control required defaultValue={password} type={passwordShown ? "text" : "password"}
-                                            className={`default-text-field ${styles.passRadius}`} onChange={(event) => setPassword(event.target.value)}/>
+                                            className={`default-text-field ${styles.passRadius}`} onChange={(event) => setPassword(event.target.value)} />
                                         <span size="sm" className={`${styles.passwordVisibilityButton} ${styles.passwordVisibilityInline}`}
                                             onClick={() => setPasswordShown(!passwordShown)}>
                                             {passwordShown
@@ -117,7 +117,7 @@ export default function AddEditUserDialog(props) {
                             <Form.Group as={Row} className={styles.formMarginTop}>
                                 <Form.Label column>Role: </Form.Label>
                                 <Col xs={9} lg={10}>
-                                    <Form.Select  noValidate defaultValue={role} className={styles.defaultSelector}
+                                    <Form.Select noValidate defaultValue={role} className={styles.defaultSelector}
                                         onChange={(event) => { setRole(event.target.value) }}>
                                         <option>user</option>
                                         <option>admin</option>
