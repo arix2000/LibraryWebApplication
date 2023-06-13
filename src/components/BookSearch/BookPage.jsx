@@ -1,4 +1,5 @@
 import BookList from "./BookList";
+import EmptyList from "./EmptyList";
 import NavBar from "../UiCommon/NavBar";
 import data from "../../models/books.json";
 import { useState } from "react";
@@ -27,7 +28,7 @@ export default function BookPage() {
         initialExpand={true}
         searchAutoFocus={true}
       />
-      <BookList books={books}/>
+      {books.length > 0 ? <BookList books={books} /> : <EmptyList />}
     </>
   );
 }

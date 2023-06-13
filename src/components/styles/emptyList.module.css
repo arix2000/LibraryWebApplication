@@ -1,0 +1,23 @@
+
+.emptyListContainer {
+    height: 70vh;
+    width: 60vw;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: #2d2d2d;
+    border-radius: 30px;
+    margin-left: 20%;
+    margin-top: 2%;
+}
+
+.noResultsIcon {
+    width: 400px;
+    height: 400px;
+    margin-bottom: 30px;
+}
+
+.recommendedLink {
+    color: rgb(148, 205, 255);
+}
