@@ -9,9 +9,9 @@ export default function EmptyList() {
       <NoItemsIcon className={styles.noResultsIcon} />
       <h1>No results for your query</h1>
       <h4>
-        Find what you are looking for in{" "}
+        Look for interesting titles among our{" "}
         <Link to={AppRoutes.homePage} className={styles.recommendedLink}>
-          Recommendations Panel!
+          Recommendations!
         </Link>
       </h4>
     </div>
