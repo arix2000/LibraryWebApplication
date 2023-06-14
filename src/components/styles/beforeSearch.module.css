@@ -11,3 +11,10 @@
     margin-top: 3%;
     font-size: 200%;
 }
+
+@media screen and (max-width: 768px) {
+    .container {
+      width: 90vw;
+      margin-left: 5%;
+    }
+  }
