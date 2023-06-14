@@ -1,11 +1,13 @@
 import BookList from "./BookList";
 import EmptyList from "./EmptyList";
+import BeforeSearchView from "./BeforeSearchView";
 import NavBar from "../UiCommon/NavBar";
 import data from "../../models/books.json";
 import { useState } from "react";
 
 export default function BookPage() {
   const [books, setBooks] = useState([]);
+  const [isQueryEntered, setIsQueryEntered] = useState(false);
 
   const handleSearchSubmit = (query) => {
     if (query.length >= 2) {
@@ -15,8 +17,10 @@ export default function BookPage() {
           : item.title.toString().toLowerCase().includes(query.toLowerCase());
       });
       setBooks(result);
+      setIsQueryEntered(true);
     } else {
       setBooks([]);
+      setIsQueryEntered(false);
     }
   };
 
@@ -28,7 +32,15 @@ export default function BookPage() {
         initialExpand={true}
         searchAutoFocus={true}
       />
-      {books.length > 0 ? <BookList books={books} /> : <EmptyList />}
+      {isQueryEntered ? (
+        books.length > 0 ? (
+          <BookList books={books} />
+        ) : (
+          <EmptyList />
+        )
+      ) : (
+        <BeforeSearchView />
+      )}
     </>
   );
 }

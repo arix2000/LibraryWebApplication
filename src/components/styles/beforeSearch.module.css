@@ -1,0 +1,13 @@
+
+.container {
+    border-radius: 25px;
+    background-color: #2d2d2d;
+    height: 10vh;
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 35%;
+    margin-top: 3%;
+    font-size: 200%;
+}
