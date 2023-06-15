@@ -115,3 +115,22 @@
   overflow-y: auto;
   max-height: 600px;
 }
+
+.shimmerEffect {
+  position: relative;
+  width: 180px;
+  height: 100%;
+  background-image: linear-gradient(to right, #a9a9a9 0%, #8d8d8d 20%, #636363 40%, #323232 100%);
+  background-repeat: no-repeat;
+  background-size: 800px 100%;
+  animation: shimmer-animation 1s infinite linear;
+}
+
+@keyframes shimmer-animation {
+  0% {
+    background-position: -800px 0;
+  }
+  100% {
+    background-position: 800px 0;
+  }
+}
