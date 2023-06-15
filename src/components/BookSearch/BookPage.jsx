@@ -1,5 +1,5 @@
 import BookList from "./BookList";
-import EmptyList from "./EmptyList";
+import BookListEmptyView from "./BookListEmptyView"
 import BeforeSearchView from "./BeforeSearchView";
 import NavBar from "../UiCommon/NavBar";
 import data from "../../models/books.json";
@@ -36,7 +36,7 @@ export default function BookPage() {
         books.length > 0 ? (
           <BookList books={books} />
         ) : (
-          <EmptyList />
+          <BookListEmptyView />
         )
       ) : (
         <BeforeSearchView />
