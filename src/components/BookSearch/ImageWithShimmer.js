@@ -3,12 +3,18 @@ import React, { useState } from "react";
 export default function ImageWithShimmer({ book, styles }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(false);
+  const [imgObjectFitStyle, setImgObjectFitStyle] = useState(
+    styles.cardImgFitContain
+  );
 
   const handleImageLoad = () => {
     setIsLoaded(true);
   };
 
-  const handleImageError = () => {
+  const handleImageError = (img) => {
+    if (img.currentTarget.clientWidth == 180) {
+      setImgObjectFitStyle(styles.cardImgFitFill);
+    }
     setError(true);
   };
 
@@ -33,4 +39,3 @@ export default function ImageWithShimmer({ book, styles }) {
     </div>
   );
 }
-
