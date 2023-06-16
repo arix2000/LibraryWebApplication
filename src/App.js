@@ -1,31 +1,69 @@
-import NavBar from "./components/NavBar/NavBar";
-import { useState } from "react";
-import BookList from "./components/BookSearch/BookList";
+import AdminPanel from "./components/AdminPanel/AdminPanel";
+import usersJson from "./models/users.json";
 import LoginPage from "./components/LoginPage/LoginPage";
-import AdminPanel from "./components/AdminPanel";
-import data from "./models/books.json"
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './components/styles/global-styles.css';
+import BookPage from "./components/BookSearch/BookPage";
+import "./components/styles/global-styles.css";
+import FirstTimeManager from "./common/FirstTimeManager";
+import LocalStorageKeys from "./common/LocalStorageKeys";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import AppRoutes from "./common/AppRoutes";
+import HomePage from "./components/HomePage/HomePage";
+import UserHistoryPage from "./components/ProfilePage/history/ui/UserHistoryPage";
+import PrivateRoute from "./components/UiCommon/PrivateRoute";
 
 function App() {
-
-    const [books, setBooks] = useState([]);
-
-    const handleSearchSubmit = (query) => {
-            const result = data.filter((item) => {
-                            return query === '' ? item :
-                            item.title.toString().toLowerCase().includes(query.toLowerCase())
-                            })
-            setBooks(result);
-    }
-
-
-    return (
-            <>
-                <NavBar onSubmit={handleSearchSubmit}/>
-                <BookList books={books}/>
-            </>
-        )
-};
+  handleFirstTimeOpen();
+  return (
+    <>
+      <BrowserRouter>
+        <Container className="text-light" fluid style={{ padding: 0 }}>
+          <Routes>
+            <Route path={AppRoutes.root} element={<LoginPage />} />
+            <Route
+              path={AppRoutes.adminPanel}
+              element={
+                <PrivateRoute>
+                  <AdminPanel />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path={AppRoutes.booksPage}
+              element={
+                <PrivateRoute>
+                  <BookPage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path={AppRoutes.homePage}
+              element={
+                <PrivateRoute>
+                  <HomePage />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path={AppRoutes.userHistoryPage}
+              element={
+                <PrivateRoute>
+                  <UserHistoryPage />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </Container>
+      </BrowserRouter>
+    </>
+  );
+}
 
 export default App;
+
+function handleFirstTimeOpen() {
+  const firstTimeManager = new FirstTimeManager();
+  if (firstTimeManager.isFirstTime()) {
+    localStorage.setItem(LocalStorageKeys.userList, JSON.stringify(usersJson));
+  }
+}

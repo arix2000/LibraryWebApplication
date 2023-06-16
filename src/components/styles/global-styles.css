@@ -1,3 +1,8 @@
+:root {
+    color-scheme: dark;
+    --primaryA50: rgba(0, 123, 255, 0.7);
+}
+
 .background-color{
     background-color: #252525;
 }
@@ -11,7 +16,7 @@
 }
 
 .custom-border {
-    border: solid 2px #4169E1;
+    border: solid 2px #4169E1 !important;
 }
 
 .full-height {
@@ -20,3 +25,39 @@
     margin: auto;
 }
 
+.modal-content {
+    border-radius: 30px;
+}
+
+.modal-header {
+    border: 0px none;
+}
+
+.modal-footer {
+    border: 0px none;
+}
+
+.button-radius {
+    border-radius: 12px !important;
+}
+
+.default-text-field {
+    background-color: #3b3a3a ;
+    color: antiquewhite ;
+    border-width: 0px ;
+    border-color: transparent ;
+    border-radius: 14px ;
+}
+
+.default-text-field:hover {
+    background-color: #3b3a3a ;
+    color: antiquewhite ;
+}
+
+.default-text-field:focus {
+    background-color: #3b3a3a ;
+    color: antiquewhite ;
+    box-shadow: none;
+    border-width: 1px ;
+    border-color: #4169E1 ;
+}

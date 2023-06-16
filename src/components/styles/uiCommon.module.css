@@ -1,0 +1,13 @@
+.errorToast {
+    border-radius: 16px;
+    font-size: 16px;
+}
+
+.toastContainer {
+    border-radius: 16px ;
+    position: fixed;
+    bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

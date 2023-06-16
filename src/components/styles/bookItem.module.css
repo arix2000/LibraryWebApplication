@@ -1,0 +1,136 @@
+.card {
+  width: 480px;
+  height: fit-content;
+  box-shadow: 2px 4px 8px 0px rgb(0, 0, 0);
+  margin: 3rem auto auto auto;
+  transition-duration: 0.2s;
+  overflow: hidden;
+  position: relative;
+}
+
+.card:hover {
+  box-shadow: 4px 5px 10px 0px rgb(0, 0, 0) !important;
+  background-color: #373737 !important;
+  cursor: pointer;
+}
+
+.cardImg {
+  height: 240px;
+  object-position: left;
+  margin: 0 !important;
+  max-width: 180px;
+}
+
+.cardImgFitContain {
+  object-fit: contain;
+}
+
+.cardImgFitFill {
+  object-fit: fill;
+}
+
+.bookImgWrapperCol {
+  max-width: 180px;
+}
+
+.bookTitle {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-lines: 2;
+  -ms-box-orient: vertical;
+  -ms-box-lines: 2;
+  display: box;
+  box-orient: vertical;
+  box-lines: 2;
+}
+
+.author {
+  composes: bookTitle;
+  font-size: 1rem !important;
+}
+
+.borrowButtonWrapper {
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  padding: auto;
+}
+
+.upperRadius {
+  border-radius: 25px 25px 0px 0px;
+}
+
+.bottomRadius {
+  border-radius: 0px 0px 25px 25px;
+}
+
+.grayText {
+  color: rgb(167, 167, 167);
+}
+
+.borrowButton {
+  height: 40px;
+  width: 47%;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding-left: 4%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.buttonTextWrapper {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 70%;
+}
+
+.buttonIcon {
+  height: 70%;
+  width: auto;
+}
+
+.itemButtonSection {
+  position: absolute;
+  right: 13px;
+  bottom: 13px;
+  height: 40px;
+  width: 100%;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.itemButtonSectionModal {
+  width: 245px;
+}
+
+.bookDetailsModalBody {
+  background-color: #252525;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+.shimmerEffect {
+  position: relative;
+  width: 180px;
+  height: 100%;
+  background-image: linear-gradient(to right, #a9a9a9 0%, #8d8d8d 20%, #636363 40%, #323232 100%);
+  background-repeat: no-repeat;
+  background-size: 800px 100%;
+  animation: shimmer-animation 1s infinite linear;
+}
+
+@keyframes shimmer-animation {
+  0% {
+    background-position: -800px 0;
+  }
+  100% {
+    background-position: 800px 0;
+  }
+}
