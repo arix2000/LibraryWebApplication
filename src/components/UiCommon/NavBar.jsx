@@ -68,7 +68,6 @@ function NavBar({
               navbarScroll
               className={styles.fullWidth}
             >
-              <Nav.Link className={"text-light"}>Borrowed</Nav.Link>
               <Nav.Link className="text-light">Contact</Nav.Link>
               {loggedUser.role === "admin" ? (
                 <Nav.Link
