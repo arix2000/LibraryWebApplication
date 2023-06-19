@@ -7,6 +7,7 @@ import HomePageBanner from "./HomePageBanner";
 import { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import AddEditBooksDialog from "./AddEditBooksDialog";
+import SuccessToast from "../UiCommon/SuccessToast";
 
 function Banner({ books, title, variant, border, background }) {
   return (
@@ -69,6 +70,17 @@ export default function HomePage() {
   const [recommBooksDynamic, setRecommBooks] = useState(recommBooks);
   const [bestBooksDynamic, setBestBooks] = useState(bestBooks);
   const [modalAddEditShow, setModalAddEditShow] = useState(false);
+  const [showSuccessMassage, setShowSuccessMassage] = useState(false);
+  const [isBookInEditMode, setIsBookInEditMode] = useState(false);
+
+  window.addEventListener("showEditSuccessToast", (_) => {
+    setIsBookInEditMode(true);
+    setShowSuccessMassage(true);
+  });
+  window.addEventListener("showAddSuccessToast", (_) => {
+    setIsBookInEditMode(false);
+    setShowSuccessMassage(true);
+  });
 
   return (
     <div className={styles.pageContainer}>
@@ -116,6 +128,10 @@ export default function HomePage() {
         show={modalAddEditShow}
         onHide={() => setModalAddEditShow(false)}
       />
+      <SuccessToast
+        text={isBookInEditMode ? "Changes has been applied" : "Book has been added successfully"}
+        show={showSuccessMassage}
+        setShow={setShowSuccessMassage} />
     </div>
   );
 }

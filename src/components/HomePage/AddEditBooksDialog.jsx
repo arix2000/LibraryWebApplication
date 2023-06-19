@@ -1,7 +1,6 @@
 import { Button, Col, Form, Modal, Row } from "react-bootstrap"
 import styles from "../styles/homePage/addEditBooksModal.module.css"
 import { useState } from "react";
-import SuccessToast from "../UiCommon/SuccessToast";
 
 const AddEditBooksDialog = (props) => {
 
@@ -71,7 +70,7 @@ const AddEditBooksDialog = (props) => {
             clearAllParams();
         }
         setValidated(false);
-        setShowSuccessMassage(true);
+        window.dispatchEvent(new Event(editMode ? "showEditSuccessToast": "showAddSuccessToast"))
     }
 
     function onCancelClicked() {
@@ -93,7 +92,6 @@ const AddEditBooksDialog = (props) => {
     const [categories, setCategories] = useState(getSafeBookParameter(() => props.book.categories))
     const [rating, setRating] = useState(getSafeBookParameter(() => props.book.average_rating))
     const [imageUrl, setImageUrl] = useState(getSafeBookParameter(() => props.book.thumbnail))
-    const [showSuccessMassage, setShowSuccessMassage] = useState(false);
     const [validated, setValidated] = useState(false);
 
     return (
@@ -193,10 +191,6 @@ const AddEditBooksDialog = (props) => {
                     </Modal.Footer>
                 </div>
             </Modal>
-            <SuccessToast
-                text={editMode ? "Changes has been applied" : "Book has been added successfully"}
-                show={showSuccessMassage}
-                setShow={setShowSuccessMassage} />
         </>
     )
 }
