@@ -1,10 +1,12 @@
 import NavBar from "../UiCommon/NavBar";
 import styles from "../styles/homePage/homePage.module.css";
 import books from "../../models/books.json";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import UserBookManager from "../../common/UserBookManager";
 import HomePageBanner from "./HomePageBanner";
 import { useState } from "react";
+import { IoMdAdd } from "react-icons/io";
+import AddEditBooksDialog from "./AddEditBooksDialog";
 
 function Banner({ books, title, variant, border, background }) {
   return (
@@ -66,6 +68,7 @@ export default function HomePage() {
 
   const [recommBooksDynamic, setRecommBooks] = useState(recommBooks);
   const [bestBooksDynamic, setBestBooks] = useState(bestBooks);
+  const [modalAddEditShow, setModalAddEditShow] = useState(false);
 
   return (
     <div className={styles.pageContainer}>
@@ -106,6 +109,13 @@ export default function HomePage() {
           </Col>
         </Row>
       </Container>
+      <Button className={styles.addBookToLibraryFab} onClick={() => setModalAddEditShow(true)}>
+        Add book to library <div style={{ width: "8px" }}></div><IoMdAdd style={{ height: 24, width: 24 }} />
+      </Button>
+      <AddEditBooksDialog
+        show={modalAddEditShow}
+        onHide={() => setModalAddEditShow(false)}
+      />
     </div>
   );
 }

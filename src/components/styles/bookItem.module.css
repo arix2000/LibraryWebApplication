@@ -134,3 +134,13 @@
     background-position: 800px 0;
   }
 }
+
+.editBookFab {
+  display: inline-block;
+  margin: 0;
+  padding: 5px ;
+  border-radius: 100px ;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}

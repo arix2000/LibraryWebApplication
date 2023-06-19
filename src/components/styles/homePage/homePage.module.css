@@ -87,3 +87,13 @@
   padding-top: 20px;
   padding-bottom: 20px;
 }
+
+.addBookToLibraryFab {
+  display: flex;
+  margin: 0;
+  padding: 0.8em ;
+  border-radius: 100px ;
+  position: fixed;
+  right: 2em;
+  bottom: 1.5em;
+}

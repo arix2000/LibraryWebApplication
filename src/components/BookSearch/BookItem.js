@@ -1,13 +1,17 @@
 import styles from "../styles/bookItem.module.css";
-import { Col, Row, Card } from "react-bootstrap";
+import { Col, Row, Card, Button } from "react-bootstrap";
 import { Rating } from "@mui/material";
 import React, { useState } from "react";
 import BookDetailModal from "./BookDetail/BookDetailModal";
 import BorrowButton from "./common/BorrowButton";
 import ImageWIthShimmer from "./ImageWithShimmer";
+import AddEditBooksDialog from "../HomePage/AddEditBooksDialog";
+import { RiEditFill } from "react-icons/ri";
 
 export default function BookItem({ book, margin, radius }) {
   const [detailShow, setDetailShow] = useState(false);
+  const [modalAddEditShow, setModalAddEditShow] = useState(false);
+  const [editButtonShow, setEditButtonShow] = useState(false);
 
   return (
     <>
@@ -16,10 +20,12 @@ export default function BookItem({ book, margin, radius }) {
         style={{ borderRadius: radius }}
         text="light"
         onClick={() => setDetailShow(true)}
+        onMouseEnter={() => setEditButtonShow(true)}
+        onMouseLeave={() => setEditButtonShow(false)}
       >
         <Row>
           <Col md="auto" xs="auto" className={styles.bookImgWrapperCol}>
-            <ImageWIthShimmer book={book} styles={styles}/>
+            <ImageWIthShimmer book={book} styles={styles} />
           </Col>
           <Col>
             <Card.Body>
@@ -41,10 +47,19 @@ export default function BookItem({ book, margin, radius }) {
             </Card.Body>
           </Col>
         </Row>
+        {editButtonShow ?
+          <Button className={styles.editBookFab} onClick={(event) => { event.stopPropagation(); setModalAddEditShow(true); }}>
+            <RiEditFill style={{ height: 24, width: 24 }} />
+          </Button> : <></>}
       </Card>
       <BookDetailModal
         show={detailShow}
         onHide={() => setDetailShow(false)}
+        book={book}
+      />
+      <AddEditBooksDialog
+        show={modalAddEditShow}
+        onHide={() => setModalAddEditShow(false)}
         book={book}
       />
     </>
