@@ -19,6 +19,7 @@ export default class UserBookManager {
     user.borrowed_books.push(bookId);
     this.#updateUser(user);
     this.historyManager.logHistory(HistoryActions.Borrow, bookId, user);
+    this.cancelReservation(bookId);
   }
 
   reserviseBook(bookId) {
