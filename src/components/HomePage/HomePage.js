@@ -8,6 +8,8 @@ import { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
 import AddEditBooksDialog from "./AddEditBooksDialog";
 import SuccessToast from "../UiCommon/SuccessToast";
+import SessionManager from "../../common/SessionManager";
+import RolesEnum from "../../common/RolesEnum";
 
 function Banner({ books, title, variant, border, background }) {
   return (
@@ -45,6 +47,7 @@ export default function HomePage() {
     books[1],
   ];
 
+  const isAdminOrLibrarianRole = (new SessionManager()).getLoggedUser().role != RolesEnum.user;
   const userBookManager = new UserBookManager();
   const [borrowedBooks, setBorrowedBooks] = useState(
     userBookManager.getAllBorrowedBooks()
@@ -121,9 +124,10 @@ export default function HomePage() {
           </Col>
         </Row>
       </Container>
-      <Button className={styles.addBookToLibraryFab} onClick={() => setModalAddEditShow(true)}>
-        Add book to library <div style={{ width: "8px" }}></div><IoMdAdd style={{ height: 24, width: 24 }} />
-      </Button>
+      {isAdminOrLibrarianRole ?
+        <Button className={styles.addBookToLibraryFab} onClick={() => setModalAddEditShow(true)}>
+          Add book to library <div style={{ width: "8px" }}></div><IoMdAdd style={{ height: 24, width: 24 }} />
+        </Button> : <></>}
       <AddEditBooksDialog
         show={modalAddEditShow}
         onHide={() => setModalAddEditShow(false)}

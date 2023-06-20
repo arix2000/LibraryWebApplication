@@ -7,11 +7,13 @@ import BorrowButton from "./common/BorrowButton";
 import ImageWIthShimmer from "./ImageWithShimmer";
 import AddEditBooksDialog from "../HomePage/AddEditBooksDialog";
 import { RiEditFill } from "react-icons/ri";
+import RolesEnum from "../../common/RolesEnum";
 
-export default function BookItem({ book, margin, radius }) {
+export default function BookItem({ book, margin, radius, userRole }) {
   const [detailShow, setDetailShow] = useState(false);
   const [modalAddEditShow, setModalAddEditShow] = useState(false);
   const [editButtonShow, setEditButtonShow] = useState(false);
+  const isAdminOrLibrarianRole = userRole != RolesEnum.user;
 
   return (
     <>
@@ -20,8 +22,8 @@ export default function BookItem({ book, margin, radius }) {
         style={{ borderRadius: radius }}
         text="light"
         onClick={() => setDetailShow(true)}
-        onMouseEnter={() => setEditButtonShow(true)}
-        onMouseLeave={() => setEditButtonShow(false)}
+        onMouseEnter={() => isAdminOrLibrarianRole ? setEditButtonShow(true) : null}
+        onMouseLeave={() => isAdminOrLibrarianRole ? setEditButtonShow(false) : null}
       >
         <Row>
           <Col md="auto" xs="auto" className={styles.bookImgWrapperCol}>
