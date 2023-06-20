@@ -10,6 +10,8 @@ import AddEditBooksDialog from "./AddEditBooksDialog";
 import SuccessToast from "../UiCommon/SuccessToast";
 import SessionManager from "../../common/SessionManager";
 import RolesEnum from "../../common/RolesEnum";
+import WarningToast from "../UiCommon/WarningToast";
+import ToastEventKeys from "../UiCommon/ToastEventKeys";
 
 function Banner({ books, title, variant, border, background }) {
   return (
@@ -74,16 +76,21 @@ export default function HomePage() {
   const [bestBooksDynamic, setBestBooks] = useState(bestBooks);
   const [modalAddEditShow, setModalAddEditShow] = useState(false);
   const [showSuccessMassage, setShowSuccessMassage] = useState(false);
+  const [showWarningMassage, setShowWarningMassage] = useState(false);
   const [isBookInEditMode, setIsBookInEditMode] = useState(false);
 
-  window.addEventListener("showEditSuccessToast", (_) => {
+  window.addEventListener(ToastEventKeys.editToast, (_) => {
     setIsBookInEditMode(true);
     setShowSuccessMassage(true);
   });
-  window.addEventListener("showAddSuccessToast", (_) => {
+  window.addEventListener(ToastEventKeys.addToast, (_) => {
     setIsBookInEditMode(false);
     setShowSuccessMassage(true);
   });
+  window.addEventListener(ToastEventKeys.deleteToast, (_) => {
+    setShowWarningMassage(true);
+  });
+
 
   return (
     <div className={styles.pageContainer}>
@@ -133,9 +140,14 @@ export default function HomePage() {
         onHide={() => setModalAddEditShow(false)}
       />
       <SuccessToast
-        text={isBookInEditMode ? "Changes has been applied" : "Book has been added successfully"}
+        text={isBookInEditMode ? "Changes has been applied!" : "Book has been added successfully!"}
         show={showSuccessMassage}
         setShow={setShowSuccessMassage} />
+
+      <WarningToast
+        text={"Book has been removed."}
+        show={showWarningMassage}
+        setShow={setShowWarningMassage} />
     </div>
   );
 }

@@ -8,11 +8,14 @@ import ImageWIthShimmer from "./ImageWithShimmer";
 import AddEditBooksDialog from "../HomePage/AddEditBooksDialog";
 import { RiEditFill } from "react-icons/ri";
 import RolesEnum from "../../common/RolesEnum";
+import DeleteBookDialog from "../HomePage/DeleteBookDialog";
+import { BsTrashFill } from "react-icons/bs";
 
 export default function BookItem({ book, margin, radius, userRole }) {
   const [detailShow, setDetailShow] = useState(false);
   const [modalAddEditShow, setModalAddEditShow] = useState(false);
-  const [editButtonShow, setEditButtonShow] = useState(false);
+  const [modalDeleteShow, setModalDeleteShow] = useState(false);
+  const [bookControlsShow, setBookControlsShow] = useState(false);
   const isAdminOrLibrarianRole = userRole != RolesEnum.user;
 
   return (
@@ -22,8 +25,8 @@ export default function BookItem({ book, margin, radius, userRole }) {
         style={{ borderRadius: radius }}
         text="light"
         onClick={() => setDetailShow(true)}
-        onMouseEnter={() => isAdminOrLibrarianRole ? setEditButtonShow(true) : null}
-        onMouseLeave={() => isAdminOrLibrarianRole ? setEditButtonShow(false) : null}
+        onMouseEnter={() => isAdminOrLibrarianRole ? setBookControlsShow(true) : null}
+        onMouseLeave={() => isAdminOrLibrarianRole ? setBookControlsShow(false) : null}
       >
         <Row>
           <Col md="auto" xs="auto" className={styles.bookImgWrapperCol}>
@@ -49,9 +52,13 @@ export default function BookItem({ book, margin, radius, userRole }) {
             </Card.Body>
           </Col>
         </Row>
-        {editButtonShow ?
+        {bookControlsShow ?
           <Button className={styles.editBookFab} onClick={(event) => { event.stopPropagation(); setModalAddEditShow(true); }}>
             <RiEditFill style={{ height: 24, width: 24 }} />
+          </Button> : <></>}
+        {bookControlsShow ?
+          <Button className={styles.deleteBookFab} variant="danger" onClick={(event) => { event.stopPropagation(); setModalDeleteShow(true); }}>
+            <BsTrashFill style={{ height: 24, width: 24 }} />
           </Button> : <></>}
       </Card>
       <BookDetailModal
@@ -62,6 +69,11 @@ export default function BookItem({ book, margin, radius, userRole }) {
       <AddEditBooksDialog
         show={modalAddEditShow}
         onHide={() => setModalAddEditShow(false)}
+        book={book}
+      />
+      <DeleteBookDialog
+        show={modalDeleteShow}
+        onHide={() => setModalDeleteShow(false)}
         book={book}
       />
     </>

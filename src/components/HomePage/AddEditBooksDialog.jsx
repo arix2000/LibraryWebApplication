@@ -1,6 +1,7 @@
 import { Button, Col, Form, Modal, Row } from "react-bootstrap"
 import styles from "../styles/homePage/addEditBooksModal.module.css"
 import { useState } from "react";
+import ToastEventKeys from "../UiCommon/ToastEventKeys";
 
 const AddEditBooksDialog = (props) => {
 
@@ -64,13 +65,13 @@ const AddEditBooksDialog = (props) => {
         }
         props.onHide();
         if (editMode) {
-            //TODO on edit action
+            //TODO edit book in the storage
         } else {
-            //TODO on add action
+            //TODO add book to the storage
             clearAllParams();
         }
         setValidated(false);
-        window.dispatchEvent(new Event(editMode ? "showEditSuccessToast": "showAddSuccessToast"))
+        window.dispatchEvent(new Event(editMode ? ToastEventKeys.editToast: ToastEventKeys.addToast))
     }
 
     function onCancelClicked() {

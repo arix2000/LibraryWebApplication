@@ -1,5 +1,7 @@
 import SessionManager from "../../common/SessionManager";
 import SuccessToast from "../UiCommon/SuccessToast";
+import ToastEventKeys from "../UiCommon/ToastEventKeys";
+import WarningToast from "../UiCommon/WarningToast";
 import BookItem from "./BookItem";
 import { useState, useEffect } from "react";
 
@@ -10,9 +12,13 @@ export default function BookList({ books }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentBooks, setCurrentBooks] = useState([]);
   const [showSuccessMassage, setShowSuccessMassage] = useState(false);
+  const [showWarningMassage, setShowWarningMassage] = useState(false);
 
   window.addEventListener("showEditSuccessToast", (_) => {
     setShowSuccessMassage(true);
+  });
+  window.addEventListener(ToastEventKeys.deleteToast, (_) => {
+    setShowWarningMassage(true);
   });
 
   useEffect(() => {
@@ -45,6 +51,10 @@ export default function BookList({ books }) {
         text={"Changes has been applied"}
         show={showSuccessMassage}
         setShow={setShowSuccessMassage} />
+      <WarningToast
+        text={"Book has been removed."}
+        show={showWarningMassage}
+        setShow={setShowWarningMassage} />
     </div>
   );
 }
