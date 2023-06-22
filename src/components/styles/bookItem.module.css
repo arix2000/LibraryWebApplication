@@ -168,6 +168,8 @@
 
 .userSearchForm {
   background-color: #3b3a3a;
+  border: 0px;
+  border-radius: 24px;
 }
 
 .userSearchForm:focus {

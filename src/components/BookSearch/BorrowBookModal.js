@@ -91,7 +91,7 @@ export default function BorrowBookModal({ show, onHide, book }) {
             value={query}
           />
         </Form>
-        <Table responsive className={styles.usersTable}>
+        <Table responsive className={styles.usersTable} borderless>
           <thead>
             <tr>
               <th>ID</th>
