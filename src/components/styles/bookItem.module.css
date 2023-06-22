@@ -161,3 +161,16 @@
   background-color: #373737;
   cursor: pointer;
 }
+
+.selectedRow {
+  background-color: #373737;
+}
+
+.userSearchForm {
+  background-color: #3b3a3a;
+}
+
+.userSearchForm:focus {
+  background-color: #3b3a3a;
+  color: whitesmoke;
+}
