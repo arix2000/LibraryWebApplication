@@ -124,7 +124,7 @@ export default function BorrowBookModal({ show, onHide, book }) {
           onClick={onHide}
           disabled={!isChecked}
         >
-          Hire a book
+          Lend a book
         </Button>
       </Modal.Footer>
     </Modal>

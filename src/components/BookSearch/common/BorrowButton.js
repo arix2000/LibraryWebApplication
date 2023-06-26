@@ -1,12 +1,11 @@
-import { Button, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { RiBookMarkFill, RiHealthBookFill } from "react-icons/ri";
 import styles from "../../styles/bookItem.module.css";
 import UserBookManager from "../../../common/UserBookManager";
 import { useState } from "react";
-import SessionManager from "../../../common/SessionManager";
 import BorrowBookModal from "../BorrowBookModal";
 
-export default function BorrowButton({ rowStyles, book }) {
+export default function BorrowButton({ rowStyles, book, isLibrarian }) {
   const userBookManager = new UserBookManager();
 
   const [isBookBorrowed, setIsBookBorrowed] = useState(
@@ -20,14 +19,10 @@ export default function BorrowButton({ rowStyles, book }) {
 
   const handleBorrowClick = (e) => {
     e.stopPropagation();
-    // userBookManager.borrowBook(book.isbn13);
-    // setIsBookBorrowed(true);
     setShowBorrowModal(true);
   };
   const handleReturnClick = (e) => {
     e.stopPropagation();
-    // userBookManager.returnBook(book.isbn13);
-    // setIsBookBorrowed(false);
   };
   const handleReserveClick = (e) => {
     e.stopPropagation();
@@ -44,12 +39,10 @@ export default function BorrowButton({ rowStyles, book }) {
     e.stopPropagation();
     setShowBorrowModal(false);
   };
-  const sessionManager = new SessionManager();
-  const loggedUser = sessionManager.getLoggedUser();
 
   return (
     <>
-      <Row className={rowStyles}>
+      <div className={rowStyles}>
         <Button
           onClick={
             isBookReserved
@@ -64,7 +57,7 @@ export default function BorrowButton({ rowStyles, book }) {
           </div>
           <RiBookMarkFill className={styles.buttonIcon} />
         </Button>
-        {loggedUser.role === "librarian" && (
+        {isLibrarian && (
           <Button
             onClick={
               isBookBorrowed
@@ -78,7 +71,7 @@ export default function BorrowButton({ rowStyles, book }) {
             <RiHealthBookFill className={styles.buttonIcon} />
           </Button>
         )}
-      </Row>
+      </div>
       <BorrowBookModal show={showBorrowModal} onHide={onHide} book={book} />
     </>
   );

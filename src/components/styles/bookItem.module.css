@@ -75,7 +75,7 @@
 
 .borrowButton {
   height: 40px;
-  width: 47%;
+  width: 125px;
   margin-left: 3px;
   margin-right: 3px;
   padding-left: 4%;
@@ -101,7 +101,7 @@
   right: 13px;
   bottom: 13px;
   height: 40px;
-  width: 100%;
+  width: 95%;
   padding-right: 20px;
   padding-left: 20px;
   display: flex;
@@ -109,7 +109,13 @@
 }
 
 .itemButtonSectionModal {
+  width: 125px;
+}
+
+.librarianRow {
   width: 245px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .bookDetailsModalBody {

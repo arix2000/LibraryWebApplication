@@ -1,13 +1,30 @@
 import styles from "../styles/bookItem.module.css";
 import { Col, Row, Card } from "react-bootstrap";
 import { Rating } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BookDetailModal from "./BookDetail/BookDetailModal";
 import BorrowButton from "./common/BorrowButton";
 import ImageWIthShimmer from "./ImageWithShimmer";
+import SessionManager from "../../common/SessionManager";
 
 export default function BookItem({ book, margin, radius }) {
   const [detailShow, setDetailShow] = useState(false);
+
+  const sessionManager = new SessionManager();
+  const loggedUser = sessionManager.getLoggedUser();
+  const [isLibrarian, setIsLibrarian] = useState(false);
+
+  const checkIsLibrarian = (loggedUser) => {
+    if (loggedUser.role === "librarian") {
+      setIsLibrarian(true)
+    } else {
+      setIsLibrarian(false)
+    }
+  }
+
+  useEffect(() => {
+    checkIsLibrarian(loggedUser);
+  }, []);
 
   return (
     <>
@@ -37,7 +54,7 @@ export default function BookItem({ book, margin, radius }) {
                   readOnly
                 />
               </Card.Title>
-              <BorrowButton rowStyles={styles.itemButtonSection} book={book} />
+              <BorrowButton rowStyles={styles.itemButtonSection} book={book} isLibrarian={isLibrarian}/>
             </Card.Body>
           </Col>
         </Row>
@@ -46,6 +63,8 @@ export default function BookItem({ book, margin, radius }) {
         show={detailShow}
         onHide={() => setDetailShow(false)}
         book={book}
+        loggedUser={loggedUser}
+        isLibrarian={isLibrarian}
       />
     </>
   );
