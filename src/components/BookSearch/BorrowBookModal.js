@@ -2,47 +2,17 @@ import { Modal, Button, Table, Form } from "react-bootstrap";
 import styles from "../styles/bookItem.module.css";
 import UserManager from "../AdminPanel/utils/UserManager";
 import { useState, useEffect, useCallback } from "react";
-
-function UserRow({ users, query, selectedUserId, handleClick }) {
-  const filteredUsers = users.filter(
-    (user) =>
-      user.name.toLowerCase().includes(query.toLowerCase()) ||
-      user.surname.toLowerCase().includes(query.toLowerCase()) ||
-      user.login.toLowerCase().includes(query.toLowerCase())
-  );
-
-  return (
-    <>
-      {filteredUsers.map((user) => {
-        console.log(user);
-        const isSelected = user.id === selectedUserId;
-        const rowClass = isSelected ? styles.selectedRow : styles.usersTableRow;
-        return (
-          <tr className={rowClass} key={user.id} onClick={() => handleClick(user.id)}>
-            <td>{user.id}</td>
-            <td>{user.name}</td>
-            <td>{user.surname}</td>
-            <td>{user.login}</td>
-            <td>{user.reserved_books.length}</td>
-            <td>{user.borrowed_books.length}</td>
-          </tr>
-        );
-      })}
-    </>
-  );
-}
+import UserTableRow from "./UserTableRow";
 
 export default function BorrowBookModal({ show, onHide, book }) {
   const userManager = new UserManager();
 
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState("");
-  const [selectedUserId, setSelectedUserId] = useState(null);
-  const [isChecked, setIsChecked] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(-1);
 
-  const handleClick = (userId) => {
+  const handleUserClick = (userId, e) => {
     setSelectedUserId(userId);
-    setIsChecked(true);
   };
 
   const handleQueryChange = (e) => {
@@ -103,11 +73,12 @@ export default function BorrowBookModal({ show, onHide, book }) {
             </tr>
           </thead>
           <tbody>
-            <UserRow
+            <UserTableRow
               users={users}
               query={query}
               selectedUserId={selectedUserId}
-              handleClick={handleClick}
+              handleUserClick={handleUserClick}
+              styles={styles}
             />
           </tbody>
         </Table>
@@ -122,7 +93,7 @@ export default function BorrowBookModal({ show, onHide, book }) {
           className="button-radius"
           variant="success"
           onClick={onHide}
-          disabled={!isChecked}
+          disabled={selectedUserId < 1}
         >
           Lend a book
         </Button>
