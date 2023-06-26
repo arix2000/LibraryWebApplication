@@ -7,8 +7,11 @@ export default function ImageWithShimmer({ book, styles }) {
     styles.cardImgFitContain
   );
 
-  const handleImageLoad = () => {
+  const handleImageLoad = (event) => {
     setIsLoaded(true);
+    if (event.target.naturalWidth <= 1 && event.target.naturalHeight <= 1) {
+      setError(true);
+    }
   };
 
   const handleImageError = (img) => {
@@ -20,7 +23,7 @@ export default function ImageWithShimmer({ book, styles }) {
 
   return (
     <div style={{ height: "100%" }}>
-      {!isLoaded && !error && <div className={styles.shimmerEffect} />}
+      {!isLoaded && <div className={styles.shimmerEffect} />}
       {error ? (
         <img
           className={styles.cardImg}
