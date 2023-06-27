@@ -2,6 +2,7 @@ import { Button, Col, Form, Modal, Row } from "react-bootstrap"
 import styles from "../styles/homePage/addEditBooksModal.module.css"
 import { useState } from "react";
 import ToastEventKeys from "../UiCommon/ToastEventKeys";
+import BookManager from "../../common/BooksManager";
 
 const AddEditBooksDialog = (props) => {
 
@@ -52,6 +53,7 @@ const AddEditBooksDialog = (props) => {
     }
 
     function onAcceptClicked(event) {
+        const bookManager = new BookManager();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
@@ -63,15 +65,14 @@ const AddEditBooksDialog = (props) => {
             setValidated(true);
             return;
         }
-        props.onHide();
         if (editMode) {
-            //TODO edit book in the storage
+            bookManager.editBook(props.book.isbn13, title, description, subtitle, authors, categories, rating, imageUrl)
         } else {
-            //TODO add book to the storage
-            clearAllParams();
+            bookManager.addBook(title, description, subtitle, authors, categories, rating, imageUrl)
         }
         setValidated(false);
-        window.dispatchEvent(new Event(editMode ? ToastEventKeys.editToast: ToastEventKeys.addToast))
+        props.onHide();
+        window.dispatchEvent(new Event(editMode ? ToastEventKeys.editToast : ToastEventKeys.addToast))
     }
 
     function onCancelClicked() {
@@ -81,7 +82,6 @@ const AddEditBooksDialog = (props) => {
             cancelEditChanges();
         }
         setValidated(false);
-        props.onHide();
     }
 
     const editMode = props.book != null;
@@ -101,7 +101,8 @@ const AddEditBooksDialog = (props) => {
                 {...props}
                 size="lg"
                 aria-labelledby="contained-modal-title-vcenter"
-                centered>
+                centered
+                onExit={onCancelClicked}>
                 <div className={styles.modalContent}>
                     <Modal.Header>
                         <Modal.Title>
@@ -185,7 +186,7 @@ const AddEditBooksDialog = (props) => {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button className="button-radius" variant="secondary"
-                            onClick={onCancelClicked}>Cancel</Button>
+                            onClick={() => props.onHide()}>Cancel</Button>
                         <Button className="button-radius" onClick={onAcceptClicked}>
                             {editMode ? <span>Apply changes</span> : <span>Add book</span>}
                         </Button>

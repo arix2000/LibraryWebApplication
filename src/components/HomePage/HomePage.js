@@ -1,6 +1,5 @@
 import NavBar from "../UiCommon/NavBar";
 import styles from "../styles/homePage/homePage.module.css";
-import books from "../../models/books.json";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import UserBookManager from "../../common/UserBookManager";
 import HomePageBanner from "./HomePageBanner";
@@ -12,6 +11,7 @@ import SessionManager from "../../common/SessionManager";
 import RolesEnum from "../../common/RolesEnum";
 import WarningToast from "../UiCommon/WarningToast";
 import ToastEventKeys from "../UiCommon/ToastEventKeys";
+import BookManager from "../../common/BooksManager";
 
 function Banner({ books, title, variant, border, background }) {
   return (
@@ -30,6 +30,9 @@ function Banner({ books, title, variant, border, background }) {
 }
 
 export default function HomePage() {
+  const bookManager = new BookManager();
+  const [books, setBooks] = useState(bookManager.getBooks());
+
   const recommBooks = [
     books[2676],
     books[65],

@@ -1,12 +1,13 @@
 import { Button, Modal } from "react-bootstrap";
 import styles from "../styles/homePage/addEditBooksModal.module.css"
 import ToastEventKeys from "../UiCommon/ToastEventKeys"
+import BookManager from "../../common/BooksManager";
 
 const DeleteBookDialog = (props) => {
     function onDeleteClicked() {
         window.dispatchEvent(new Event(ToastEventKeys.deleteToast));
+        (new BookManager()).removeBook(props.book.isbn13);
         props.onHide();
-        //TODO remove book from the storage
     }
 
     return (<>

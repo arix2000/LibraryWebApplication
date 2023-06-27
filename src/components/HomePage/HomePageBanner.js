@@ -15,7 +15,7 @@ export default function HomePageBanner({ books, title, variant }) {
           <div className={styles.row}>
             {books.map((book) => (
               <div key={book.isbn13} className={styles.col}>
-                <BookItem book={book} margin={0} radius={0} userRole={userRole} />
+                <BookItem book={book} margin={0} radius={0} userRole={userRole} shouldShowControls={false} />
               </div>
             ))}
           </div>

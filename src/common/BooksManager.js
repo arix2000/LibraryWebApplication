@@ -14,7 +14,7 @@ export default class BookManager {
 
     addBook(title, description, subtitle, authors, categories, rating, imageUrl) {
         var books = this.getBooks();
-        var index = books[books.length - 1].id + 1;
+        var index = books[books.length - 1].isbn13 + 1;
         books.push({
             isbn13: index,
             title: title,
@@ -37,24 +37,25 @@ export default class BookManager {
             books[index].subtitle = subtitle;
             books[index].authors = authors;
             books[index].categories = categories;
-            books[index].description = rating;
-            books[index].description = imageUrl;
+            books[index].average_rating = parseFloat(rating);
+            books[index].thumbnail = imageUrl;
         }
         this.#setBooks(books);
     }
 
     removeBook(bookIsbn13) {
+        console.log("REMOVE FIRED!");
         var books = this.getBooks();
         var index = books.findIndex(book => book.isbn13 === bookIsbn13);
         if (index != -1) {
             books.splice(index, 1);
         }
-        this.#setBooks(books);
+        localStorage.setItem(this.booksKey, JSON.stringify(books));
+        window.dispatchEvent(new CustomEvent("bookStorageRemove", { detail: bookIsbn13 }));
     }
 
     #setBooks(books) {
         localStorage.setItem(this.booksKey, JSON.stringify(books));
-        window.dispatchEvent(Event(this.storageKeyEvent));
+        window.dispatchEvent(new Event(this.storageKeyEvent));
     }
 }
-//TODO connect this logic with UI modal and bookItem buttons
