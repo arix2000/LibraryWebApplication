@@ -1,5 +1,6 @@
 import AdminPanel from "./components/AdminPanel/AdminPanel";
 import usersJson from "./models/users.json";
+import allBooks from "./models/books.json";
 import LoginPage from "./components/LoginPage/LoginPage";
 import BookPage from "./components/BookSearch/BookPage";
 import "./components/styles/global-styles.css";
@@ -65,5 +66,6 @@ function handleFirstTimeOpen() {
   const firstTimeManager = new FirstTimeManager();
   if (firstTimeManager.isFirstTime()) {
     localStorage.setItem(LocalStorageKeys.userList, JSON.stringify(usersJson));
+    localStorage.setItem(LocalStorageKeys.books, JSON.stringify(allBooks));
   }
 }

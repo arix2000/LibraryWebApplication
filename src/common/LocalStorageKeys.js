@@ -3,4 +3,5 @@ export default class LocalStorageKeys {
     static firstTime = "is-first-time";
     static loggedUser = "logged-user";
     static globalHistory = "global-history";
+    static books = "books"
 }
