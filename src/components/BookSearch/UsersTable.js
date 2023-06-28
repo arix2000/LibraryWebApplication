@@ -1,5 +1,5 @@
 
-export default function UserTableRow({ users, query, selectedUserId, handleUserClick, styles }) {
+export default function UsersTable({ users, query, selectedUserId, handleUserClick, styles }) {
     const filteredUsers = users.filter(
       (user) =>
         user.name.toLowerCase().includes(query.toLowerCase()) ||

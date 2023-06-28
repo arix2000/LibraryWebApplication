@@ -2,7 +2,7 @@ import { Modal, Button, Table, Form } from "react-bootstrap";
 import styles from "../styles/bookItem.module.css";
 import UserManager from "../AdminPanel/utils/UserManager";
 import { useState, useEffect, useCallback } from "react";
-import UserTableRow from "./UserTableRow";
+import UsersTable from "./UsersTable";
 
 export default function BorrowBookModal({ show, onHide, book }) {
   const userManager = new UserManager();
@@ -73,7 +73,7 @@ export default function BorrowBookModal({ show, onHide, book }) {
             </tr>
           </thead>
           <tbody>
-            <UserTableRow
+            <UsersTable
               users={users}
               query={query}
               selectedUserId={selectedUserId}
