@@ -1,33 +1,25 @@
 import styles from "../styles/bookItem.module.css";
-import { Col, Row, Card, Container } from "react-bootstrap";
+import { Col, Row, Card } from "react-bootstrap";
 import { Rating } from "@mui/material";
 import React, { useState } from "react";
 import BookDetailModal from "./BookDetail/BookDetailModal";
 import BorrowButton from "./common/BorrowButton";
+import ImageWIthShimmer from "./ImageWithShimmer";
 
-export default function BookItem({ book }) {
+export default function BookItem({ book, margin, radius }) {
   const [detailShow, setDetailShow] = useState(false);
-  const [imgObjectFitStyle, setImgObjectFitStyle] = useState(styles.cardImgFitContain);
 
   return (
     <>
       <Card
-        className={`text-center mt-4 label-color ${styles.card}`}
+        className={`text-center mt-${margin} label-color ${styles.card}`}
+        style={{ borderRadius: radius }}
         text="light"
         onClick={() => setDetailShow(true)}
       >
-        <Row >
-          <Col md='auto' xs='auto' className={styles.bookImgWrapperCol}>
-            {book.thumbnail.length != 0 ? <img
-              className={`${styles.cardImg} ${imgObjectFitStyle}`}
-              src={book.thumbnail}
-              onLoad={(img) => {
-                if (img.currentTarget.clientWidth == 180) {
-                  setImgObjectFitStyle(styles.cardImgFitFill);
-                }
-              }}
-            /> : <img styles={styles.cardImg} style={{ width: '167px' }}
-              src="https://linda-hoang.com/wp-content/uploads/2014/10/img-placeholder-dark-vertical.jpg" />}
+        <Row>
+          <Col md="auto" xs="auto" className={styles.bookImgWrapperCol}>
+            <ImageWIthShimmer book={book} styles={styles}/>
           </Col>
           <Col>
             <Card.Body>
@@ -45,7 +37,7 @@ export default function BookItem({ book }) {
                   readOnly
                 />
               </Card.Title>
-              <BorrowButton rowStyles={styles.itemButtonSection} />
+              <BorrowButton rowStyles={styles.itemButtonSection} book={book} />
             </Card.Body>
           </Col>
         </Row>

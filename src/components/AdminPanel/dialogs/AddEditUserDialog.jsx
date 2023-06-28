@@ -3,6 +3,7 @@ import { Button, Col, Form, InputGroup, Modal, Row } from "react-bootstrap";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import styles from "../../styles/adminPanel.module.css"
 import UserManager from "../utils/UserManager"
+import RolesEnum from "../../../common/RolesEnum";
 
 export default function AddEditUserDialog(props) {
     function getSafeUserParameter(param) {
@@ -11,16 +12,20 @@ export default function AddEditUserDialog(props) {
         else return "";
     }
 
+    function getSafeUserRoleParameter(param) {
+        if (user != null && !user.role)
+            return param();
+        else return RolesEnum.user;
+    }
+
     const user = props.user;
     const editMode = props.user != null;
     const userManager = new UserManager();
-
     const [name, setName] = useState(getSafeUserParameter(() => user.name));
     const [surname, setSurname] = useState(getSafeUserParameter(() => user.surname));
     const [login, setLogin] = useState(getSafeUserParameter(() => user.login));
     const [password, setPassword] = useState(getSafeUserParameter(() => user.password));
-    const [role, setRole] = useState(getSafeUserParameter(() => user.role));
-
+    const [role, setRole] = useState(getSafeUserRoleParameter(() => user.role));
     const [validated, setValidated] = useState(false);
 
     const onAcceptClicked = (event) => {
@@ -50,7 +55,7 @@ export default function AddEditUserDialog(props) {
         setSurname("");
         setLogin("");
         setPassword("");
-        setRole("");
+        setRole(RolesEnum.user);
     }
 
     const [passwordShown, setPasswordShown] = useState(false);
@@ -64,7 +69,7 @@ export default function AddEditUserDialog(props) {
                 <div className={styles.adminPanelModalContent}>
                     <Modal.Header>
                         <Modal.Title>
-                        {editMode ? <span>Edit User</span> : <span>Add User</span>}
+                            {editMode ? <span>Edit User</span> : <span>Add User</span>}
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
@@ -98,7 +103,7 @@ export default function AddEditUserDialog(props) {
                                 <Col xs={9} lg={10}>
                                     <InputGroup hasValidation>
                                         <Form.Control required defaultValue={password} type={passwordShown ? "text" : "password"}
-                                            className={`default-text-field ${styles.passRadius}`} onChange={(event) => setPassword(event.target.value)}/>
+                                            className={`default-text-field ${styles.passRadius}`} onChange={(event) => setPassword(event.target.value)} />
                                         <span size="sm" className={`${styles.passwordVisibilityButton} ${styles.passwordVisibilityInline}`}
                                             onClick={() => setPasswordShown(!passwordShown)}>
                                             {passwordShown
@@ -112,7 +117,7 @@ export default function AddEditUserDialog(props) {
                             <Form.Group as={Row} className={styles.formMarginTop}>
                                 <Form.Label column>Role: </Form.Label>
                                 <Col xs={9} lg={10}>
-                                    <Form.Select  noValidate defaultValue={role} className={styles.defaultSelector}
+                                    <Form.Select noValidate defaultValue={role} className={styles.defaultSelector}
                                         onChange={(event) => { setRole(event.target.value) }}>
                                         <option>user</option>
                                         <option>admin</option>
