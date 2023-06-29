@@ -75,7 +75,7 @@
 
 .borrowButton {
   height: 40px;
-  width: 47%;
+  width: 125px;
   margin-left: 3px;
   margin-right: 3px;
   padding-left: 4%;
@@ -101,13 +101,21 @@
   right: 13px;
   bottom: 13px;
   height: 40px;
-  width: 100%;
+  width: 95%;
   padding-right: 20px;
   padding-left: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .itemButtonSectionModal {
+  width: 125px;
+}
+
+.librarianRow {
   width: 245px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .bookDetailsModalBody {
@@ -133,4 +141,44 @@
   100% {
     background-position: 800px 0;
   }
+}
+
+.usersTable {
+  color: whitesmoke;
+  height: 100% !important;
+  width: 100% !important;
+  margin: 0;
+}
+
+.borrowBookModalHeader {
+  border-radius: 25px 25px 0px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.borrowBookModalBody {
+  background-color: #252525;
+  overflow-y: auto;
+  overflow-x: scroll;
+  max-height: 600px;
+}
+
+.usersTableRow:hover {
+  background-color: #373737;
+  cursor: pointer;
+}
+
+.selectedRow {
+  background-color: #373737;
+}
+
+.userSearchForm {
+  background-color: #3b3a3a;
+  border: 0px;
+  border-radius: 24px;
+}
+
+.userSearchForm:focus {
+  background-color: #3b3a3a;
+  color: whitesmoke;
 }

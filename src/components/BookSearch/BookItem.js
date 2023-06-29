@@ -1,13 +1,19 @@
 import styles from "../styles/bookItem.module.css";
 import { Col, Row, Card } from "react-bootstrap";
 import { Rating } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BookDetailModal from "./BookDetail/BookDetailModal";
 import BorrowButton from "./common/BorrowButton";
 import ImageWIthShimmer from "./ImageWithShimmer";
+import SessionManager from "../../common/SessionManager";
+import RolesEnum from "../../common/RolesEnum";
 
 export default function BookItem({ book, margin, radius }) {
   const [detailShow, setDetailShow] = useState(false);
+
+  const sessionManager = new SessionManager();
+  const loggedUser = sessionManager.getLoggedUser();
+  let isLibrarian = loggedUser.role === RolesEnum.librarian;
 
   return (
     <>
@@ -19,7 +25,7 @@ export default function BookItem({ book, margin, radius }) {
       >
         <Row>
           <Col md="auto" xs="auto" className={styles.bookImgWrapperCol}>
-            <ImageWIthShimmer book={book} styles={styles}/>
+            <ImageWIthShimmer book={book} styles={styles} />
           </Col>
           <Col>
             <Card.Body>
@@ -37,7 +43,11 @@ export default function BookItem({ book, margin, radius }) {
                   readOnly
                 />
               </Card.Title>
-              <BorrowButton rowStyles={styles.itemButtonSection} book={book} />
+              <BorrowButton
+                rowStyles={styles.itemButtonSection}
+                book={book}
+                isLibrarian={isLibrarian}
+              />
             </Card.Body>
           </Col>
         </Row>
@@ -46,6 +56,8 @@ export default function BookItem({ book, margin, radius }) {
         show={detailShow}
         onHide={() => setDetailShow(false)}
         book={book}
+        loggedUser={loggedUser}
+        isLibrarian={isLibrarian}
       />
     </>
   );
