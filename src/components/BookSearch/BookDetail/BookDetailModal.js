@@ -6,6 +6,7 @@ export default function BookDetailModal({
   show,
   onHide,
   book,
+  isLibrarian
 }) {
   return (
     <Modal
@@ -39,8 +40,9 @@ export default function BookDetailModal({
           Close
         </Button>
         <BorrowButton
-          rowStyles={styles.itemButtonSectionModal}
+          rowStyles={isLibrarian ? styles.librarianRow : styles.itemButtonSectionModal}
           book={book}
+          isLibrarian={isLibrarian}
         />
       </Modal.Footer>
     </Modal>

@@ -11,6 +11,7 @@ import RolesEnum from "../../common/RolesEnum";
 import DeleteBookDialog from "../HomePage/DeleteBookDialog";
 import { BsTrashFill } from "react-icons/bs";
 import BookManager from "../../common/BooksManager";
+import SessionManager from "../../common/SessionManager";
 
 export default function BookItem({ book, margin, radius, userRole, shouldShowControls = true }) {
   const bookManager = new BookManager();
@@ -24,6 +25,10 @@ export default function BookItem({ book, margin, radius, userRole, shouldShowCon
   window.addEventListener("booksStorage", (_) => {
     setBook(bookManager.getBookBy(bookDynamic.isbn13));
   });
+
+  const sessionManager = new SessionManager();
+  const loggedUser = sessionManager.getLoggedUser();
+  let isLibrarian = loggedUser.role === RolesEnum.librarian;
 
   return (
     <>
@@ -55,7 +60,11 @@ export default function BookItem({ book, margin, radius, userRole, shouldShowCon
                   readOnly
                 />
               </Card.Title>
-              <BorrowButton rowStyles={styles.itemButtonSection} book={bookDynamic} />
+              <BorrowButton
+                rowStyles={styles.itemButtonSection}
+                book={bookDynamic}
+                isLibrarian={isLibrarian}
+              />
             </Card.Body>
           </Col>
         </Row>
@@ -72,6 +81,7 @@ export default function BookItem({ book, margin, radius, userRole, shouldShowCon
         show={detailShow}
         onHide={() => setDetailShow(false)}
         book={bookDynamic}
+        isLibrarian={isLibrarian}
       />
       <AddEditBooksDialog
         show={modalAddEditShow}
