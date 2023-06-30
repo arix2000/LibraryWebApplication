@@ -1,5 +1,11 @@
 .pageContainer {
-  height: 1100px;
+  height: 1180px;
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    height: 1510px;
+  }
 }
 
 .carouselOuter {
@@ -96,4 +102,5 @@
   position: fixed;
   right: 2em;
   bottom: 1.5em;
+  box-shadow: 2px 8px 8px 2px rgba(0, 0, 0, 0.5);
 }
