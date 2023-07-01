@@ -143,6 +143,26 @@
   }
 }
 
+.editBookFab {
+  display: inline-block;
+  margin: 0;
+  padding: 5px ;
+  border-radius: 100px ;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.deleteBookFab {
+  display: inline-block;
+  margin: 0;
+  padding: 5px ;
+  border-radius: 100px ;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
 .usersTable {
   color: whitesmoke;
   height: 100% !important;

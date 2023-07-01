@@ -2,16 +2,17 @@ import BookList from "./BookList";
 import BookListEmptyView from "./BookListEmptyView"
 import BeforeSearchView from "./BeforeSearchView";
 import NavBar from "../UiCommon/NavBar";
-import data from "../../models/books.json";
 import { useState } from "react";
+import BookManager from "../../common/BooksManager";
 
 export default function BookPage() {
   const [books, setBooks] = useState([]);
   const [isQueryEntered, setIsQueryEntered] = useState(false);
 
   const handleSearchSubmit = (query) => {
+    const allBooks = (new BookManager()).getBooks();
     if (query.length >= 2) {
-      const result = data.filter((item) => {
+      const result = allBooks.filter((item) => {
         return query === ""
           ? item
           : item.title.toString().toLowerCase().includes(query.toLowerCase());
