@@ -68,7 +68,12 @@ function NavBar({
               navbarScroll
               className={styles.fullWidth}
             >
-              <Nav.Link className="text-light">Contact</Nav.Link>
+              <Nav.Link
+                className="text-light"
+                onClick={() => navigate(AppRoutes.contactPage)}
+              >
+                Contact
+              </Nav.Link>
               {loggedUser.role === "admin" ? (
                 <Nav.Link
                   className="text-light"
