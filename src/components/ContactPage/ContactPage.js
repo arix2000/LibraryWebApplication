@@ -17,7 +17,7 @@ export default function ContactPage() {
             <div
               className="border border-primary p-3 mb-4 d-flex flex-row align-items-center"
               style={{
-                borderRadius: '2rem',
+                borderRadius: '30px',
                 backgroundColor: '#404040',
               }}
             >
@@ -37,7 +37,7 @@ export default function ContactPage() {
                   src={process.env.PUBLIC_URL + person.img}
                   alt={person.name}
                   style={{
-                    borderRadius: '2rem',
+                    borderRadius: '30px',
                     width: 'auto',
                     height: '100%',
                     objectFit: 'cover',
