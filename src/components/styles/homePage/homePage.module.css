@@ -1,5 +1,11 @@
 .pageContainer {
-  height: 1100px;
+  height: 1180px;
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    height: 1510px;
+  }
 }
 
 .carouselOuter {
@@ -78,6 +84,8 @@
   margin-bottom: 0;
   color: aliceblue;
   border-radius: 0;
+  border: 0px;
+
 }
 
 .alertHeading {
@@ -86,4 +94,15 @@
   align-items: center;
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+.addBookToLibraryFab {
+  display: flex;
+  margin: 0;
+  padding: 0.8em ;
+  border-radius: 100px ;
+  position: fixed;
+  right: 2em;
+  bottom: 1.5em;
+  box-shadow: 2px 8px 8px 2px rgba(0, 0, 0, 0.5);
 }

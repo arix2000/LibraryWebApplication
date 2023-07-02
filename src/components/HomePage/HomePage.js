@@ -1,10 +1,17 @@
 import NavBar from "../UiCommon/NavBar";
 import styles from "../styles/homePage/homePage.module.css";
-import books from "../../models/books.json";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import UserBookManager from "../../common/UserBookManager";
 import HomePageBanner from "./HomePageBanner";
 import { useState } from "react";
+import { IoMdAdd } from "react-icons/io";
+import AddEditBooksDialog from "./AddEditBooksDialog";
+import SuccessToast from "../UiCommon/SuccessToast";
+import SessionManager from "../../common/SessionManager";
+import RolesEnum from "../../common/RolesEnum";
+import WarningToast from "../UiCommon/WarningToast";
+import ToastEventKeys from "../UiCommon/ToastEventKeys";
+import BookManager from "../../common/BooksManager";
 
 function Banner({ books, title, variant, border, background }) {
   return (
@@ -23,6 +30,9 @@ function Banner({ books, title, variant, border, background }) {
 }
 
 export default function HomePage() {
+  const bookManager = new BookManager();
+  const [books, setBooks] = useState(bookManager.getBooks());
+
   const recommBooks = [
     books[2676],
     books[65],
@@ -42,6 +52,7 @@ export default function HomePage() {
     books[1],
   ];
 
+  const isAdminOrLibrarianRole = (new SessionManager()).getLoggedUser().role != RolesEnum.user;
   const userBookManager = new UserBookManager();
   const [borrowedBooks, setBorrowedBooks] = useState(
     userBookManager.getAllBorrowedBooks()
@@ -66,6 +77,22 @@ export default function HomePage() {
 
   const [recommBooksDynamic, setRecommBooks] = useState(recommBooks);
   const [bestBooksDynamic, setBestBooks] = useState(bestBooks);
+  const [modalAddEditShow, setModalAddEditShow] = useState(false);
+  const [showSuccessMassage, setShowSuccessMassage] = useState(false);
+  const [showWarningMassage, setShowWarningMassage] = useState(false);
+  const [isBookInEditMode, setIsBookInEditMode] = useState(false);
+
+  window.addEventListener(ToastEventKeys.editToast, (_) => {
+    setIsBookInEditMode(true);
+    setShowSuccessMassage(true);
+  });
+  window.addEventListener(ToastEventKeys.addToast, (_) => {
+    setIsBookInEditMode(false);
+    setShowSuccessMassage(true);
+  });
+  window.addEventListener(ToastEventKeys.deleteToast, (_) => {
+    setShowWarningMassage(true);
+  });
 
   return (
     <div className={styles.pageContainer}>
@@ -106,6 +133,23 @@ export default function HomePage() {
           </Col>
         </Row>
       </Container>
+      {isAdminOrLibrarianRole ?
+        <Button className={styles.addBookToLibraryFab} onClick={() => setModalAddEditShow(true)}>
+          Add book to library <div style={{ width: "8px" }}></div><IoMdAdd style={{ height: 24, width: 24 }} />
+        </Button> : <></>}
+      <AddEditBooksDialog
+        show={modalAddEditShow}
+        onHide={() => setModalAddEditShow(false)}
+      />
+      <SuccessToast
+        text={isBookInEditMode ? "Changes has been applied!" : "Book has been added successfully!"}
+        show={showSuccessMassage}
+        setShow={setShowSuccessMassage} />
+
+      <WarningToast
+        text={"Book has been removed."}
+        show={showWarningMassage}
+        setShow={setShowWarningMassage} />
     </div>
   );
 }
