@@ -94,7 +94,6 @@ export default function HomePage() {
     setShowWarningMassage(true);
   });
 
-
   return (
     <div className={styles.pageContainer}>
       <NavBar showSearchBar={false} />
