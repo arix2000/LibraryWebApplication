@@ -1,6 +1,6 @@
 import NavBar from "../UiCommon/NavBar";
 import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Image } from 'react-bootstrap';
 import styles from "../styles/contactPage.module.css";
 import people from './peopleData';
 
@@ -32,17 +32,18 @@ export default function ContactPage() {
                   GitHub: <a href={person.github}>Go to profile</a>
                 </p>
               </div>
-              <div style={{ flex: 1, textAlign: 'right', width: 'auto', height: '200px' }}>
-                <img
-                  src={process.env.PUBLIC_URL + person.img}
-                  alt={person.name}
-                  style={{
-                    borderRadius: '30px',
-                    width: 'auto',
-                    height: '100%',
-                    objectFit: 'cover',
-                  }}
-                />
+              <div className={styles.imageContainer}>
+                <div className={styles.aspectRatioWrapper}>
+                  <Image
+                    src={process.env.PUBLIC_URL + person.img}
+                    alt={person.name}
+                    className={styles.contactImage}
+                    fluid
+                    style={{
+                      borderRadius: '30px'
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </Col>
