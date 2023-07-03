@@ -17,9 +17,6 @@ export default class UserBookManager {
     let currentUser = this.#getLoggedUser();
     let user = this.userManager.getUserBy(userId);
     user.borrowed_books.push(bookId);
-    console.log(bookId);
-    console.log(user.borrowed_books);
-    console.log(user);
     this.userManager.updateUser(user);
     if(currentUser.id === userId) {
       this.sessionManager.updateLoggedUser(user);

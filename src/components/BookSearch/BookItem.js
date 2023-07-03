@@ -38,7 +38,7 @@ export default function BookItem({ book, margin, radius, userRole, shouldShowCon
         className={`text-center mt-${margin} label-color ${styles.card}`}
         style={{ borderRadius: radius }}
         text="light"
-        onClick={() => { console.log("Book deail show clicked!"); setDetailShow(true); }}
+        onClick={() => { setDetailShow(true); }}
         onMouseEnter={() => isAdminOrLibrarianRole ? setBookControlsShow(shouldShowControls) : null}
         onMouseLeave={() => isAdminOrLibrarianRole ? setBookControlsShow(false) : null}
       >
