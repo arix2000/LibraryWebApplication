@@ -31,7 +31,7 @@ function Banner({ books, title, variant, border, background }) {
 
 export default function HomePage() {
   const bookManager = new BookManager();
-  const [books, setBooks] = useState(bookManager.getBooks());
+  const books = bookManager.getBooks();
 
   const recommBooks = [
     books[2676],

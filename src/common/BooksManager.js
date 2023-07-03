@@ -44,7 +44,6 @@ export default class BookManager {
     }
 
     removeBook(bookIsbn13) {
-        console.log("REMOVE FIRED!");
         var books = this.getBooks();
         var index = books.findIndex(book => book.isbn13 === bookIsbn13);
         if (index != -1) {

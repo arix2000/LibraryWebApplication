@@ -9,7 +9,7 @@ export default class HistoryManager {
     userHistoryEventKey = "historyUserStorage";
     globalHistoryKey = LocalStorageKeys.globalHistory;
 
-    #getUser() { return this.sessionManager.getLoggedUser(); }
+    #getLoggedUser() { return this.sessionManager.getLoggedUser(); }
 
     getGlobalHistory() {
         const history = JSON.parse(localStorage.getItem(this.globalHistoryKey));
@@ -22,12 +22,11 @@ export default class HistoryManager {
     logHistory(historyAction, bookId, user) {
         const globalHistoryNextIndex = this.getGlobalHistory().length;
         const userHistoryNextIndex = user.history.length;
-        this.#saveUserHistory(new HistoryObject(userHistoryNextIndex, historyAction, bookId, user.name, user.surname));
+        this.#saveUserHistory(new HistoryObject(userHistoryNextIndex, historyAction, bookId, user.name, user.surname), user);
         this.#saveGlobalHistory(new HistoryObject(globalHistoryNextIndex, historyAction, bookId, user.name, user.surname));
     }
 
-    #saveUserHistory(historyObject) {
-        let user = this.#getUser();
+    #saveUserHistory(historyObject, user) {
         user.history.push(historyObject);
         this.#updateUser(user);
     }
@@ -39,8 +38,11 @@ export default class HistoryManager {
     }
 
     #updateUser(user) {
+        const currentUser = this.#getLoggedUser()
         this.userManager.updateUser(user);
-        this.sessionManager.updateLoggedUser(user);
+        if (currentUser.id === user.id) {
+            this.sessionManager.updateLoggedUser(user);
+        }
         window.dispatchEvent(new Event(this.userHistoryEventKey));
     }
 

@@ -8,6 +8,11 @@ export default class UserManager {
     return JSON.parse(localStorage.getItem(this.userListKey));
   }
 
+  getUserBy(id) {
+    const users = this.getUsers();
+    return users.find(user => user.id === id);
+  }
+
   removeUser(userToRemove) {
     var users = this.getUsers();
     const index = users.findIndex((user) => user.id == userToRemove.id);
