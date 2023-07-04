@@ -1,7 +1,7 @@
 import { Modal, Button } from "react-bootstrap";
 import styles from "../styles/bookItem.module.css";
 import UserBookManager from "../../common/UserBookManager";
-import BookItem from "./BookItem";
+import ReturnBookItem from "./ReturnBookItem";
 
 export default function SelectReturnedBookModal({
   onHide,
@@ -37,7 +37,7 @@ export default function SelectReturnedBookModal({
       >
         {borrowedBooks.map((book) => {
           return (
-            <BookItem book={book} key={book.isbn13} margin={4} radius={24} userRole={"librarian"} />
+            <ReturnBookItem onHide={onHide} book={book} key={book.isbn13} margin={3} radius={24}/>
           );
         })}
       </Modal.Body>
