@@ -22,9 +22,6 @@ export default function BorrowButton({ rowStyles, book, isLibrarian }) {
     e.stopPropagation();
     setShowBorrowModal(true);
   };
-  const handleReturnClick = (e) => {
-    e.stopPropagation();
-  };
   const handleReserveClick = (e) => {
     e.stopPropagation();
     userBookManager.reserviseBook(book.isbn13);
@@ -60,15 +57,11 @@ export default function BorrowButton({ rowStyles, book, isLibrarian }) {
         </Button>
         {isLibrarian && (
           <Button
-            onClick={
-              isBookBorrowed
-                ? (e) => handleReturnClick(e)
-                : (e) => handleBorrowClick(e)
-            }
+            onClick={(e) => handleBorrowClick(e)}
             variant="success"
             className={`${styles.borrowButton} button-radius`}
           >
-            {isBookBorrowed ? "Return" : "Borrow"}{" "}
+            Lend{" "}
             <RiHealthBookFill className={styles.buttonIcon} />
           </Button>
         )}

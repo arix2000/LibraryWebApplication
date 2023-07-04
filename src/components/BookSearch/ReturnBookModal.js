@@ -3,16 +3,20 @@ import styles from "../styles/bookItem.module.css";
 import UserManager from "../AdminPanel/utils/UserManager";
 import { useState, useEffect, useCallback } from "react";
 import UsersTable from "./UsersTable";
+import SelectReturnedBookModal from "./SelectReturnedBookModal";
 
-export default function BorrowBookModal({ show, onHide, book }) {
+export default function ReturnBookModal({ show, onHide }) {
   const userManager = new UserManager();
 
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState("");
+  const [selectReturnedBookShow, setSelectReturnedBookShow] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(-1);
 
-  const handleUserClick = (userId, e) => {
+  const handleUserClick = (userId) => {
     setSelectedUserId(userId);
+    setSelectReturnedBookShow(true);
+    onHide();
   };
 
   const handleQueryChange = (e) => {
@@ -29,6 +33,7 @@ export default function BorrowBookModal({ show, onHide, book }) {
   }, []);
 
   return (
+    <>
     <Modal
       onClick={(e) => {
         e.stopPropagation();
@@ -46,8 +51,7 @@ export default function BorrowBookModal({ show, onHide, book }) {
           id="contained-modal-title-vcenter"
           className="text-center w-100 pb-2 fade-in"
         >
-          <h1 className="font-weight-bold">{'"' + book.title + '"'}</h1>
-          <h5>Select the user to whom you wish to lend the book.</h5>
+          <h5>Select the user who intends to return the book</h5>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className={`px-5 text-light ${styles.borrowBookModalBody}`}>
@@ -89,15 +93,9 @@ export default function BorrowBookModal({ show, onHide, book }) {
         <Button className="button-radius" variant="secondary" onClick={onHide}>
           Close
         </Button>
-        <Button
-          className="button-radius"
-          variant="success"
-          onClick={onHide}
-          disabled={selectedUserId < 0}
-        >
-          Lend a book
-        </Button>
       </Modal.Footer>
     </Modal>
+    <SelectReturnedBookModal selectedUserId={selectedUserId} show={selectReturnedBookShow} onHide={() => {setSelectReturnedBookShow(false)}}/>
+    </>
   );
 }

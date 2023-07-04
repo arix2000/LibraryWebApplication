@@ -5,6 +5,7 @@ import UserBookManager from "../../common/UserBookManager";
 import HomePageBanner from "./HomePageBanner";
 import { useState } from "react";
 import { IoMdAdd } from "react-icons/io";
+import { MdOutlineAssignmentReturned } from "react-icons/md";
 import AddEditBooksDialog from "./AddEditBooksDialog";
 import SuccessToast from "../UiCommon/SuccessToast";
 import SessionManager from "../../common/SessionManager";
@@ -12,6 +13,7 @@ import RolesEnum from "../../common/RolesEnum";
 import WarningToast from "../UiCommon/WarningToast";
 import ToastEventKeys from "../UiCommon/ToastEventKeys";
 import BookManager from "../../common/BooksManager";
+import ReturnBookModal from "../BookSearch/ReturnBookModal";
 
 function Banner({ books, title, variant, border, background }) {
   return (
@@ -53,6 +55,7 @@ export default function HomePage() {
   ];
 
   const isAdminOrLibrarianRole = (new SessionManager()).getLoggedUser().role != RolesEnum.user;
+  const isLibrarianRole = (new SessionManager()).getLoggedUser().role === RolesEnum.librarian;
   const userBookManager = new UserBookManager();
   const [borrowedBooks, setBorrowedBooks] = useState(
     userBookManager.getAllBorrowedBooks()
@@ -78,6 +81,7 @@ export default function HomePage() {
   const [recommBooksDynamic, setRecommBooks] = useState(recommBooks);
   const [bestBooksDynamic, setBestBooks] = useState(bestBooks);
   const [modalAddEditShow, setModalAddEditShow] = useState(false);
+  const [returnBookModalShow, setReturnBookModalShow] = useState(false);
   const [showSuccessMassage, setShowSuccessMassage] = useState(false);
   const [showWarningMassage, setShowWarningMassage] = useState(false);
   const [isBookInEditMode, setIsBookInEditMode] = useState(false);
@@ -137,10 +141,15 @@ export default function HomePage() {
         <Button className={styles.addBookToLibraryFab} onClick={() => setModalAddEditShow(true)}>
           Add book to library <div style={{ width: "8px" }}></div><IoMdAdd style={{ height: 24, width: 24 }} />
         </Button> : <></>}
+        {isLibrarianRole ?
+        <Button className={styles.acceptReturnFab} onClick={() => setReturnBookModalShow(true)} variant="success">
+          Accept the return <div style={{ width: "8px" }}></div><MdOutlineAssignmentReturned style={{ height: 24, width: 24 }} />
+        </Button> : <></>}
       <AddEditBooksDialog
         show={modalAddEditShow}
         onHide={() => setModalAddEditShow(false)}
       />
+      <ReturnBookModal show={returnBookModalShow} onHide={() => setReturnBookModalShow(false)}/>
       <SuccessToast
         text={isBookInEditMode ? "Changes has been applied!" : "Book has been added successfully!"}
         show={showSuccessMassage}

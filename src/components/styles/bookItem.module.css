@@ -176,7 +176,21 @@
   align-items: center;
 }
 
+
 .borrowBookModalBody {
+  background-color: #252525;
+  overflow-y: auto;
+  overflow-x: scroll;
+  max-height: 600px;
+}
+
+.selectReturnedBookModalHeader {
+  border-radius: 25px 25px 0px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.selectReturnedBookModalBody {
   background-color: #252525;
   overflow-y: auto;
   overflow-x: scroll;
