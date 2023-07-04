@@ -13,9 +13,6 @@ export default function SelectReturnedBookModal({
 
   return (
     <Modal
-      onClick={(e) => {
-        e.stopPropagation();
-      }}
       show={show}
       onHide={onHide}
       size="lg"
@@ -29,18 +26,25 @@ export default function SelectReturnedBookModal({
           id="contained-modal-title-vcenter"
           className="text-center w-100 pb-2 fade-in"
         >
-          <h5>Select the book to be returned</h5>
+          <h2>Select the book to be returned</h2>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body
         className={`px-5 text-light ${styles.selectReturnedBookModalBody}`}
       >
-        {borrowedBooks.map((book) => {
-          return (
-            <ReturnBookItem onHide={onHide} book={book} key={book.isbn13} margin={3} radius={24}/>
-          );
-        })}
+        {borrowedBooks.length > 0 ? (
+          borrowedBooks.map((book) => {
+            return (
+              <ReturnBookItem onHide={onHide} book={book} key={book.isbn13} />
+            );
+          })
+        ) : (
+          <div className={styles.noBooksToReturnAlert}>
+            <h4>User has no remaining books to return</h4>
+          </div>
+        )}
       </Modal.Body>
+
       <Modal.Footer
         className={`px-3 py-2 label-color bottom-radius ${styles.bottomRadius}`}
       >

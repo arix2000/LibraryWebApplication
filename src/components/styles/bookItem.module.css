@@ -216,3 +216,11 @@
   background-color: #3b3a3a;
   color: whitesmoke;
 }
+
+.noBooksToReturnAlert {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

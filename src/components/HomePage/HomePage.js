@@ -54,8 +54,10 @@ export default function HomePage() {
     books[1],
   ];
 
-  const isAdminOrLibrarianRole = (new SessionManager()).getLoggedUser().role != RolesEnum.user;
-  const isLibrarianRole = (new SessionManager()).getLoggedUser().role === RolesEnum.librarian;
+  const loggedUserRole = new SessionManager().getLoggedUser().role;
+
+  const isAdminOrLibrarianRole = loggedUserRole != RolesEnum.user;
+  const isLibrarianRole = loggedUserRole === RolesEnum.librarian;
   const userBookManager = new UserBookManager();
   const [borrowedBooks, setBorrowedBooks] = useState(
     userBookManager.getAllBorrowedBooks()
