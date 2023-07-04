@@ -18,6 +18,7 @@ export default class UserBookManager {
     user.borrowed_books.push(bookId);
     this.#updateOtherUser(user);
     this.historyManager.logHistory(HistoryActions.Borrow, bookId, user);
+    this.cancelReservation(bookId, user, false);
   }
 
   reserviseBook(bookId) {
@@ -37,14 +38,15 @@ export default class UserBookManager {
     this.historyManager.logHistory(HistoryActions.Return, bookId, user);
   }
 
-  cancelReservation(bookId) {
-    const user = this.#getLoggedUser();
+  cancelReservation(bookId, user = this.#getLoggedUser(), shouldLogHistory = true) {
     const index = user.reserved_books.findIndex((reservedBookId) => reservedBookId == bookId);
     if (index > -1) {
       user.reserved_books.splice(index, 1);
     }
-    this.#updateUser(user);
-    this.historyManager.logHistory(HistoryActions.CancelReservation, bookId, user);
+    this.#updateOtherUser(user);
+    if (shouldLogHistory) {
+      this.historyManager.logHistory(HistoryActions.CancelReservation, bookId, user);
+    }
   }
 
   getAllBorrowedBooks() {
@@ -76,7 +78,7 @@ export default class UserBookManager {
   #updateOtherUser(user) {
     const currentUser = this.#getLoggedUser();
     this.userManager.updateUser(user);
-    if(currentUser.id === user.id) {
+    if (currentUser.id === user.id) {
       this.sessionManager.updateLoggedUser(user);
     }
     window.dispatchEvent(new Event(this.storageEventKey));
