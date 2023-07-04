@@ -21,8 +21,6 @@ export default function BookList({ books }) {
     setShowWarningMassage(true);
   });
   window.addEventListener("bookStorageRemove", (event) => {
-    console.log("REMOVE FIRED!");
-    console.log(event.detail);
     const updatedList = currentBooks.filter((book) => book.isbn13 !== event.detail);
     setCurrentBooks(updatedList);
   })

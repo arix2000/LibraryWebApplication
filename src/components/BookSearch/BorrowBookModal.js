@@ -3,17 +3,28 @@ import styles from "../styles/bookItem.module.css";
 import UserManager from "../AdminPanel/utils/UserManager";
 import { useState, useEffect, useCallback } from "react";
 import UsersTable from "./UsersTable";
+import UserBookManager from "../../common/UserBookManager";
 
 export default function BorrowBookModal({ show, onHide, book }) {
   const userManager = new UserManager();
+  const bookManager = new UserBookManager();
 
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState("");
   const [selectedUserId, setSelectedUserId] = useState(-1);
 
+  window.addEventListener('storage', (_) => {
+    setUsers(userManager.getUsers());
+  });
+
   const handleUserClick = (userId, e) => {
     setSelectedUserId(userId);
   };
+
+  const clearModalData = () => {
+    setSelectedUserId(-1);
+    setQuery("");
+  }
 
   const handleQueryChange = (e) => {
     const inputValue = e.target.value;
@@ -23,6 +34,12 @@ export default function BorrowBookModal({ show, onHide, book }) {
   const assignUsersToVar = useCallback(() => {
     setUsers(userManager.getUsers());
   }, []);
+
+  const handleLendBookClick = (e) => {
+    bookManager.borrowBook(book.isbn13, selectedUserId);
+    clearModalData();
+    onHide();
+  }
 
   useEffect(() => {
     assignUsersToVar();
@@ -86,7 +103,7 @@ export default function BorrowBookModal({ show, onHide, book }) {
       <Modal.Footer
         className={`px-3 py-2 label-color bottom-radius ${styles.bottomRadius}`}
       >
-        <Button className="button-radius" variant="secondary" onClick={onHide}>
+        <Button className="button-radius" variant="secondary" onClick={(e) => {onHide(); clearModalData();}}>
           Close
         </Button>
         <Button
