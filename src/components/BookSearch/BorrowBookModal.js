@@ -109,7 +109,7 @@ export default function BorrowBookModal({ show, onHide, book }) {
         <Button
           className="button-radius"
           variant="success"
-          onClick={onHide}
+          onClick={handleLendBookClick}
           disabled={selectedUserId < 0}
         >
           Lend a book
