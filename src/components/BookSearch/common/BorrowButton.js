@@ -6,7 +6,7 @@ import UserBookManager from "../../../common/UserBookManager";
 import { useState } from "react";
 import BorrowBookModal from "../BorrowBookModal";
 
-export default function BorrowButton({ rowStyles, book, isLibrarian }) {
+export default function BorrowButton({ rowStyles, book, isLibrarian, onBorrowBookClicked }) {
   const userBookManager = new UserBookManager();
 
   const [isBookBorrowed, setIsBookBorrowed] = useState(
@@ -16,11 +16,9 @@ export default function BorrowButton({ rowStyles, book, isLibrarian }) {
     userBookManager.isReserved(book.isbn13)
   );
 
-  const [showBorrowModal, setShowBorrowModal] = useState(false);
-
   const handleBorrowClick = (e) => {
     e.stopPropagation();
-    setShowBorrowModal(true);
+    onBorrowBookClicked();
   };
   const handleReturnClick = (e) => {
     e.stopPropagation();
@@ -34,11 +32,6 @@ export default function BorrowButton({ rowStyles, book, isLibrarian }) {
     e.stopPropagation();
     userBookManager.cancelReservation(book.isbn13);
     setIsBookReserved(false);
-  };
-
-  const onHide = (e) => {
-    e.stopPropagation();
-    setShowBorrowModal(false);
   };
 
   return (
@@ -73,7 +66,6 @@ export default function BorrowButton({ rowStyles, book, isLibrarian }) {
           </Button>
         )}
       </div>
-      <BorrowBookModal show={showBorrowModal} onHide={onHide} book={book} />
     </>
   );
 }

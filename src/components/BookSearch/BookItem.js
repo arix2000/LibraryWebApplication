@@ -12,6 +12,7 @@ import DeleteBookDialog from "../HomePage/DeleteBookDialog";
 import { BsTrashFill } from "react-icons/bs";
 import BookManager from "../../common/BooksManager";
 import SessionManager from "../../common/SessionManager";
+import BorrowBookModal from "./BorrowBookModal";
 
 export default function BookItem({ book, margin, radius, userRole, shouldShowControls = true }) {
   const bookManager = new BookManager();
@@ -19,6 +20,7 @@ export default function BookItem({ book, margin, radius, userRole, shouldShowCon
   const [modalAddEditShow, setModalAddEditShow] = useState(false);
   const [modalDeleteShow, setModalDeleteShow] = useState(false);
   const [bookControlsShow, setBookControlsShow] = useState(false);
+  const [showBorrowModal, setShowBorrowModal] = useState(false);
   const [bookDynamic, setBook] = useState(book);
   const isAdminOrLibrarianRole = userRole != RolesEnum.user;
 
@@ -36,7 +38,7 @@ export default function BookItem({ book, margin, radius, userRole, shouldShowCon
         className={`text-center mt-${margin} label-color ${styles.card}`}
         style={{ borderRadius: radius }}
         text="light"
-        onClick={() => setDetailShow(true)}
+        onClick={() => { setDetailShow(true); }}
         onMouseEnter={() => isAdminOrLibrarianRole ? setBookControlsShow(shouldShowControls) : null}
         onMouseLeave={() => isAdminOrLibrarianRole ? setBookControlsShow(false) : null}
       >
@@ -64,6 +66,7 @@ export default function BookItem({ book, margin, radius, userRole, shouldShowCon
                 rowStyles={styles.itemButtonSection}
                 book={bookDynamic}
                 isLibrarian={isLibrarian}
+                onBorrowBookClicked={() => setShowBorrowModal(true)}
               />
             </Card.Body>
           </Col>
@@ -93,6 +96,10 @@ export default function BookItem({ book, margin, radius, userRole, shouldShowCon
         onHide={() => setModalDeleteShow(false)}
         book={bookDynamic}
       />
+      <BorrowBookModal
+        show={showBorrowModal}
+        onHide={() => setShowBorrowModal(false)}
+        book={bookDynamic} />
     </>
   );
 }
