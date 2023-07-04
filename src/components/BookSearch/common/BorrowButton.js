@@ -4,14 +4,10 @@ import { RiBookMarkFill, RiHealthBookFill } from "react-icons/ri";
 import styles from "../../styles/bookItem.module.css";
 import UserBookManager from "../../../common/UserBookManager";
 import { useState } from "react";
-import BorrowBookModal from "../BorrowBookModal";
 
 export default function BorrowButton({ rowStyles, book, isLibrarian, onBorrowBookClicked }) {
   const userBookManager = new UserBookManager();
 
-  const [isBookBorrowed, setIsBookBorrowed] = useState(
-    userBookManager.isBorrowed(book.isbn13)
-  );
   const [isBookReserved, setIsBookReserved] = useState(
     userBookManager.isReserved(book.isbn13)
   );

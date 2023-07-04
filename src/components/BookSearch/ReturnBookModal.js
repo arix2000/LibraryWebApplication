@@ -13,6 +13,10 @@ export default function ReturnBookModal({ show, onHide }) {
   const [selectReturnedBookShow, setSelectReturnedBookShow] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(-1);
 
+  window.addEventListener('storage', (_) => {
+    setUsers(userManager.getUsers());
+  });
+
   const handleUserClick = (userId) => {
     setSelectedUserId(userId);
     setSelectReturnedBookShow(true);
