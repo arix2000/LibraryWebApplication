@@ -33,9 +33,7 @@ export default class UserBookManager {
     if (index > -1) {
       user.borrowed_books.splice(index, 1);
     }
-
     this.#updateOtherUser(user);
-
     this.historyManager.logHistory(HistoryActions.Return, bookId, user);
   }
 
