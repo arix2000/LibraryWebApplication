@@ -1,11 +1,19 @@
 import styles from "../styles/bookItem.module.css";
 import { Col, Row, Card } from "react-bootstrap";
 import ImageWIthShimmer from "./ImageWithShimmer";
+import UserBookManager from "../../common/UserBookManager";
 
 export default function ReturnBookItem({
   book,
-  onHide
+  onHide,
+  userId
 }) {
+
+  const handleOnItemClick = () => {
+    const userBookManager = new UserBookManager();
+    userBookManager.returnBook(book.isbn13, userId);
+    onHide();
+  }
 
   return (
     <>
@@ -13,7 +21,7 @@ export default function ReturnBookItem({
         className={`text-center mt-3 label-color ${styles.card}`}
         style={{ borderRadius: 24 }}
         text="light"
-        onClick={onHide}
+        onClick={handleOnItemClick}
       >
         <Row>
           <Col md="auto" xs="auto" className={styles.bookImgWrapperCol}>

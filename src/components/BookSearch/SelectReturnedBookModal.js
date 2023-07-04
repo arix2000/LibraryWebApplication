@@ -2,14 +2,19 @@ import { Modal, Button } from "react-bootstrap";
 import styles from "../styles/bookItem.module.css";
 import UserBookManager from "../../common/UserBookManager";
 import ReturnBookItem from "./ReturnBookItem";
+import UserManager from "../AdminPanel/utils/UserManager";
 
 export default function SelectReturnedBookModal({
   onHide,
   show,
   selectedUserId,
 }) {
-  const userBookManager = new UserBookManager();
-  const borrowedBooks = userBookManager.getAllBorrowedBooks();
+  var borrowedBooks = [];
+  if (selectedUserId !== -1) {
+    const user = (new UserManager()).getUserBy(selectedUserId);
+    const userBookManager = new UserBookManager();
+    borrowedBooks = userBookManager.getBorrowedBooksOf(user);
+  }
 
   return (
     <Modal
@@ -35,7 +40,7 @@ export default function SelectReturnedBookModal({
         {borrowedBooks.length > 0 ? (
           borrowedBooks.map((book) => {
             return (
-              <ReturnBookItem onHide={onHide} book={book} key={book.isbn13} />
+              <ReturnBookItem onHide={onHide} book={book} key={book.isbn13} userId={selectedUserId} />
             );
           })
         ) : (

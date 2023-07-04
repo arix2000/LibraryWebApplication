@@ -14,36 +14,33 @@ export default class UserBookManager {
   #getLoggedUser() { return this.sessionManager.getLoggedUser(); }
 
   borrowBook(bookId, userId) {
-    let currentUser = this.#getLoggedUser();
-    let user = this.userManager.getUserBy(userId);
+    const user = this.userManager.getUserBy(userId);
     user.borrowed_books.push(bookId);
-    this.userManager.updateUser(user);
-    if(currentUser.id === userId) {
-      this.sessionManager.updateLoggedUser(user);
-    }
-    window.dispatchEvent(new Event(this.storageEventKey));
+    this.#updateOtherUser(user);
     this.historyManager.logHistory(HistoryActions.Borrow, bookId, user);
   }
 
   reserviseBook(bookId) {
-    let user = this.#getLoggedUser();
+    const user = this.#getLoggedUser();
     user.reserved_books.push(bookId);
     this.#updateUser(user);
     this.historyManager.logHistory(HistoryActions.Reserve, bookId, user);
   }
 
-  returnBook(bookId) {
-    let user = this.#getLoggedUser();
+  returnBook(bookId, userId) {
+    const user = this.userManager.getUserBy(userId);
     const index = user.borrowed_books.findIndex((borrowedBookId) => borrowedBookId == bookId);
     if (index > -1) {
       user.borrowed_books.splice(index, 1);
     }
-    this.#updateUser(user);
+
+    this.#updateOtherUser(user);
+
     this.historyManager.logHistory(HistoryActions.Return, bookId, user);
   }
 
   cancelReservation(bookId) {
-    let user = this.#getLoggedUser();
+    const user = this.#getLoggedUser();
     const index = user.reserved_books.findIndex((reservedBookId) => reservedBookId == bookId);
     if (index > -1) {
       user.reserved_books.splice(index, 1);
@@ -53,13 +50,15 @@ export default class UserBookManager {
   }
 
   getAllBorrowedBooks() {
-    const userBorrowedBooks = allBooks.filter(book => this.#getLoggedUser().borrowed_books.includes(book.isbn13));
-    return userBorrowedBooks;
+    return allBooks.filter(book => this.#getLoggedUser().borrowed_books.includes(book.isbn13));
+  }
+
+  getBorrowedBooksOf(user) {
+    return allBooks.filter(book => user.borrowed_books.includes(book.isbn13));
   }
 
   getAllReservedBooks() {
-    const userReservedBooks = allBooks.filter(book => this.#getLoggedUser().reserved_books.includes(book.isbn13));
-    return userReservedBooks;
+    return allBooks.filter(book => this.#getLoggedUser().reserved_books.includes(book.isbn13));
   }
 
   isReserved(bookId) {
@@ -73,6 +72,15 @@ export default class UserBookManager {
   #updateUser(user) {
     this.userManager.updateUser(user);
     this.sessionManager.updateLoggedUser(user);
+    window.dispatchEvent(new Event(this.storageEventKey));
+  }
+
+  #updateOtherUser(user) {
+    const currentUser = this.#getLoggedUser();
+    this.userManager.updateUser(user);
+    if(currentUser.id === user.id) {
+      this.sessionManager.updateLoggedUser(user);
+    }
     window.dispatchEvent(new Event(this.storageEventKey));
   }
 
