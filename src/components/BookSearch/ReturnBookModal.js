@@ -3,28 +3,21 @@ import styles from "../styles/bookItem.module.css";
 import UserManager from "../AdminPanel/utils/UserManager";
 import { useState, useEffect, useCallback } from "react";
 import UsersTable from "./UsersTable";
-import UserBookManager from "../../common/UserBookManager";
+import SelectReturnedBookModal from "./SelectReturnedBookModal";
 
-export default function BorrowBookModal({ show, onHide, book }) {
+export default function ReturnBookModal({ show, onHide }) {
   const userManager = new UserManager();
-  const bookManager = new UserBookManager();
 
   const [users, setUsers] = useState([]);
   const [query, setQuery] = useState("");
+  const [selectReturnedBookShow, setSelectReturnedBookShow] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(-1);
 
-  window.addEventListener('storage', (_) => {
-    setUsers(userManager.getUsers());
-  });
-
-  const handleUserClick = (userId, e) => {
+  const handleUserClick = (userId) => {
     setSelectedUserId(userId);
+    setSelectReturnedBookShow(true);
+    onHide();
   };
-
-  const clearModalData = () => {
-    setSelectedUserId(-1);
-    setQuery("");
-  }
 
   const handleQueryChange = (e) => {
     const inputValue = e.target.value;
@@ -35,17 +28,12 @@ export default function BorrowBookModal({ show, onHide, book }) {
     setUsers(userManager.getUsers());
   }, []);
 
-  const handleLendBookClick = (e) => {
-    bookManager.borrowBook(book.isbn13, selectedUserId);
-    clearModalData();
-    onHide();
-  }
-
   useEffect(() => {
     assignUsersToVar();
   }, []);
 
   return (
+    <>
     <Modal
       onClick={(e) => {
         e.stopPropagation();
@@ -63,8 +51,7 @@ export default function BorrowBookModal({ show, onHide, book }) {
           id="contained-modal-title-vcenter"
           className="text-center w-100 pb-2 fade-in"
         >
-          <h1 className="font-weight-bold">{'"' + book.title + '"'}</h1>
-          <h5>Select the user to whom you wish to lend the book.</h5>
+          <h5>Select the user who intends to return the book</h5>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className={`px-5 text-light ${styles.borrowBookModalBody}`}>
@@ -103,18 +90,12 @@ export default function BorrowBookModal({ show, onHide, book }) {
       <Modal.Footer
         className={`px-3 py-2 label-color bottom-radius ${styles.bottomRadius}`}
       >
-        <Button className="button-radius" variant="secondary" onClick={(e) => {onHide(); clearModalData();}}>
+        <Button className="button-radius" variant="secondary" onClick={onHide}>
           Close
-        </Button>
-        <Button
-          className="button-radius"
-          variant="success"
-          onClick={handleLendBookClick}
-          disabled={selectedUserId < 0}
-        >
-          Lend a book
         </Button>
       </Modal.Footer>
     </Modal>
+    <SelectReturnedBookModal selectedUserId={selectedUserId} show={selectReturnedBookShow} onHide={() => {setSelectReturnedBookShow(false)}}/>
+    </>
   );
 }
