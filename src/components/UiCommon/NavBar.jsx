@@ -10,6 +10,7 @@ import { Col } from "react-bootstrap";
 import AppRoutes from "../../common/AppRoutes";
 import SessionManager from "../../common/SessionManager";
 import ProfileDialog from "../ProfilePage/ProfileDialog";
+import blobfish from "../../assets/blobfish.png";
 
 function NavBar({
   onSubmit = () => {},
@@ -52,11 +53,11 @@ function NavBar({
       >
         <Container fluid>
           <Navbar.Brand
-            className="text-light"
+            className="text-light py-0"
             onClick={() => navigate(AppRoutes.homePage)}
             href="#"
           >
-            Fish Library
+            <img style={{width: "50px", margin: "0px"}} src={blobfish} alt="Fish Library"/>
           </Navbar.Brand>
           <Navbar.Toggle
             aria-controls="navbarScroll"
