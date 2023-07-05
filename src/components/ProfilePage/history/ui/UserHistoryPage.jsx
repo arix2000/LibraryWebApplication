@@ -9,7 +9,7 @@ import RolesEnum from "../../../../common/RolesEnum";
 import HistoryPanel from "./HistoryPanel";
 import { useState } from "react";
 import BookDetailModal from "../../../BookSearch/BookDetail/BookDetailModal";
-import allBooks from "../../../../models/books.json"
+import BookManager from "../../../../common/BooksManager";
 
 const UserHistoryPage = () => {
     const [detailShow, setDetailShowSetter] = useState(false);
@@ -17,7 +17,8 @@ const UserHistoryPage = () => {
     const userHistory = loggedUser.history.reverse();
     const globalHistory = (new HistoryManager()).getGlobalHistory().reverse();
     const isMobile = useMediaQuery({ query: `(max-width: 985px)` });
-    const [clickedBook, setClickedBook] = useState(allBooks[0]);
+    const booksManager = new BookManager();
+    const [clickedBook, setClickedBook] = useState(booksManager.getBooks()[0]);
 
     const setDetailShow = (book) => {
         setDetailShowSetter(true);
