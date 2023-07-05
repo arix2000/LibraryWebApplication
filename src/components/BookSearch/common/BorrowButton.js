@@ -11,6 +11,10 @@ export default function BorrowButton({ rowStyles, book, isLibrarian, onBorrowBoo
   const [isBookReserved, setIsBookReserved] = useState(
     userBookManager.isReserved(book.isbn13)
   );
+  
+  const [isBookBorrowed, setIsBookBorrowed] = useState(
+    userBookManager.isBorrowed(book.isbn13)
+  );
 
   const handleBorrowClick = (e) => {
     e.stopPropagation();
@@ -38,6 +42,7 @@ export default function BorrowButton({ rowStyles, book, isLibrarian, onBorrowBoo
           }
           variant="primary"
           className={`${styles.borrowButton} button-radius`}
+          disabled={isBookBorrowed}
         >
           <div className={styles.buttonTextWrapper}>
             {isBookReserved ? "Cancel Reservation" : "Reserve"}{" "}
