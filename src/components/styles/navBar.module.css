@@ -3,6 +3,7 @@
   background-color: #404040;
   padding-left: 20px;
   padding-right: 20px;
+  z-index: 1;
 }
 
 .navLink {
@@ -22,7 +23,7 @@
 }
 
 .searchTextField {
-  max-width: 800px;
+  max-width: 30%;
   background-color: #3b3a3a;
   color: antiquewhite;
   border-width: 0px;
@@ -41,4 +42,14 @@
   box-shadow: none;
   border-width: 1px;
   border-color: #4169e1;
+}
+
+@media (max-width: 990px){
+  .searchTextField {
+    max-width: 92%;
+  }
+  
+  .blobfishIcon {
+    margin-left: 48%;
+  }
 }

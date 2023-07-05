@@ -53,7 +53,7 @@ function NavBar({
       >
         <Container fluid>
           <Navbar.Brand
-            className="text-light py-0"
+            className={`${styles.blobfishIcon} text-light py-0`}
             onClick={() => navigate(AppRoutes.homePage)}
             href="#"
           >
