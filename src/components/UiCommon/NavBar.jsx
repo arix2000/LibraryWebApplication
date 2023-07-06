@@ -53,11 +53,15 @@ function NavBar({
       >
         <Container fluid>
           <Navbar.Brand
-            className="text-light py-0"
+            className="text-light py-0 mr-5"
             onClick={() => navigate(AppRoutes.homePage)}
             href="#"
           >
-            <img style={{width: "50px", margin: "0px"}} src={blobfish} alt="Fish Library"/>
+            <img
+              style={{ width: "50px", margin: "0px" }}
+              src={blobfish}
+              alt="Fish Library"
+            />
           </Navbar.Brand>
           <Navbar.Toggle
             aria-controls="navbarScroll"
@@ -70,14 +74,20 @@ function NavBar({
               className={styles.fullWidth}
             >
               <Nav.Link
-                className="text-light"
+                className="text-light ml-2"
+                onClick={() => navigate(AppRoutes.userHistoryPage)}
+              >
+                History
+              </Nav.Link>
+              <Nav.Link
+                className="text-light ml-3"
                 onClick={() => navigate(AppRoutes.contactPage)}
               >
                 Contact
-              </Nav.Link>
+              </Nav.Link> 
               {loggedUser.role === "admin" ? (
                 <Nav.Link
-                  className="text-light"
+                  className="text-light ml-3"
                   onClick={() => navigate(AppRoutes.adminPanel)}
                 >
                   Admin Panel
@@ -86,7 +96,7 @@ function NavBar({
                 <div />
               )}
               <Nav.Link
-                className="text-light"
+                className="text-light ml-3"
                 onClick={() => setModalProfileShow(true)}
               >
                 Profile
