@@ -58,7 +58,7 @@ function NavBar({
             href="#"
           >
             <img
-              style={{ width: "50px", margin: "0px" }}
+              style={{ width: "60px", margin: "0px" }}
               src={blobfish}
               alt="Fish Library"
             />
@@ -80,14 +80,14 @@ function NavBar({
                 History
               </Nav.Link>
               <Nav.Link
-                className="text-light ml-3"
+                className="text-light ml-2"
                 onClick={() => navigate(AppRoutes.contactPage)}
               >
                 Contact
               </Nav.Link> 
               {loggedUser.role === "admin" ? (
                 <Nav.Link
-                  className="text-light ml-3"
+                  className="text-light ml-2"
                   onClick={() => navigate(AppRoutes.adminPanel)}
                 >
                   Admin Panel
@@ -96,7 +96,7 @@ function NavBar({
                 <div />
               )}
               <Nav.Link
-                className="text-light ml-3"
+                className="text-light ml-2"
                 onClick={() => setModalProfileShow(true)}
               >
                 Profile
