@@ -11,12 +11,14 @@ import AppRoutes from "../../common/AppRoutes";
 import SessionManager from "../../common/SessionManager";
 import ProfileDialog from "../ProfilePage/ProfileDialog";
 import blobfish from "../../assets/blobfish.png";
+import NavBarPagesEnum from "./NavBarPagesEnum";
 
 function NavBar({
-  onSubmit = () => {},
+  onSubmit = () => { },
   showSearchBar,
   initialExpand = false,
   searchAutoFocus = false,
+  currentPage = NavBarPagesEnum.home,
   forwardedRef,
 }) {
   const navigate = useNavigate();
@@ -25,6 +27,7 @@ function NavBar({
   const sessionManager = new SessionManager();
   const loggedUser = sessionManager.getLoggedUser();
   const [modalProfileShow, setModalProfileShow] = useState(false);
+  const selectedPageStyle = { backgroundColor: "#4169E1", borderRadius: "30px" };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -56,6 +59,7 @@ function NavBar({
             className="text-light py-0 mr-5"
             onClick={() => navigate(AppRoutes.homePage)}
             href="#"
+            style={currentPage === NavBarPagesEnum.home ? selectedPageStyle : null}
           >
             <img
               style={{ width: "60px", margin: "0px" }}
@@ -76,19 +80,22 @@ function NavBar({
               <Nav.Link
                 className="text-light ml-2"
                 onClick={() => navigate(AppRoutes.userHistoryPage)}
+                style={currentPage === NavBarPagesEnum.history ? selectedPageStyle : null}
               >
                 History
               </Nav.Link>
               <Nav.Link
                 className="text-light ml-2"
                 onClick={() => navigate(AppRoutes.contactPage)}
+                style={currentPage === NavBarPagesEnum.contact ? selectedPageStyle : null}
               >
                 Contact
-              </Nav.Link> 
+              </Nav.Link>
               {loggedUser.role === "admin" ? (
                 <Nav.Link
                   className="text-light ml-2"
                   onClick={() => navigate(AppRoutes.adminPanel)}
+                  style={currentPage === NavBarPagesEnum.adminPanel ? selectedPageStyle : null}
                 >
                   Admin Panel
                 </Nav.Link>
@@ -98,6 +105,7 @@ function NavBar({
               <Nav.Link
                 className="text-light ml-2"
                 onClick={() => setModalProfileShow(true)}
+                style={currentPage === NavBarPagesEnum.profile ? selectedPageStyle : null}
               >
                 Profile
               </Nav.Link>
@@ -118,8 +126,8 @@ function NavBar({
                       showSearchBar
                         ? null
                         : () => {
-                            navigate(AppRoutes.booksPage);
-                          }
+                          navigate(AppRoutes.booksPage);
+                        }
                     }
                     autoFocus={searchAutoFocus}
                   />
@@ -129,8 +137,8 @@ function NavBar({
                       showSearchBar
                         ? handleFormSubmit
                         : () => {
-                            navigate(AppRoutes.booksPage);
-                          }
+                          navigate(AppRoutes.booksPage);
+                        }
                     }
                   >
                     Search
