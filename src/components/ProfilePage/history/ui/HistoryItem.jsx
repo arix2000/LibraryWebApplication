@@ -1,12 +1,13 @@
 import styles from "../../../styles/userHistory.module.css";
-import allBooks from "../../../../models/books.json"
 import HistoryBookItem from "./HistoryBookItem";
 import { useState } from "react";
+import BookManager from "../../../../common/BooksManager";
 
 
 const HistoryItem = ({ historyItem, showUserName, setDetailShow }) => {
     const [expanded, setExpanded] = useState(false);
-    const book = allBooks.find(book => book.isbn13 == historyItem.bookId);
+    const booksManager = new BookManager();
+    const book = booksManager.getBooks().find(book => book.isbn13 == historyItem.bookId);
     return (
         <>
             <div className={`${styles.historyItemContainer} ${getHistoryActionStyle(historyItem.action.color)}`}

@@ -1,13 +1,14 @@
 import UserManager from "../components/AdminPanel/utils/UserManager";
 import SessionManager from "./SessionManager";
-import allBooks from "../models/books.json"
 import HistoryManager from "./HistoryManager";
 import HistoryActions from "../components/ProfilePage/history/HistoryActionsEnum";
+import BookManager from "./BooksManager";
 
 export default class UserBookManager {
   userManager = new UserManager();
   sessionManager = new SessionManager();
   historyManager = new HistoryManager();
+  booksManager = new BookManager();
   storageEventKey = "storage";
 
 
@@ -50,15 +51,15 @@ export default class UserBookManager {
   }
 
   getAllBorrowedBooks() {
-    return allBooks.filter(book => this.#getLoggedUser().borrowed_books.includes(book.isbn13));
+    return this.booksManager.getBooks().filter(book => this.#getLoggedUser().borrowed_books.includes(book.isbn13));
   }
 
   getBorrowedBooksOf(user) {
-    return allBooks.filter(book => user.borrowed_books.includes(book.isbn13));
+    return this.booksManager.getBooks().filter(book => user.borrowed_books.includes(book.isbn13));
   }
 
   getAllReservedBooks() {
-    return allBooks.filter(book => this.#getLoggedUser().reserved_books.includes(book.isbn13));
+    return this.booksManager.getBooks().filter(book => this.#getLoggedUser().reserved_books.includes(book.isbn13));
   }
 
   isReserved(bookId) {
