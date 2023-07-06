@@ -51,12 +51,6 @@ export default function ProfileDialog(props) {
                             </div>
                         </div>
                     </div>
-                    <div className={styles.browseHistoryButton} onClick={() => { navigate(AppRoutes.userHistoryPage); props.onHide(); }}>
-                        <div>Browse history</div>
-                        <div>
-                            <IoMdArrowRoundForward style={{ width: 20, height: 20 }} />
-                        </div>
-                    </div>
                     <div style={{ maxWidth: "100%", display: "flex", justifyContent: "end" }}>
                         <Button onClick={() => props.onHide()} className={styles.cancelButton}>Cancel</Button>
                         <Button ref={logoutButtonRef} onClick={() => logoutClick()} className={styles.logoutButton}
