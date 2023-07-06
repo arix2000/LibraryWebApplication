@@ -14,6 +14,7 @@ import WarningToast from "../UiCommon/WarningToast";
 import ToastEventKeys from "../UiCommon/ToastEventKeys";
 import BookManager from "../../common/BooksManager";
 import ReturnBookModal from "../BookSearch/ReturnBookModal";
+import NavBarPagesEnum from "../UiCommon/NavBarPagesEnum";
 
 function Banner({ books, title, variant, border, background }) {
   return (
@@ -102,7 +103,7 @@ export default function HomePage() {
 
   return (
     <div className={styles.pageContainer}>
-      <NavBar showSearchBar={false} />
+      <NavBar showSearchBar={false} currentPage={NavBarPagesEnum.home} />
       <Container fluid className="mb-5">
         <Row>
           <Banner
@@ -143,7 +144,7 @@ export default function HomePage() {
         <Button className={styles.addBookToLibraryFab} onClick={() => setModalAddEditShow(true)}>
           Add book to library <div style={{ width: "8px" }}></div><IoMdAdd style={{ height: 24, width: 24 }} />
         </Button> : <></>}
-        {isLibrarianRole ?
+      {isLibrarianRole ?
         <Button className={styles.acceptReturnFab} onClick={() => setReturnBookModalShow(true)} variant="success">
           Accept the return <div style={{ width: "8px" }}></div><MdOutlineAssignmentReturned style={{ height: 24, width: 24 }} />
         </Button> : <></>}
@@ -151,7 +152,7 @@ export default function HomePage() {
         show={modalAddEditShow}
         onHide={() => setModalAddEditShow(false)}
       />
-      <ReturnBookModal show={returnBookModalShow} onHide={() => setReturnBookModalShow(false)}/>
+      <ReturnBookModal show={returnBookModalShow} onHide={() => setReturnBookModalShow(false)} />
       <SuccessToast
         text={isBookInEditMode ? "Changes has been applied!" : "Book has been added successfully!"}
         show={showSuccessMassage}

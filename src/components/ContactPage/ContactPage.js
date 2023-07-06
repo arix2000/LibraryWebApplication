@@ -3,11 +3,12 @@ import React from 'react';
 import { Row, Col, Image } from 'react-bootstrap';
 import styles from "../styles/contactPage.module.css";
 import people from './peopleData';
+import NavBarPagesEnum from "../UiCommon/NavBarPagesEnum";
 
 export default function ContactPage() {
   return (
     <div className="background-color">
-      <NavBar />
+      <NavBar currentPage={NavBarPagesEnum.contact} />
       <div className={styles.contactPageHeader}>
         <h4>Contact Panel</h4>
       </div>

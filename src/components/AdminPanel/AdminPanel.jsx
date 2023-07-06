@@ -6,6 +6,7 @@ import styles from "../styles/adminPanel.module.css";
 import UserManager from "./utils/UserManager";
 import AddEditUserDialog from "./dialogs/AddEditUserDialog";
 import NavBar from "../UiCommon/NavBar";
+import NavBarPagesEnum from "../UiCommon/NavBarPagesEnum";
 
 function AdminPanel() {
   const userManager = new UserManager();
@@ -15,11 +16,11 @@ function AdminPanel() {
   window.addEventListener('storage', (storageEvent) => {
     setUsers(userManager.getUsers());
   })
-  const userItems = users.map((user) => <UserListItem key={user.id.toString()} user={user} styles={styles}/>);
+  const userItems = users.map((user) => <UserListItem key={user.id.toString()} user={user} styles={styles} />);
   return (
     <>
       <div className="background-color">
-        <NavBar showSearchBar={false}/>
+        <NavBar showSearchBar={false} currentPage={NavBarPagesEnum.adminPanel} />
         <div className={styles.adminPanelHeader}>
           <h4>Admin Panel</h4>
         </div>
