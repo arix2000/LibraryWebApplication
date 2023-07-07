@@ -10,6 +10,7 @@ import HistoryPanel from "./HistoryPanel";
 import { useState } from "react";
 import BookDetailModal from "../../../BookSearch/BookDetail/BookDetailModal";
 import BookManager from "../../../../common/BooksManager";
+import NavBarPagesEnum from "../../../UiCommon/NavBarPagesEnum";
 
 const UserHistoryPage = () => {
     const [detailShow, setDetailShowSetter] = useState(false);
@@ -27,7 +28,7 @@ const UserHistoryPage = () => {
 
     return (
         <>
-            <NavBar />
+            <NavBar currentPage={NavBarPagesEnum.history}/>
             {loggedUser.role != RolesEnum.user
                 ? <Container fluid style={{ padding: 0, height: "100%" }}>
                     {isMobile

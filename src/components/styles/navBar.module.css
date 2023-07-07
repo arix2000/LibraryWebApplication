@@ -42,3 +42,35 @@
   border-width: 1px;
   border-color: #4169e1;
 }
+
+.selectedPageStyle {
+  background-color: #4169E1;
+  border-radius: 30px;
+}
+
+.navPageLink {
+  margin-right: 0 !important;
+}
+
+@media (max-width: 991px) {
+  .toggleButton {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+  }
+
+  .profileIcon {
+    position: absolute;
+    top: 18px;
+    right: 70px;
+    border: none;
+    color: whitesmoke !important;
+  }
+
+  .navPageLink {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    max-width: fit-content;
+    margin-bottom: 5px;
+  }
+}

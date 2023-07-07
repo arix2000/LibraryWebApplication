@@ -32,6 +32,7 @@ export default function BookPage() {
         showSearchBar={true}
         initialExpand={true}
         searchAutoFocus={true}
+        currentPage="none"
       />
       {isQueryEntered ? (
         books.length > 0 ? (
