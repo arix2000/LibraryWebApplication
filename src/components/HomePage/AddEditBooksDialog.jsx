@@ -3,6 +3,7 @@ import styles from "../styles/homePage/addEditBooksModal.module.css"
 import { useState } from "react";
 import ToastEventKeys from "../UiCommon/ToastEventKeys";
 import BookManager from "../../common/BooksManager";
+import { Rating } from "@mui/material";
 
 const AddEditBooksDialog = (props) => {
 
@@ -93,6 +94,8 @@ const AddEditBooksDialog = (props) => {
     const [categories, setCategories] = useState(getSafeBookParameter(() => props.book.categories))
     const [rating, setRating] = useState(getSafeBookParameter(() => props.book.average_rating))
     const [imageUrl, setImageUrl] = useState(getSafeBookParameter(() => props.book.thumbnail))
+
+    const [ratingHover, setRatingHover] = useState(-1);
     const [validated, setValidated] = useState(false);
 
     return (
@@ -153,9 +156,30 @@ const AddEditBooksDialog = (props) => {
                             <Form.Group as={Row} className={styles.formMarginTop}>
                                 <Form.Label column>Rating: </Form.Label>
                                 <Col xs={8} lg={10}>
-                                    <Form.Control type="number" step={".01"} min={0} max={5} required
-                                        defaultValue={!rating ? 0 : rating} className="default-text-field"
-                                        onChange={(event) => setRating(event.target.value)} />
+                                    <div style={{ display: "flex" }}>
+                                        <Form.Control placeholder="0.0 - 5.0" type="number" step={".01"} min={0} max={5} required
+                                            defaultValue={!rating ? 0 : rating} className="default-text-field"
+                                            value={rating}
+                                            onChange={(event) => setRating(event.target.value)} />
+                                        <div style={{ width: "10px" }}></div>
+                                        <div style={{ display: "inline-block" }}>
+                                            <Rating
+                                                name="custom"
+                                                value={rating}
+                                                onChange={(event, newValue) => { setRating(newValue) }}
+                                                onChangeActive={(event, newValue) => { setRatingHover(newValue) }}
+                                                precision={0.1}
+                                                sx={{
+                                                    '& .MuiRating-iconEmpty': {
+                                                        color: 'rgba(255, 255, 255, 0.25)',
+                                                    },
+                                                }}
+                                            />
+                                            {ratingHover !== -1
+                                                ? <small style={{ position: "absolute", bottom: "-5px", right: "59px" }}>{"(" + ratingHover + ")"}</small>
+                                                : <></>}
+                                        </div>
+                                    </div>
                                     <Form.Control.Feedback type="invalid">
                                         Rating cannot be empty or out of range 0-5 (two decimal points allowed).
                                     </Form.Control.Feedback>
