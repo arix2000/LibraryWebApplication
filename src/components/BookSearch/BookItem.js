@@ -57,7 +57,7 @@ export default function BookItem({ book, margin, radius, userRole, shouldShowCon
               <Card.Title className="mt-4">
                 <Rating
                   name="half-rating-read"
-                  defaultValue={bookDynamic.average_rating}
+                  value={bookDynamic.average_rating}
                   precision={0.1}
                   readOnly
                 />
