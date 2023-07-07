@@ -12,6 +12,8 @@ import SessionManager from "../../common/SessionManager";
 import ProfileDialog from "../ProfilePage/ProfileDialog";
 import blobfish from "../../assets/blobfish.png";
 import NavBarPagesEnum from "./NavBarPagesEnum";
+import { CgProfile } from "react-icons/cg";
+import { useMediaQuery } from "react-responsive";
 
 function NavBar({
   onSubmit = () => { },
@@ -27,7 +29,7 @@ function NavBar({
   const sessionManager = new SessionManager();
   const loggedUser = sessionManager.getLoggedUser();
   const [modalProfileShow, setModalProfileShow] = useState(false);
-  const selectedPageStyle = { backgroundColor: "#4169E1", borderRadius: "30px" };
+  const isMobile = useMediaQuery({ query: `(max-width: 991px)` });
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -56,10 +58,10 @@ function NavBar({
       >
         <Container fluid>
           <Navbar.Brand
-            className="text-light py-0 mr-5"
             onClick={() => navigate(AppRoutes.homePage)}
             href="#"
-            style={currentPage === NavBarPagesEnum.home ? selectedPageStyle : null}
+            className={`${currentPage === NavBarPagesEnum.home ? styles.selectedPageStyle : null} text-light py-0`}
+            style={{cursor: "pointer"}}
           >
             <img
               style={{ width: "60px", margin: "0px" }}
@@ -67,10 +69,6 @@ function NavBar({
               alt="Fish Library"
             />
           </Navbar.Brand>
-          <Navbar.Toggle
-            aria-controls="navbarScroll"
-            onClick={() => setExpanded(!expanded)}
-          />
           <Navbar.Collapse id="navbarScroll">
             <Nav
               defaultActiveKey="/home"
@@ -78,42 +76,32 @@ function NavBar({
               className={styles.fullWidth}
             >
               <Nav.Link
-                className="text-light ml-2"
                 onClick={() => navigate(AppRoutes.userHistoryPage)}
-                style={currentPage === NavBarPagesEnum.history ? selectedPageStyle : null}
+                className={`${currentPage === NavBarPagesEnum.history ? styles.selectedPageStyle : null} ${styles.navPageLink} text-light`}
               >
                 History
               </Nav.Link>
               <Nav.Link
-                className="text-light ml-2"
                 onClick={() => navigate(AppRoutes.contactPage)}
-                style={currentPage === NavBarPagesEnum.contact ? selectedPageStyle : null}
+                className={`${currentPage === NavBarPagesEnum.contact ? styles.selectedPageStyle : null} ${styles.navPageLink} text-light`}
               >
                 Contact
               </Nav.Link>
               {loggedUser.role === "admin" ? (
                 <Nav.Link
-                  className="text-light ml-2"
                   onClick={() => navigate(AppRoutes.adminPanel)}
-                  style={currentPage === NavBarPagesEnum.adminPanel ? selectedPageStyle : null}
+                  className={`${currentPage === NavBarPagesEnum.adminPanel ? styles.selectedPageStyle : null} ${styles.navPageLink} text-light`}
                 >
                   Admin Panel
                 </Nav.Link>
               ) : (
                 <div />
               )}
-              <Nav.Link
-                className="text-light ml-2"
-                onClick={() => setModalProfileShow(true)}
-                style={currentPage === NavBarPagesEnum.profile ? selectedPageStyle : null}
-              >
-                Profile
-              </Nav.Link>
               <Col>
                 <Form
                   className="d-flex"
                   onSubmit={handleFormSubmit}
-                  style={{ display: "flex", justifyContent: "right" }}
+                  style={{ display: "flex", justifyContent: "center" }}
                   ref={forwardedRef}
                 >
                   <Form.Control
@@ -148,6 +136,17 @@ function NavBar({
             </Nav>
           </Navbar.Collapse>
         </Container>
+        <Navbar.Brand
+          href="#"
+          className={`${styles.profileIcon} ${isMobile ? "navbar-toggler" : ""}`}
+          onClick={() => setModalProfileShow(true)}>
+          <CgProfile style={{ height: "34px", width: "34px" }} />
+        </Navbar.Brand>
+        <Navbar.Toggle
+          className={styles.toggleButton}
+          aria-controls="responsive-navbar-nav"
+          onClick={() => setExpanded(!expanded)}
+        />
         <ProfileDialog
           show={modalProfileShow}
           onHide={() => setModalProfileShow(false)}
