@@ -70,7 +70,7 @@
 }
 
 .fixColWidth {
-  width: 50%;
+  max-width: 50%;
 }
 
 .alert {
@@ -121,3 +121,9 @@
     width: 150px;
   }
 } 
+
+@media (max-width: 991px) {
+  .fixColWidth {
+    max-width: 100%;
+  }
+}
