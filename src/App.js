@@ -13,6 +13,7 @@ import HomePage from "./components/HomePage/HomePage";
 import UserHistoryPage from "./components/ProfilePage/history/ui/UserHistoryPage";
 import PrivateRoute from "./components/UiCommon/PrivateRoute";
 import ContactPage from "./components/ContactPage/ContactPage";
+import LoginRedirect from "./components/UiCommon/LoginRedirect";
 
 function App() {
   handleFirstTimeOpen();
@@ -29,7 +30,13 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path={AppRoutes.root} element={<LoginPage />} />
+
+            <Route
+              path={AppRoutes.root}
+              element={
+                <LoginRedirect>
+                  <LoginPage />
+                </LoginRedirect>} />
             <Route
               path={AppRoutes.adminPanel}
               element={
