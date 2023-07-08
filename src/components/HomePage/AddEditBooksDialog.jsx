@@ -50,7 +50,7 @@ const AddEditBooksDialog = (props) => {
     }
 
     function validateFields() {
-        return title != "" && description != "" && authors != "" && categories != "" && 0 <= rating <= 5 && isValidUrl(imageUrl);
+        return title != "" && description != "" && authors != "" && categories != "" && 0 <= rating && rating <= 5 && isValidUrl(imageUrl);
     }
 
     function onAcceptClicked(event) {
@@ -97,7 +97,6 @@ const AddEditBooksDialog = (props) => {
 
     const [ratingHover, setRatingHover] = useState(-1);
     const [validated, setValidated] = useState(false);
-
     return (
         <>
             <Modal
