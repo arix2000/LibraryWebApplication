@@ -121,7 +121,7 @@ export default function HomePage() {
           />
         </Row>
         <Row>
-          <Col className={styles.fixColWidth}>
+          <Col xs={{ order: 'first' }} className={styles.fixColWidth}>
             <Banner
               books={borrowedBooks}
               title="Borrowed"
@@ -129,7 +129,7 @@ export default function HomePage() {
               background="#5cb85c"
             />
           </Col>
-          <Col className={styles.fixColWidth}>
+          <Col xs={{ order: 'last' }} className={styles.fixColWidth}>
             <Banner
               books={reservedBooks}
               title="Reserved"
