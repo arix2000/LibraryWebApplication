@@ -1,4 +1,13 @@
+Arkadiusz Mądry 27181, Maciej Kiełducki 26863, Jan Rembikowski 27264
+
 App live preview: https://fish-library-project.netlify.app/
+
+How to start project locally?
+From project main folder:
+```
+npm install
+npm start
+```
 
 Screen Shots: 
 | Wide Screen  | Preview |
